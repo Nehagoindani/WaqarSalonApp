@@ -8,8 +8,8 @@ export default function TimeSlots({ navigation }) {
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
 
-  //const service = route.params.serviceName
-  //const price = route.params.price
+  const service = route.params.serviceName
+  const price = route.params.price
 
   return (
     <ScrollView>
