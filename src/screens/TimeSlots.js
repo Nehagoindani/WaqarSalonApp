@@ -8,8 +8,8 @@ export default function TimeSlots({ navigation }) {
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
 
-  const service = route.params.serviceName
-  const price = route.params.price
+ // const service = route.params.serviceName
+ // const price = route.params.price
 
   return (
     <ScrollView>
@@ -60,8 +60,8 @@ export default function TimeSlots({ navigation }) {
                 </TouchableOpacity>
               </View>
         </View> */}
-          <View style={styles.view5, { flexDirection: 'row', color: 'black' }}>
-            <View style={{ flex: 0.3, backgroundColor: 'skyblue', flexDirection: 'çolumn' }}>
+          <View style={[styles.view5] , {flexDirection:'row'}}>
+            <View style={{ flex: 0.3, backgroundColor: 'skyblue' }}>
               <Text style={{ fontWeight: 'bold', fontSize: 16 }}> Time </Text>
               {/*}  <View style={{flex:0.2}}>
               <Text style={{ color: 'black', fontSize:12 }}> 12PM - 1PM </Text>
