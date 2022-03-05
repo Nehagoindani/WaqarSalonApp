@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408820122895",
+    "project_id": "waqar-salon-app-73343",
+    "storage_bucket": "waqar-salon-app-73343.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408820122895:android:3eba9d1271e9170b70aa7a",
+        "android_client_info": {
+          "package_name": "com.waqarsalonapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408820122895-e6dnnmd12vlol3tnsbe6nlb6lc3e3gla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdxWBLHRtvY0619EnoObeJOIL8Rg268nM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408820122895-e6dnnmd12vlol3tnsbe6nlb6lc3e3gla.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
