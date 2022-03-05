@@ -2,8 +2,17 @@ import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import { color } from 'react-native-reanimated';
+
+
 
 export default function TimeSlots({ navigation }) {
+
+const DATA=[
+  
+]
+ 
+
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
@@ -63,13 +72,43 @@ export default function TimeSlots({ navigation }) {
           <View style={[styles.view5] , {flexDirection:'row'}}>
             <View style={{ flex: 0.3, backgroundColor: 'skyblue' }}>
               <Text style={{ fontWeight: 'bold', fontSize: 16 }}> Time </Text>
+              <View style={{margin:2}}>
+                <Text>12pm to 1pm</Text>
+              </View>
+              <View style={{margin:2}}>
+                <Text>1pm to 2pm</Text>
+              </View>
+              <View style={{margin:2}}>
+                <Text>2pm to 3pm</Text>
+              </View>
+              <View style={{margin:2}}>
+                <Text>3pm to 4pm</Text>
+              </View>
               {/*}  <View style={{flex:0.2}}>
               <Text style={{ color: 'black', fontSize:12 }}> 12PM - 1PM </Text>
               </View>*/}
 
             </View>
+            
             <View style={{ flex: 0.7, backgroundColor: 'lightpink', color: 'black' }}>
               <Text style={{ fontWeight: 'bold', fontSize: 16 }}> Slots </Text>
+              <View style={{margin:2,flexDirection:'row'}}>
+                <TouchableOpacity >
+                <Text style={{fontSize:15, margin:2}}>slot 1</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                <Text style={{fontSize:15, margin:2}}>slot 2</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                <Text style={{fontSize:15, margin:2}}>slot 3</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                <Text style={{fontSize:15, margin:2}}>slot 4</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                <Text style={{fontSize:15, margin:2}}>slot 5</Text>
+                </TouchableOpacity> 
+              </View>
               {/*}  <View>
           <TouchableOpacity style={{ flexDirection: 'row', marginRight: 15, color: 'red' }} >
                   <Icon name='square' size={30} color='darkgreen' /> </TouchableOpacity>
