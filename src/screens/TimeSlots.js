@@ -20,6 +20,10 @@ const DATA=[
  // const service = route.params.serviceName
  // const price = route.params.price
 
+ const Slot =
+  [ {S1: 'Slot1 ', S2:'Slot2 ',S3:'Slot3 ',S4:'Slot4 ', S5: 'Slot5 '}]
+ 
+
   return (
     <ScrollView>
       <View style={styles.view1}>
@@ -69,20 +73,20 @@ const DATA=[
                 </TouchableOpacity>
               </View>
         </View> */}
-          <View style={[styles.view5] , {flexDirection:'row'}}>
-            <View style={{ flex: 0.3, backgroundColor: 'skyblue' }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 16 }}> Time </Text>
-              <View style={{margin:2}}>
-                <Text>12pm to 1pm</Text>
+          <View style={styles.view5}>
+            <View style={{ flex: 0.35, borderColor:'black' }}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18, color:'black' }}> Time </Text>
+              <View>
+                <Text style={{margin:8,fontSize:15}}>12pm to 1pm</Text>
               </View>
-              <View style={{margin:2}}>
-                <Text>1pm to 2pm</Text>
+              <View>
+                <Text style={{margin:8,fontSize:15}}>1pm to 2pm</Text>
               </View>
-              <View style={{margin:2}}>
-                <Text>2pm to 3pm</Text>
+              <View>
+                <Text style={{margin:8,fontSize:15}}>2pm to 3pm</Text>
               </View>
-              <View style={{margin:2}}>
-                <Text>3pm to 4pm</Text>
+              <View>
+                <Text style={{margin:8,fontSize:15}}>3pm to 4pm</Text>
               </View>
               {/*}  <View style={{flex:0.2}}>
               <Text style={{ color: 'black', fontSize:12 }}> 12PM - 1PM </Text>
@@ -90,24 +94,34 @@ const DATA=[
 
             </View>
             
-            <View style={{ flex: 0.7, backgroundColor: 'lightpink', color: 'black' }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 16 }}> Slots </Text>
+            <View style={{ flex: 0.65, borderColor:'black', color: 'black' }}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18, color:'black' }}> Slots </Text>
               <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity >
-                <Text style={{fontSize:15, margin:2}}>slot 1</Text>
+                <TouchableOpacity
+                onPress={()=>{console.log(Slot)}}
+                >
+                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
-                <Text style={{fontSize:15, margin:2}}>slot 2</Text>
+              </View>
+              <View style={{margin:2,flexDirection:'row'}}>
+                <TouchableOpacity>
+                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
-                <Text style={{fontSize:15, margin:2}}>slot 3</Text>
+              </View>
+              <View style={{margin:2,flexDirection:'row'}}>
+                <TouchableOpacity>
+                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
-                <Text style={{fontSize:15, margin:2}}>slot 4</Text>
+              </View>
+              <View style={{margin:2,flexDirection:'row'}}>
+                <TouchableOpacity>
+                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity >
-                <Text style={{fontSize:15, margin:2}}>slot 5</Text>
-                </TouchableOpacity> 
+              </View>
+              <View style={{margin:2,flexDirection:'row'}}>
+                <TouchableOpacity>
+                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
+                </TouchableOpacity>
               </View>
               {/*}  <View>
           <TouchableOpacity style={{ flexDirection: 'row', marginRight: 15, color: 'red' }} >
@@ -160,6 +174,7 @@ const styles = StyleSheet.create({
   view5: {
     flex: 1,
     padding: 10,
+    flexDirection:'row'
   },
   view2: {
     flex: 0.2,
