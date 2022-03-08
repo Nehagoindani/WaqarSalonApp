@@ -37,6 +37,8 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-textinput-with-icons": "^1.0.18",
     "react-native-vector-icons": "^9.0.0",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
     "reify": "^0.20.12"
   },
   "devDependencies": {

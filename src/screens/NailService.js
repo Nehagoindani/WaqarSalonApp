@@ -68,6 +68,7 @@ const DATA = [
       }, ] }, ];
 
 const NailService = ({navigation}) => {
+  let nailServices = [] 
   const FlatListItemSeparator = () => {
     return (
       //Item Separator
@@ -88,7 +89,8 @@ const NailService = ({navigation}) => {
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <TouchableOpacity
-           onPress={()=>navigation.navigate('TimeSlot',{serviceName:name,price:price})}
+          // onPress={()=>navigation.navigate('TimeSlot',{serviceName:name,price:price})}
+          onPress={()=>hairServices.push(name)}
           >
           <Icon name='plus-circle-outline' size={20} color='#d6994b' />
           </TouchableOpacity>

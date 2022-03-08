@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
+import { addService } from '../Redux/Actions/serviceAction';
+
 const DATA = [
   {
     title: "HAIR CUT",
@@ -143,6 +146,8 @@ const DATA = [
 
 ];
 const HairService = ({ navigation }) => {
+  const dispatch = useDispatch();
+  let hairServices = [] 
   const FlatListItemSeparator = () => {
     return (
       //Item Separator
@@ -166,8 +171,9 @@ const HairService = ({ navigation }) => {
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('TimeSlot')}
-          >
+           // onPress={() => navigation.navigate('TimeSlot', { serviceName: name, price: price })}
+           onPress={()=>dispatch(addService(name))}
+          >   
             <Icon name='plus-circle-outline' size={20} color='#d6994b' />
           </TouchableOpacity>
         </View>
@@ -208,7 +214,7 @@ const HairService = ({ navigation }) => {
       </View>
       <View style={styles.view5}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('TimeSlot', { serviceName: name, price: price })}
+          onPress={() => navigation.navigate('TimeSlot', { hairServices:hairServices })}
         >
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
         </TouchableOpacity>

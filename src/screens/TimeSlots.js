@@ -3,162 +3,166 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { color } from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
 
 
 
-export default function TimeSlots({ navigation }) {
+export default function TimeSlots({ navigation, route }) {
 
-const DATA=[
-  
-]
- 
+  const { services } = useSelector(state => state.service)
 
+  const DATA = [
+
+  ]
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
 
- // const service = route.params.serviceName
- // const price = route.params.price
+  const service = route.params.hairServices
+  const price = route.params.price
 
- const Slot =
-  [ {S1: 'Slot1 ', S2:'Slot2 ',S3:'Slot3 ',S4:'Slot4 ', S5: 'Slot5 '}]
- 
+  const Slot =
+    ['Slot1 ', 'Slot2 ', 'Slot3 ', 'Slot4 ', 'Slot5 ']
+
 
   return (
-    <ScrollView>
-      <View style={styles.view1}>
-        <View style={styles.view2}>
-          <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
-            APPOINTMENT BOOKING
-          </Text>
-          <Text style={{ color: 'brown' }}> The Services you have selected are:  </Text>
-          <Text>Price: </Text>
-        </View>
 
-        <View style={styles.view3}>
-          <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Date</Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
-            Select your desired date.
-          </Text>
-          <TouchableOpacity
-            onPress={() => setOpen(true)}>
-            <Text style={styles.textin}>{date.toString()}</Text>
-          </TouchableOpacity>
-          <DatePicker
-            modal
-            open={open}
-            date={date}
-            minuteInterval={15}
-            onConfirm={(date) => {
-              setOpen(false)
-              setDate(date)
-            }}
-            onCancel={() => {
-              setOpen(false)
-            }}
-          />
-          <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Time</Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
-            Select your desired timeslot.
-          </Text>
-          {/*}      <View style={{ flex: 0.1, borderColor: '#d6994b', borderWidth: 2, padding: 5 }}>
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: 300, }}>
-                <Text style={{ color: 'black', fontStyle: 'bold', fontSize: 22 }}> 12PM - 1PM </Text>
-                <TouchableOpacity style={{ flexDirection: 'row', marginRight: 15, color: 'red' }} >
-                  <Icon name='square' size={30} color='darkgreen' />
-                  <Icon name='square' size={30} color='darkgreen' />
-                  <Icon name='square' size={30} color='darkgreen' />
-                  <Icon name='square' size={30} color='darkgreen' />
-                  <Icon name='square' size={30} color='darkgreen' />
-                </TouchableOpacity>
-              </View>
-        </View> */}
-          <View style={styles.view5}>
-            <View style={{ flex: 0.35, borderColor:'black' }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 18, color:'black' }}> Time </Text>
-              <View>
-                <Text style={{margin:8,fontSize:15}}>12pm to 1pm</Text>
-              </View>
-              <View>
-                <Text style={{margin:8,fontSize:15}}>1pm to 2pm</Text>
-              </View>
-              <View>
-                <Text style={{margin:8,fontSize:15}}>2pm to 3pm</Text>
-              </View>
-              <View>
-                <Text style={{margin:8,fontSize:15}}>3pm to 4pm</Text>
-              </View>
-              {/*}  <View style={{flex:0.2}}>
-              <Text style={{ color: 'black', fontSize:12 }}> 12PM - 1PM </Text>
-              </View>*/}
+    <View style={styles.view1}>
+      <View style={styles.view2}>
+        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
+          APPOINTMENT BOOKING:
+          {services}
+        </Text>
+
+      </View>
+
+      <View style={styles.view3}>
+        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Date</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+          Select your desired date.
+        </Text>
+        <TouchableOpacity
+          onPress={() => setOpen(true)}>
+          <Text style={styles.textin}>{date.toString()}</Text>
+        </TouchableOpacity>
+        <DatePicker
+          modal
+          open={open}
+          date={date}
+          minuteInterval={15}
+          onConfirm={(date) => {
+            setOpen(false)
+            setDate(date)
+          }}
+          onCancel={() => {
+            setOpen(false)
+          }}
+        />
+        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Time</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+          Select your desired timeslot.
+        </Text>
+
+        <View style={styles.view5}>
+
+
+          <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+              <TouchableOpacity onPress={() => console.log('12pm - 1pm')}>
+                <Text>12pm - 1pm</Text>
+              </TouchableOpacity>
+
 
             </View>
-            
-            <View style={{ flex: 0.65, borderColor:'black', color: 'black' }}>
-              <Text style={{ fontWeight: 'bold', fontSize: 18, color:'black' }}> Slots </Text>
-              <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity
-                onPress={()=>{console.log(Slot)}}
-                >
-                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity>
-                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity>
-                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity>
-                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{margin:2,flexDirection:'row'}}>
-                <TouchableOpacity>
-                  <Text style={{fontSize:15, margin:4}}> {Slot} </Text>
-                </TouchableOpacity>
-              </View>
-              {/*}  <View>
-          <TouchableOpacity style={{ flexDirection: 'row', marginRight: 15, color: 'red' }} >
-                  <Icon name='square' size={30} color='darkgreen' /> </TouchableOpacity>
-            </View>*/}
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+
             </View>
 
+          </View>
+          <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+              <TouchableOpacity onPress={() => console.log('1pm - 2pm' + service)}>
+
+                <Text>1pm - 2pm</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+
+            </View>
+          </View>
+          <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+              <TouchableOpacity onPress={() => console.log('2pm - 3pm')}>
+                <Text>2pm - 3pm</Text>
+
+              </TouchableOpacity>
+            </View>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+
+            </View>
+
+          </View>
+          <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+              <TouchableOpacity onPress={() => console.log('3pm - 4pm')}>
+
+                <Text>3pm - 4pm</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{
+              flex: 0.5, justifyContent: 'center', alignItems: 'center'
+            }}>
+
+            </View>
 
           </View>
 
-          <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Special Instructions</Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
-            Please enter any special instructions or staff requests here.
-          </Text>
-          <TextInput style={styles.textin}
-            placeholder="Enter Instructions Here"
-            onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
-        </View>
-        <View style={styles.view4}>
-          <TouchableOpacity style={{ backgroundColor: '#d6994b', padding: 10, margin: 5, alignItems: 'center', borderWidth: 2, borderRadius: 20 }}
-            onPress={
-              () => {
-                navigation.navigate('Booking Summury',
-                  {
-                    serviceName: service,
-                    price: price,
-                    Date: date.toString(),
-                    Instructions: userInput
 
-                  })
-              }}
-          >
-            <Text style={{ color: 'black', fontSize: 20, borderWidth: 0 }}>Book Appointment</Text>
-          </TouchableOpacity>
+
+
         </View>
+
+        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Special Instructions</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+          Please enter any special instructions or staff requests here.
+        </Text>
+        <TextInput style={styles.textin}
+          placeholder="Enter Instructions Here"
+          onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
       </View>
-    </ScrollView>
+      <View style={styles.view4}>
+        <TouchableOpacity style={{ backgroundColor: '#d6994b', padding: 10, margin: 5, alignItems: 'center', borderWidth: 2, borderRadius: 20 }}
+          onPress={
+            () => {
+              navigation.navigate('Booking Summury',
+                {
+                  serviceName: service,
+                  price: price,
+                  Date: date.toString(),
+                  Instructions: userInput
+
+                })
+            }}
+        >
+          <Text style={{ color: 'black', fontSize: 20, borderWidth: 0 }}>Book Appointment</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+
   )
 }
 const styles = StyleSheet.create({
@@ -174,10 +178,10 @@ const styles = StyleSheet.create({
   view5: {
     flex: 1,
     padding: 10,
-    flexDirection:'row'
+    //flexDirection: 'row'
   },
   view2: {
-    flex: 0.2,
+    flex: 0.1,
     justifyContent: 'center',
     alignItems: 'center',
   },
