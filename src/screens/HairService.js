@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch } from 'react-redux';
 import { addService } from '../Redux/Actions/serviceAction';
 
+
 const DATA = [
   {
     title: "HAIR CUT",
@@ -147,6 +148,8 @@ const DATA = [
 ];
 const HairService = ({ navigation }) => {
   const dispatch = useDispatch();
+  const hairServices=[]
+  
  
   const FlatListItemSeparator = () => {
     return (

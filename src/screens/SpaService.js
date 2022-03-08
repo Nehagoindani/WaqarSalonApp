@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 're
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch } from 'react-redux';
 import { addService } from '../Redux/Actions/serviceAction';
+
 const DATA = [
   {
     title: "Spa",
@@ -45,6 +46,7 @@ const DATA = [
 
 const SpaService = ({navigation}) => {
   const dispatch = useDispatch();
+ 
   const FlatListItemSeparator = () => {
     return (
       //Item Separator

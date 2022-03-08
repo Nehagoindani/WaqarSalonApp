@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
+import { addService } from '../Redux/Actions/serviceAction';
 const DATA = [
   {
     title: "SILVER PACKAGE  Rs. 7500",
@@ -106,7 +108,8 @@ const DATA = [
     ]
   }, ];
 
-const BridalService = ({navigation}) => {   
+const BridalService = ({navigation}) => { 
+  const dispatch = useDispatch();  
   const FlatListItemSeparator = () => {
     return (
       //Item Separator
@@ -127,7 +130,7 @@ const BridalService = ({navigation}) => {
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <TouchableOpacity
-          onPress={()=>navigation.navigate('TimeSlot',{serviceName:name,price:price})}
+          onPress={()=>dispatch(addService(name))}
           >
           <Icon name='plus-circle-outline' size={20} color='#d6994b' />
           </TouchableOpacity>

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 're
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch,useSelector } from 'react-redux';
 import { addService } from '../Redux/Actions/serviceAction';
+
 const DATA = [
   {
     title: "PARTY MAKEUP",
@@ -74,7 +75,7 @@ const DATA = [
     ];
     const MakeupService = ({navigation }) => {
       const dispatch = useDispatch();
-      const { services } = useSelector(state => state.service)
+    
       const FlatListItemSeparator = () => {
         return (
           //Item Separator
