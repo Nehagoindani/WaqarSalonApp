@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addService } from '../Redux/Actions/serviceAction';
+import { addService , removeService } from '../Redux/Actions/serviceAction';
 
 
 
@@ -162,9 +162,9 @@ const HairService = ({ navigation }) => {
   };
 
   const check = (name) => {
-  if(services.includes(name) ) return true
-  else return false
-  
+    if (services.includes(name)) return true
+    else return false
+
   }
 
 
@@ -177,22 +177,28 @@ const HairService = ({ navigation }) => {
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity>
-            <Icon name='minus-circle-outline' size={20} color='#d6994b' />
+          <TouchableOpacity
+            onPress={() => dispatch(removeService(name))}
+            disabled={
+              services.includes(name) ? false : true
+            }
+         
+         >
+          
+            <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
 
-          {
-            console.log(check(name))
-           {/* check(name) === true ? (
-              <TouchableOpacity
-                onPress={() => dispatch(addService(name))}
-              >
-                <Icon name='plus-circle-outline' size={20} color='#d6994b' />
-              </TouchableOpacity>
-           ):null*/}
-         }
+          <TouchableOpacity
+            onPress={() => dispatch(addService(name))}
+            disabled={
+              !services.includes(name) ? false : true
+            }
+          >
+            <Icon name='plus-circle-outline' size={20} color={!services.includes(name) ? '#d6994b' : 'grey'} />
+          </TouchableOpacity>
+
         </View>
       </View>
     </View>
