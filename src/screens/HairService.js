@@ -147,7 +147,7 @@ const DATA = [
 ];
 const HairService = ({ navigation }) => {
   const dispatch = useDispatch();
-  let hairServices = [] 
+ 
   const FlatListItemSeparator = () => {
     return (
       //Item Separator

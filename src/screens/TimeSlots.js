@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 
 
+
 export default function TimeSlots({ navigation, route }) {
 
   const { services } = useSelector(state => state.service)
@@ -17,9 +18,6 @@ export default function TimeSlots({ navigation, route }) {
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
-
-  const service = route.params.hairServices
-  const price = route.params.price
 
   const Slot =
     ['Slot1 ', 'Slot2 ', 'Slot3 ', 'Slot4 ', 'Slot5 ']
@@ -87,7 +85,7 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => console.log('1pm - 2pm' + service)}>
+              <TouchableOpacity onPress={() => console.log(services)}>
 
                 <Text>1pm - 2pm</Text>
               </TouchableOpacity>
