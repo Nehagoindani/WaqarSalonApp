@@ -161,6 +161,12 @@ const HairService = ({ navigation }) => {
     );
   };
 
+  const check = (name) => {
+  if(services.includes(name) ) return true
+  else return false
+  
+  }
+
 
   const Item = ({ name, price }) => (
 
@@ -176,12 +182,17 @@ const HairService = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity
-            // onPress={() => navigation.navigate('TimeSlot', { serviceName: name, price: price })}
-            onPress={() => dispatch(addService(name))}
-          >
-            <Icon name='plus-circle-outline' size={20} color='#d6994b' />
-          </TouchableOpacity>
+
+          {
+            console.log(check(name))
+           {/* check(name) === true ? (
+              <TouchableOpacity
+                onPress={() => dispatch(addService(name))}
+              >
+                <Icon name='plus-circle-outline' size={20} color='#d6994b' />
+              </TouchableOpacity>
+           ):null*/}
+         }
         </View>
       </View>
     </View>
@@ -190,6 +201,7 @@ const HairService = ({ navigation }) => {
 
   return (
     <View style={styles.view1}>
+
       <View style={[styles.view2, { alignContent: 'center' }]}>
         <Image source={require('../Images/p2.jpg')} style={styles.img1} />
       </View>
@@ -221,8 +233,8 @@ const HairService = ({ navigation }) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0  ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
-            
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+
           }}
         >
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
