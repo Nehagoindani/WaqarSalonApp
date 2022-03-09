@@ -105,6 +105,16 @@ const SpaService = ({navigation}) => {
           ItemSeparatorComponent={FlatListItemSeparator}
         />
       </View>
+      <View style={styles.view5}>
+        <TouchableOpacity
+          onPress={() => {
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+
+          }}
+        >
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -114,6 +124,12 @@ const styles = StyleSheet.create({
   view1: {
     flex: 1,
     backgroundColor:'white'
+  },
+  view5: {
+    flex: 0.08,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d6994b'
   },
   view2: {
     flex: 0.3,

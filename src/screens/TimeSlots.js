@@ -5,9 +5,6 @@ import DatePicker from 'react-native-date-picker';
 import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 
-
-
-
 export default function TimeSlots({ navigation, route }) {
 
   const { services } = useSelector(state => state.service)
@@ -43,7 +40,7 @@ export default function TimeSlots({ navigation, route }) {
           onPress={() => setOpen(true)}>
           <Text style={styles.textin}>{date.toString()}</Text>
         </TouchableOpacity>
-        <DatePicker
+         <DatePicker
           modal
           open={open}
           date={date}
@@ -55,7 +52,32 @@ export default function TimeSlots({ navigation, route }) {
           onCancel={() => {
             setOpen(false)
           }}
-        />
+        /> 
+
+    {/*    <DatePicker
+          style={{ width: 200 }}
+          date={this.state.date}
+          mode="date"
+          placeholder="select date"
+          format="DD-MM-YYYY"
+          minDate="2022-01-01"
+          maxDate="2025-01-01"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0
+            },
+            dateInput: {
+              marginLeft: 36
+            }
+          }}
+          onDateChange={(date) => { this.setState({ date: date }) }}
+        /> */}
+
         <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Time</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
           Select your desired timeslot.
