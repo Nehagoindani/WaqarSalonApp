@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useDispatch } from 'react-redux';
-import { addService } from '../Redux/Actions/serviceAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { addService, removeService } from '../Redux/Actions/serviceAction';
 
 const DATA = [
   {
@@ -46,7 +46,7 @@ const DATA = [
 
 const SpaService = ({navigation}) => {
   const dispatch = useDispatch();
- 
+  const { services } = useSelector(state => state.service)
   const FlatListItemSeparator = () => {
     return (
       //Item Separator
@@ -61,15 +61,26 @@ const SpaService = ({navigation}) => {
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity>
-            <Icon name='minus-circle-outline' size={20} color='#d6994b' />
+        <TouchableOpacity
+            onPress={() => dispatch(removeService(name))}
+            disabled={
+              services.includes(name) ? false : true
+            }
+         
+         >
+          
+            <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-          <TouchableOpacity
-           onPress={()=>dispatch(addService(name))}
+         
+        <TouchableOpacity
+            onPress={() => dispatch(addService(name))}
+            disabled={
+              !services.includes(name) ? false : true
+            }
           >
-          <Icon name='plus-circle-outline' size={20} color='#d6994b' />
+            <Icon name='plus-circle-outline' size={20} color={!services.includes(name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
       </View>
