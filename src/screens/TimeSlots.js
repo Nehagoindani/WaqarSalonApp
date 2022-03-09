@@ -6,6 +6,9 @@ import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 
 export default function TimeSlots({ navigation, route }) {
+ 
+  const Date = (props) => {
+  this.state = { date: new Date()} }
 
   const { services } = useSelector(state => state.service)
 
@@ -18,7 +21,6 @@ export default function TimeSlots({ navigation, route }) {
 
   const Slot =
     ['Slot1 ', 'Slot2 ', 'Slot3 ', 'Slot4 ', 'Slot5 ']
-
 
   return (
 
@@ -40,7 +42,7 @@ export default function TimeSlots({ navigation, route }) {
           onPress={() => setOpen(true)}>
           <Text style={styles.textin}>{date.toString()}</Text>
         </TouchableOpacity>
-         <DatePicker
+        {/*      <DatePicker
           modal
           open={open}
           date={date}
@@ -52,9 +54,9 @@ export default function TimeSlots({ navigation, route }) {
           onCancel={() => {
             setOpen(false)
           }}
-        /> 
+        /> */}
 
-    {/*    <DatePicker
+        <DatePicker
           style={{ width: 200 }}
           date={this.state.date}
           mode="date"
@@ -76,7 +78,7 @@ export default function TimeSlots({ navigation, route }) {
             }
           }}
           onDateChange={(date) => { this.setState({ date: date }) }}
-        /> */}
+        />
 
         <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Time</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
