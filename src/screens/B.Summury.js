@@ -2,10 +2,16 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { StyleSheet, View, Text, Button, Alert, Modal, Pressable } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 
 
 export default function BSummury({ navigation, route }) {
+
+const Service= route.params.serviceName 
+const Date = route.params.Date
+const Ins = route.params.Instructions
+const Time = route.params.Time
+
 
   const [currentEmail, setCurrentEmail] = useState('');
   const [currentName, setCurrentName] = useState('');
@@ -21,7 +27,7 @@ export default function BSummury({ navigation, route }) {
 
     const user = await firestore().collection('users').doc(authUser.uid).get();
     if (user) {
-      console.log('User Data: ', user, user._data);
+      console.log('User Data: ', user, user.data);
       setCurrentEmail(user._data.email)
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
@@ -30,7 +36,9 @@ export default function BSummury({ navigation, route }) {
     }
 
   }
+ 
   const [modalVisible, setModalVisible] = useState(false);
+ 
   return (
     <View style={styles.container}>
       <Text>welcome</Text>
@@ -43,11 +51,11 @@ export default function BSummury({ navigation, route }) {
       <Text style={styles.textStyle}>
         Phone:  {currentPhone}
       </Text>
-      <Text style={styles.sumText}>Your Service: {route.params.serviceName} </Text>
-      <Text style={styles.sumText}>Service Price: {route.params.price} </Text>
+      <Text style={styles.sumText}>Your Service: {Service} </Text>
 
-      <Text style={styles.sumText}> you have selected your appointment on Date: {route.params.Date}</Text>
-      <Text style={styles.sumText}> Special Instructions: {route.params.Instructions}</Text>
+      <Text style={styles.sumText}> you have selected your appointment on Date: {Date}</Text>
+      <Text style={styles.sumText}> Time Slot: {Time}</Text>
+      <Text style={styles.sumText}> Special Instructions: {Ins}</Text>
 
      
 
@@ -66,7 +74,26 @@ export default function BSummury({ navigation, route }) {
               <Text style={styles.modalText}>your appointment is booked you will get confirmation email shortly</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() =>{
+                  {
+                    firestore().collection('bookings')
+                    .add({
+                        name: currentName,
+                        Email: currentEmail,
+                        phone: currentPhone,
+                        Service: Service,
+                        Date: Date,
+                        TimeSlot : Time, 
+                        Instruction: Ins
+                    })
+                    .then(function() {
+                      console.log("Document successfully written!");
+                  })
+                  .catch(function(error) {
+                      console.error("Error writing document: ", error);
+                  });
+                  }
+                 setModalVisible(!modalVisible)}}
               >
                 <Text style={styles.textStyle}>Ok</Text>
               </Pressable>

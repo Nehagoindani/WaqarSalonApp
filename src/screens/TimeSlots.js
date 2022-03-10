@@ -16,8 +16,7 @@ export default function TimeSlots({ navigation, route }) {
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
 
-  const Slot =
-    ['Slot1 ', 'Slot2 ', 'Slot3 ', 'Slot4 ', 'Slot5 ']
+  
 
   return (
 
@@ -123,14 +122,14 @@ export default function TimeSlots({ navigation, route }) {
           onPress={
             () => {
               console.log(date + ' ' + time + ' ' + services)
-              {/*   navigation.navigate('Booking Summury',
+               navigation.navigate('Booking Summury',
                 {
-                  serviceName: service,
-                  price: price,
+                  serviceName: services,
                   Date: date.toString(),
-                  Instructions: userInput
+                  Instructions: userInput,
+                  Time: time
 
-                }) */}
+                })
             }}
         >
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', backgroundColor:'#d6994b'}}>Book Appointment</Text>
