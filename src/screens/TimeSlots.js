@@ -5,6 +5,7 @@ import DatePicker from 'react-native-date-picker';
 import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import { isDisabled, setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 export default function TimeSlots({ navigation, route }) {
 
@@ -66,7 +67,18 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() =>{{onPress}  setTime('12pm - 1pm')
+              <TouchableOpacity onPress={() =>{{setCount(count + 1)
+              
+            if(count===1){
+              <Text>remaining slots 2</Text>
+            } 
+            if(count===2){
+              <Text>remaining slots 1</Text>
+            } 
+            if(count===3){
+              alert('please select any other slot , slots are full in this time')
+            }  
+            }  setTime('12pm - 1pm')
               }}>
                 <Text> {count} </Text>
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
