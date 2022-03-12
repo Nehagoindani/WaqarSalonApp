@@ -16,7 +16,7 @@ export default function TimeSlots({ navigation, route }) {
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
   const [count, setCount] = useState(0);
-  time==setCount
+  const onPress = () => setCount(prevCount => prevCount + 1);
 
  
 
@@ -66,12 +66,9 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => {setCount(count + 1)
-              if(setCount>1){
-                alert('hsj')
-              
-                } setTime('12pm - 1pm')
+              <TouchableOpacity onPress={() =>{{onPress}  setTime('12pm - 1pm')
               }}>
+                <Text> {count} </Text>
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
               </TouchableOpacity>
 
