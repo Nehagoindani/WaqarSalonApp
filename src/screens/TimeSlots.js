@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView , Button} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
-import { isDisabled, setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+
 
 export default function TimeSlots({ navigation, route }) {
 
@@ -17,6 +17,7 @@ export default function TimeSlots({ navigation, route }) {
   const [open, setOpen] = useState(false)
   const [userInput, setUserInput] = useState('')
   const [count, setCount] = useState(0);
+  const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
 
  
@@ -83,9 +84,14 @@ export default function TimeSlots({ navigation, route }) {
                 <Text> {count} </Text>
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
               </TouchableOpacity>
+              
 
             </View>
+            <Button  disabled={disable} onPress={() => setDisable(true)}
+            title='click'
+            >
 
+            </Button>
 
           </View>
           <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
