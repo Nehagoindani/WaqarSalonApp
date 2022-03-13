@@ -19,8 +19,6 @@ export default function TimeSlots({ navigation, route }) {
   const [count, setCount] = useState(0);
   const onPress = () => setCount(prevCount => prevCount + 1);
 
- 
-
   return (
 
     <View style={styles.view1}>
@@ -67,18 +65,21 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() =>{{setCount(count + 1)
-              
-            if(count===1){
-              <Text>remaining slots 2</Text>
-            } 
-            if(count===2){
-              <Text>remaining slots 1</Text>
-            } 
-            if(count===3){
-              alert('please select any other slot , slots are full in this time')
-            }  
-            }  setTime('12pm - 1pm')
+              <TouchableOpacity onPress={() => {
+                {
+                  setCount(count + 1)
+
+                  if (count === 1) {
+                    <Text>remaining slots 2</Text>
+                  }
+                  if (count === 2) {
+                    <Text>remaining slots 1</Text>
+                  }
+                  if (count > 3) {
+                    alert('please select any other slot , slots are full in this time')
+                  }
+
+                } setTime('12pm - 1pm')
               }}>
                 <Text> {count} </Text>
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
@@ -104,7 +105,7 @@ export default function TimeSlots({ navigation, route }) {
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
               <TouchableOpacity onPress={() => {
-               setTime('2pm - 3pm')
+                setTime('2pm - 3pm')
               }}
               >
                 <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black' }}>2pm - 3pm</Text>
@@ -155,7 +156,7 @@ export default function TimeSlots({ navigation, route }) {
       </View>
     </View>
   )
-          
+
 }
 const styles = StyleSheet.create({
   view1: {
