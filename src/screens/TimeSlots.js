@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView , Button} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Button } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import firestore from '@react-native-firebase/firestore';
 
 
 export default function TimeSlots({ navigation, route }) {
@@ -19,13 +20,34 @@ export default function TimeSlots({ navigation, route }) {
   const [count, setCount] = useState(0);
   const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
+  const [test, setTest] = useState([])
+
+  useEffect(() => {
+    getBooking()
+  })
+
+  const getBooking = async () => {
+    firestore().collection("bookings").where("Date", "==", "14-3-2022")
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          setTest(test.concat(doc.data().Date))
+
+        });
+      })
+      .catch(function (error) {
+        console.log("Error getting documents: ", error);
+      });
+  }
 
   return (
 
     <View style={styles.view1}>
       <View style={styles.view2}>
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
-          APPOINTMENT BOOKING
+          APPOINTMENT BOOKING {test.length}
         </Text>
 
       </View>
@@ -85,11 +107,11 @@ export default function TimeSlots({ navigation, route }) {
                 <Text> {count} </Text>
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
               </TouchableOpacity>
-              
+
 
             </View>
-            <Button  disabled={disable} onPress={() => setDisable(true)}
-            title='click'
+            <Button disabled={disable} onPress={() => setDisable(true)}
+              title='click'
             >
 
             </Button>
@@ -146,11 +168,12 @@ export default function TimeSlots({ navigation, route }) {
         <TouchableOpacity style={{ backgroundColor: '#d6994b' }}
           onPress={
             () => {
-              console.log(date + ' ' + time + ' ' + services)
+              const check = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+              console.log(check + ' ' + time + ' ' + services)
               navigation.navigate('Booking Summury',
                 {
                   serviceName: services,
-                  Date: date.toString(),
+                  Date: check,
                   Instructions: userInput,
                   Time: time
 
