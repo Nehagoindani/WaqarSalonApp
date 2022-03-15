@@ -23,31 +23,40 @@ export default function TimeSlots({ navigation, route }) {
   const [test, setTest] = useState([])
 
   useEffect(() => {
-    getBooking()
+    //getBooking()
   })
 
-  const getBooking = async () => {
-    firestore().collection("bookings").where("Date", "==", "14-3-2022")
+  const getBooking = async (date) => {
+    let check = moment(date).format('DD-M-YYYY')
+    console.log(check)
+    firestore().collection("bookings").where("Date", "==", check)
       .get()
       .then(function (querySnapshot) {
+        const x =[]
         querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          setTest(test.concat(doc.data().Date))
+         // setTest(test.concat(doc.data().Date))
+        // console.log(doc.data())
+        
+         x.push(doc.data())
+        
 
         });
+        console.log(x)
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
+
       });
   }
+
+
 
   return (
 
     <View style={styles.view1}>
       <View style={styles.view2}>
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
-          APPOINTMENT BOOKING {test.length}
+          {test}
         </Text>
 
       </View>
@@ -70,6 +79,8 @@ export default function TimeSlots({ navigation, route }) {
           onConfirm={(date) => {
             setOpen(false)
             setDate(date)
+            console.log(date)
+            getBooking(date)
           }}
           onCancel={() => {
             setOpen(false)
