@@ -21,7 +21,8 @@ export default function TimeSlots({ navigation, route }) {
   const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
   const [test, setTest] = useState([])
-  let firstSlot, secondSlot, thirdSlot, fourthSlot;
+ 
+  let firstSlot, secondSlot  , thirdSlot  , fourthSlot ;
 
   useEffect(() => {
     //getBooking()
@@ -34,15 +35,15 @@ export default function TimeSlots({ navigation, route }) {
       .get()
       .then(function (querySnapshot) {
         let bookings = []
-        firstSlot=0, secondSlot=0, thirdSlot=0, fourthSlot=0
+        firstSlot = 0, secondSlot = 0, thirdSlot = 0, fourthSlot = 0
         querySnapshot.forEach(function (doc) {
           bookings.push(doc.data())
         });
         console.log(bookings)
-         firstSlot = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
-         secondSlot = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
-         thirdSlot = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
-         fourthSlot = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
+        firstSlot = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
+        secondSlot = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
+        thirdSlot = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
+        fourthSlot = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
         console.log(firstSlot)
         console.log(secondSlot)
         console.log(thirdSlot)
@@ -101,10 +102,19 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => setTime('12pm - 1pm')} disabled={firstSlot < 3 ? false : true}  >
-              
-                <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
-              </TouchableOpacity> 
+              {
+                firstSlot < 4?
+                  (
+                    <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
+
+                      <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
+                    </TouchableOpacity>
+                  ) : 
+                  (
+                    <Text style={{ color : 'red' }}>12pm - 1pm</Text>
+                  )
+              }
+
 
 
             </View>
