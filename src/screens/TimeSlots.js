@@ -21,6 +21,7 @@ export default function TimeSlots({ navigation, route }) {
   const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
   const [test, setTest] = useState([])
+  let firstSlot, secondSlot, thirdSlot, fourthSlot;
 
   useEffect(() => {
     //getBooking()
@@ -32,25 +33,26 @@ export default function TimeSlots({ navigation, route }) {
     firestore().collection("bookings").where("Date", "==", check)
       .get()
       .then(function (querySnapshot) {
-        const x =[]
+        let bookings = []
+        firstSlot=0, secondSlot=0, thirdSlot=0, fourthSlot=0
         querySnapshot.forEach(function (doc) {
-         // setTest(test.concat(doc.data().Date))
-        // console.log(doc.data())
-        
-         x.push(doc.data())
-        
-
+          bookings.push(doc.data())
         });
-        console.log(x)
+        console.log(bookings)
+         firstSlot = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
+         secondSlot = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
+         thirdSlot = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
+         fourthSlot = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
+        console.log(firstSlot)
+        console.log(secondSlot)
+        console.log(thirdSlot)
+        console.log(fourthSlot)
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
 
       });
   }
-
-
-
   return (
 
     <View style={styles.view1}>
@@ -99,40 +101,20 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => {
-                {
-                  setCount(count + 1)
-
-                  if (count === 1) {
-                    <Text>remaining slots 2</Text>
-                  }
-                  if (count === 2) {
-                    <Text>remaining slots 1</Text>
-                  }
-                  if (count > 3) {
-                    alert('please select any other slot , slots are full in this time')
-                  }
-
-                } setTime('12pm - 1pm')
-              }}>
-                <Text> {count} </Text>
+              <TouchableOpacity onPress={() => setTime('12pm - 1pm')} disabled={firstSlot < 3 ? false : true}  >
+              
                 <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> 
 
 
             </View>
-            <Button disabled={disable} onPress={() => setDisable(true)}
-              title='click'
-            >
-
-            </Button>
 
           </View>
           <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => setTime('1pm - 2pm')}>
+              <TouchableOpacity onPress={() => setTime('1pm - 2pm')} disabled={false} >
 
                 <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
               </TouchableOpacity>
