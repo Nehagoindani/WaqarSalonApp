@@ -6,6 +6,7 @@ import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import firestore from '@react-native-firebase/firestore';
+import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 
 export default function TimeSlots({ navigation, route }) {
@@ -21,6 +22,7 @@ export default function TimeSlots({ navigation, route }) {
   const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
   const [test, setTest] = useState([])
+  const [buttonStatus, setButtonStatus] = useState(true);
  
   let firstSlot, secondSlot  , thirdSlot  , fourthSlot ;
 
@@ -54,6 +56,14 @@ export default function TimeSlots({ navigation, route }) {
 
       });
   }
+   const dis =()=>{
+     if(firstSlot > 1){
+       setButtonStatus(false)
+     }
+
+   }
+
+
   return (
 
     <View style={styles.view1}>
@@ -69,7 +79,7 @@ export default function TimeSlots({ navigation, route }) {
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
           Select your desired date.
         </Text>
-        <TouchableOpacity
+        <TouchableOpacity 
           onPress={() => setOpen(true)}>
           <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text>
         </TouchableOpacity>
@@ -124,7 +134,8 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => setTime('1pm - 2pm')} disabled={false} >
+              <TouchableOpacity onPress={() => 
+              setTime('1pm - 2pm')} disabled={dis}  >
 
                 <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
               </TouchableOpacity>
