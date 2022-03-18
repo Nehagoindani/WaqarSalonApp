@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, ActivityIndicator} from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { color } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import firestore from '@react-native-firebase/firestore';
-import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+
+
 
 
 export default function TimeSlots({ navigation, route }) {
@@ -22,18 +22,24 @@ export default function TimeSlots({ navigation, route }) {
   const [disable, setDisable] = useState(false);
   const onPress = () => setCount(prevCount => prevCount + 1);
   const [test, setTest] = useState([])
-  const [buttonStatus, setButtonStatus] = useState(true);
+  const [buttonStatus, setButtonStatus] = useState();
+  const [firstSlot, setFirstslot] = useState(0)
+  const [secondSlot, setSecondslot] = useState(0)
+  const [thirdSlot, setThirdslot] = useState(0)
+  const[fourthSlot, setFourthslot] = useState(0)
+  const[isLoading, setIsloading] = useState(false)
  
-  let firstSlot, secondSlot  , thirdSlot  , fourthSlot ;
+
 
   useEffect(() => {
     //getBooking()
   })
 
   const getBooking = async (date) => {
+    setIsloading(true)
     let check = moment(date).format('DD-M-YYYY')
     console.log(check)
-    firestore().collection("bookings").where("Date", "==", check)
+    await firestore().collection("bookings").where("Date", "==", check)
       .get()
       .then(function (querySnapshot) {
         let bookings = []
@@ -42,26 +48,26 @@ export default function TimeSlots({ navigation, route }) {
           bookings.push(doc.data())
         });
         console.log(bookings)
-        firstSlot = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
-        secondSlot = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
-        thirdSlot = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
-        fourthSlot = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
-        console.log(firstSlot)
-        console.log(secondSlot)
-        console.log(thirdSlot)
-        console.log(fourthSlot)
+        
+        
+          firstSlot = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
+          setButtonStatus() 
+          secondSlot = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
+          thirdSlot = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
+          fourthSlot = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
+          console.log(firstSlot)
+          console.log(secondSlot)
+          console.log(thirdSlot)
+          console.log(fourthSlot)
+        
+        
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
 
       });
   }
-   const dis =()=>{
-     if(firstSlot > 1){
-       setButtonStatus(false)
-     }
-
-   }
+   
 
 
   return (
@@ -113,7 +119,7 @@ export default function TimeSlots({ navigation, route }) {
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
               {
-                firstSlot < 4?
+                buttonStatus < 2 ?
                   (
                     <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
 
@@ -134,8 +140,7 @@ export default function TimeSlots({ navigation, route }) {
             <View style={{
               flex: 0.5, justifyContent: 'center', alignItems: 'center'
             }}>
-              <TouchableOpacity onPress={() => 
-              setTime('1pm - 2pm')} disabled={dis}  >
+              <TouchableOpacity onPress={ () =>setTime('1pm - 2pm')} >
 
                 <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
               </TouchableOpacity>
