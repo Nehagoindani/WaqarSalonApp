@@ -7,16 +7,18 @@ import firestore from '@react-native-firebase/firestore';
 
 export default function BSummury({ navigation, route }) {
 
-const Service= route.params.serviceName 
-const Date = route.params.Date
-const Ins = route.params.Instructions
-const Time = route.params.Time
+  const Service = route.params.serviceName
+  const date = route.params.Date
+  const Ins = route.params.Instructions
+  const Time = route.params.Time
 
 
   const [currentEmail, setCurrentEmail] = useState('');
   const [currentName, setCurrentName] = useState('');
   const [currentPhone, setCurrentPhone] = useState('');
- 
+  const [uid, setUid] = useState('')
+
+
 
   useEffect(() => {
     getUser()
@@ -25,21 +27,24 @@ const Time = route.params.Time
 
   const getUser = async () => {
     const authUser = await auth().currentUser;
+    console.log(authUser)
 
     const user = await firestore().collection('users').doc(authUser.uid).get();
     if (user) {
-      console.log('User Data: ', user, user.data);
+      console.log('User Data: ', user);
       setCurrentEmail(user._data.email)
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
+      setUid(user._data.userId)
+
 
 
     }
 
   }
- 
+
   const [modalVisible, setModalVisible] = useState(false);
- 
+
   return (
     <View style={styles.container}>
       <Text>welcome</Text>
@@ -58,7 +63,7 @@ const Time = route.params.Time
       <Text style={styles.sumText}> Time Slot: {Time}</Text>
       <Text style={styles.sumText}> Special Instructions: {Ins}</Text>
 
-     
+
 
       <View style={styles.centeredView}>
         <Modal
@@ -75,26 +80,31 @@ const Time = route.params.Time
               <Text style={styles.modalText}>your appointment is booked you will get confirmation email shortly</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() =>{
+                onPress={() => {
                   {
                     firestore().collection('bookings')
-                    .add({
-                        name: currentName,
-                        Email: currentEmail,
-                        phone: currentPhone,
-                        Service: Service,
-                        Date: Date,
-                        TimeSlot : Time, 
-                        Instruction: Ins
-                    })
-                    .then(function() {
-                      console.log("Document successfully written!");
-                  })
-                  .catch(function(error) {
-                      console.error("Error writing document: ", error);
-                  });
+                      .add({
+
+
+                        uId: uid,
+                        uName: currentName,
+                        uEmail: currentEmail,
+                        uPhone: currentPhone.substring(1),
+                        services: Service,
+                        date: date,
+                        timeSlot: Time,
+                        instruction: Ins,
+                        status: 'Pending'
+                      })
+                      .then(function () {
+                        console.log("Document successfully written!");
+                      })
+                      .catch(function (error) {
+                        console.error("Error writing document: ", error);
+                      });
                   }
-                 setModalVisible(!modalVisible)}}
+                  setModalVisible(!modalVisible)
+                }}
               >
                 <Text style={styles.textStyle}>Ok</Text>
               </Pressable>

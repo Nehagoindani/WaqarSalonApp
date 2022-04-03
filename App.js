@@ -132,11 +132,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {/*<Stack.Screen name='Splash' options={{ headerShown: false }} component={SplashScreen} />
-        <Stack.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />
+        <Stack.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />*/}
         <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
         <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
         <Stack.Screen name='AdminLogin' options={{ headerShown: false }} component={AdminLoginScreen} />
-  <Stack.Screen name='AdminHome' options={{ headerShown: false }} component={AdminScreen} />*/}
+  <Stack.Screen name='AdminHome' options={{ headerShown: false }} component={AdminScreen} />
         <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
         <Stack.Screen name='MyTabs' options={{ headerShown: false }} component={MyTabs} />
         <Stack.Screen name='TimeSlot' ScreenOptions={{ backgroundColor: '#1a1a1a' }} component={TimeSlots} />
