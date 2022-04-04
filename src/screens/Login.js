@@ -34,7 +34,7 @@ function LoginScreen({ navigation }) {
       source={require("../Images/back2.jpeg")}
     >
       <View style={styles.container}>
-        <ScrollView>
+      <ScrollView>
           <View style={styles.box}>
             <View style={{ marginTop: 10 }} >
               <Image style={styles.icon}
@@ -48,12 +48,12 @@ function LoginScreen({ navigation }) {
 
             <TextInput style={styles.textin}
               placeholder="Email"
-              placeholderTextColor='black'
+              placeholderTextColor='#404040'
               onChangeText={(email) => setEmail(email)} ></TextInput>
              
             <TextInput style={styles.textin}
               placeholder="Password"
-              placeholderTextColor='black'
+              placeholderTextColor='#404040'
               onChangeText={(password) => setPassword(password)}
               maxLength={15}
               secureTextEntry={true}
@@ -63,7 +63,7 @@ function LoginScreen({ navigation }) {
               <TouchableOpacity
                 onPress={() => navigation.navigate("Reset")}
               >
-                <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Forgot Password ?
+                <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Forgot Password?
 
                 </Text>
 
@@ -98,9 +98,8 @@ function LoginScreen({ navigation }) {
               </TouchableOpacity>
             </View>
 
-          </View>
-
-        </ScrollView>
+          </View> 
+</ScrollView>
       </View>
     </ImageBackground>
 
@@ -126,6 +125,7 @@ const styles = StyleSheet.create({
   box: {
     padding: 5,
     alignItems: 'center',
+    justifyContent: "center",
     backgroundColor: 'white',
     width: 300,
     height: '100%',
@@ -140,14 +140,12 @@ const styles = StyleSheet.create({
 
   },
   textin: {
-    borderWidth: 1,
-    borderRadius: 15,
-    borderColor: 'black',
-    marginVertical: 8,
-    padding: 10,
+    borderWidth: 1.75,
+    borderColor:'white',
+    borderBottomColor: '#d6994b',
+    marginVertical: 6,
+    padding: 6,
     width: '80%',
-    borderBottomWidth: 4,
-    borderBottomColor: '#d6994b'
 
   },
   text: {

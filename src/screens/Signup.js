@@ -19,10 +19,8 @@ class Signup extends React.Component {
       ConfirmPassword: '',
       isLoading: false
 
-
     }
   }
-
 
   updateInputVal = (val, prop) => {
     const state = this.state;
@@ -42,7 +40,6 @@ class Signup extends React.Component {
         email: this.state.email,
         phone: this.state.phone
       }
-
 
       let addUser = firestore().collection('users').doc(user.uid).set(userData)
       console.log("add User >>> ", addUser)
@@ -111,7 +108,7 @@ class Signup extends React.Component {
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Name"
-                placeholderTextColor='black'
+                placeholderTextColor='#404040'
                 value={this.state.Name}
                 onChangeText={(val) => this.updateInputVal(val, 'Name')} />
 
@@ -119,7 +116,7 @@ class Signup extends React.Component {
                 style={styles.inputStyle}
                 placeholder="Email"
                 keyboardType='email-address'
-                placeholderTextColor='black'
+                placeholderTextColor='#404040'
                 value={this.state.email}
                 onBlur={() => { this.validateEmail }}
                 onChangeText={(val) => this.updateInputVal(val, 'email')} />
@@ -128,7 +125,7 @@ class Signup extends React.Component {
                 style={styles.inputStyle}
                 placeholder="Phone"
                 keyboardType='numeric'
-                placeholderTextColor='black'
+                placeholderTextColor='#404040'
                 value={this.state.phone}
                 onChangeText={(val) => this.updateInputVal(val, 'phone')}
               />
@@ -136,7 +133,7 @@ class Signup extends React.Component {
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Password"
-                placeholderTextColor='black'
+                placeholderTextColor='#404040'
                 value={this.state.password}
                 onChangeText={(val) => this.updateInputVal(val, 'password')}
                 maxLength={15}
@@ -145,7 +142,7 @@ class Signup extends React.Component {
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Confirm Password"
-                placeholderTextColor='black'
+                placeholderTextColor='#404040'
                 value={this.state.ConfirmPassword}
                 onChangeText={(val) => this.updateInputVal(val, 'ConfirmPassword')}
                 maxLength={15}
@@ -227,14 +224,13 @@ const styles = StyleSheet.create({
   },
 
   inputStyle: {
-    borderWidth: 1,
-    borderRadius: 15,
-    borderColor: 'black',
-    marginVertical: 8,
-    padding: 10,
+    borderWidth: 1.75,
+    borderColor:'white',
+    borderBottomColor: '#d6994b',
+    marginVertical: 6,
+    padding: 6,
     width: '80%',
-    borderBottomWidth: 4,
-    borderBottomColor: '#d6994b'
+    
   },
 
   text: {

@@ -29,8 +29,6 @@ export default function TimeSlots({ navigation, route }) {
   const [fourthSlot, setFourthslot] = useState(0)
   const [isLoading, setIsloading] = useState(false)
 
-
-
   useEffect(() => {
     //getBooking()
   })
@@ -48,7 +46,6 @@ export default function TimeSlots({ navigation, route }) {
           bookings.push(doc.data())
         });
         console.log(bookings)
-
 
         fs= bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
         setFirstslot(fs)
