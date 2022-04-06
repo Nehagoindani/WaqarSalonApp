@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -7,6 +7,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 //import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 
 /* SCREENS */
 import Signup from './src/screens/Signup';
@@ -27,6 +28,7 @@ import BridalService from './src/screens/BridalService';
 import CourseService from './src/screens/Courses';
 import AdminLoginScreen from './src/screens/AdminLogin';
 import AdminScreen from './src/screens/AdminScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function SplashScreen({ navigation }) {
   useEffect(() => {
@@ -65,7 +67,7 @@ function TopTabs() {
       swipeEnabled={true}
       screenOptions={{
         tabBarActiveTintColor: '#d6994b',
-        tabBarScrollEnabled:true,
+        tabBarScrollEnabled: true,
         tabBarLabelStyle: { fontSize: 15, },
         tabBarItemStyle: { width: 90 },
         tabBarStyle: { backgroundColor: '#1a1a1a' },
@@ -124,26 +126,46 @@ const MyTabs = () => {
   );
 }
 
-const Stack = createNativeStackNavigator();
 
-function App() {
+
+
+
+const Stack = createNativeStackNavigator();
+//const AuthStack = createNativeStackNavigator();
+
+function authStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
+      <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
+
+    </Stack.Navigator>
+  )
+}
+
+const App = () => {
+
+  const [login, setlogin] = useState();
+
+  useEffect(() => {
+    const state = AsyncStorage.getItem('loggedIn', function (err, value) {
+      console.log("test", value)
+      JSON.parse(value) // boolean false
+      setlogin(value)
+    })
+  }, [])
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {/*<Stack.Screen name='Splash' options={{ headerShown: false }} component={SplashScreen} />
-        <Stack.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />*/}
-        <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
-        <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
-        <Stack.Screen name='AdminLogin' options={{ headerShown: false }} component={AdminLoginScreen} />
-  <Stack.Screen name='AdminHome' options={{ headerShown: false }} component={AdminScreen} />
-        <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
-        <Stack.Screen name='MyTabs' options={{ headerShown: false }} component={MyTabs} />
-        <Stack.Screen name='TimeSlot' ScreenOptions={{ backgroundColor: '#1a1a1a' }} component={TimeSlots} />
-        <Stack.Screen name='Booking Summury' options={{ backgroundColor: '#1a1a1a' }} component={BSummury} />
-
-      </Stack.Navigator>
-
+      {
+        login ? authStack() :
+          <Stack.Navigator>
+            <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
+            <Stack.Screen name='MyTabs' options={{ headerShown: false }} component={MyTabs} />
+            <Stack.Screen name='TimeSlot' ScreenOptions={{ backgroundColor: '#1a1a1a' }} component={TimeSlots} />
+            <Stack.Screen name='Booking Summury' options={{ backgroundColor: '#1a1a1a' }} component={BSummury} />
+          </Stack.Navigator>
+      }
     </NavigationContainer>
 
   );

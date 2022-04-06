@@ -1,5 +1,7 @@
 initialState = {
-    services: []
+    services: [],
+   
+   
 };
 
 const serviceReducer = (state = initialState, action) => {
@@ -17,6 +19,7 @@ const serviceReducer = (state = initialState, action) => {
                 ...state, services : state.services
 
             }
+           
 
         default:
             return state;

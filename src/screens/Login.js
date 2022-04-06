@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Button, ScrollView, Image, StyleSheet, TextInput, Text, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function LoginScreen({ navigation }) {
@@ -10,22 +11,23 @@ function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('')
 
 
-  const userLogin = () => {
+  const userLogin = async () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(async () => {
+        await AsyncStorage.setItem("loggedIn", JSON.stringify(true))
         console.log('user logged in successfully');
-        navigation.navigate('MyTabs')
+        //  navigation.navigate('MyTabs')
 
       })
     if (email == '' || password == '') {
       console.log('please enter email/password');
       alert('please enter email/password')
     }
-    else if(email=='auth/invalid-email'){
+    else if (email == 'auth/invalid-email') {
       alert('please enter valid email')
     }
-    
+
 
   }
 
@@ -34,7 +36,7 @@ function LoginScreen({ navigation }) {
       source={require("../Images/back2.jpeg")}
     >
       <View style={styles.container}>
-      <ScrollView>
+        <ScrollView>
           <View style={styles.box}>
             <View style={{ marginTop: 10 }} >
               <Image style={styles.icon}
@@ -50,7 +52,7 @@ function LoginScreen({ navigation }) {
               placeholder="Email"
               placeholderTextColor='#404040'
               onChangeText={(email) => setEmail(email)} ></TextInput>
-             
+
             <TextInput style={styles.textin}
               placeholder="Password"
               placeholderTextColor='#404040'
@@ -75,10 +77,10 @@ function LoginScreen({ navigation }) {
                 if (email && password) {
                   userLogin();
                 }
-                else if(email==null){
+                else if (email == null) {
                   alert('please enter mail')
                 }
-                else if(password==null){
+                else if (password == null) {
                   alert('please enter password')
                 }
                 else {
@@ -98,8 +100,8 @@ function LoginScreen({ navigation }) {
               </TouchableOpacity>
             </View>
 
-          </View> 
-</ScrollView>
+          </View>
+        </ScrollView>
       </View>
     </ImageBackground>
 
@@ -133,7 +135,8 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 4   },
+      height: 4
+    },
     shadowOpacity: 0.30,
     shadowRadius: 4.65,
     elevation: 8,
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
   },
   textin: {
     borderWidth: 1.75,
-    borderColor:'white',
+    borderColor: 'white',
     borderBottomColor: '#d6994b',
     marginVertical: 6,
     padding: 6,
