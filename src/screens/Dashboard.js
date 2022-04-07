@@ -2,21 +2,27 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../Redux/Actions/serviceAction';
 
 
-export default function Dashboard({navigation}) {
+export default function Dashboard({ navigation }) {
+
+  const dispatch = useDispatch();
+
   const [currentEmail, setCurrentEmail] = useState('');
   const [currentName, setCurrentName] = useState('');
   const [currentPhone, setCurrentPhone] = useState('');
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser()
-  },[])
+  }, [])
 
 
   const getUser = async () => {
-    const authUser = await auth().currentUser;
-  
+    const authUser = auth().currentUser;
+
     const user = await firestore().collection('users').doc(authUser.uid).get();
     if (user) {
       console.log('User Data: ', user, user._data);
@@ -24,35 +30,37 @@ export default function Dashboard({navigation}) {
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
 
-   
+
     }
 
   }
 
- const signOut=()=>{
+  const signOut = () => {
     auth()
-  .signOut()
-  .then(() => console.log('User signed out!'));
-  navigation.navigate('Login')
+      .signOut()
+      .then(() => {
+        console.log('User signed out!')
+        dispatch(logout())
+      })
 
   }
-  
+
 
   return (
     <View style={styles.container}>
-      <View style={{flex:0.2, margin:10}}>
-        <Text style={{fontSize:30,color:'#d6994b',padding:10,fontWeight:'bold'}}>My Profile</Text></View>
+      <View style={{ flex: 0.2, margin: 10 }}>
+        <Text style={{ fontSize: 30, color: '#d6994b', padding: 10, fontWeight: 'bold' }}>My Profile</Text></View>
 
       <Text style={styles.textStyle}>
-        Name:   {currentName} 
+        Name:   {currentName}
       </Text>
       <Text style={styles.textStyle}>
-       Email:  {currentEmail} 
+        Email:  {currentEmail}
       </Text>
       <Text style={styles.textStyle}>
-       Phone:  {currentPhone}
+        Phone:  {currentPhone}
       </Text>
- 
+
       <Button
         color="#d6994b"
         title="Logout"
@@ -68,18 +76,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     display: "flex",
-    borderWidth:2,
-    borderColor:'#d6994b',
+    borderWidth: 2,
+    borderColor: '#d6994b',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 35,
     backgroundColor: 'black'
-    
+
   },
   textStyle: {
     fontSize: 15,
     marginBottom: 20,
-    color:'white'
+    color: 'white'
   }
 });
 

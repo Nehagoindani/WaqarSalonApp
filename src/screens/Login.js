@@ -3,9 +3,13 @@ import { View, Button, ScrollView, Image, StyleSheet, TextInput, Text, Touchable
 import auth from '@react-native-firebase/auth'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../Redux/Actions/serviceAction';
 
 
 function LoginScreen({ navigation }) {
+
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,9 +19,8 @@ function LoginScreen({ navigation }) {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(async () => {
-        await AsyncStorage.setItem("loggedIn", JSON.stringify(true))
+        dispatch(login());
         console.log('user logged in successfully');
-        //  navigation.navigate('MyTabs')
 
       })
     if (email == '' || password == '') {

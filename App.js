@@ -7,6 +7,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 //import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 /* SCREENS */
@@ -28,7 +29,7 @@ import BridalService from './src/screens/BridalService';
 import CourseService from './src/screens/Courses';
 import AdminLoginScreen from './src/screens/AdminLogin';
 import AdminScreen from './src/screens/AdminScreen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 function SplashScreen({ navigation }) {
   useEffect(() => {
@@ -145,26 +146,22 @@ function authStack() {
 
 const App = () => {
 
-  const [login, setlogin] = useState();
+  const {loggedIn} = useSelector(state => state.service) 
 
-  useEffect(() => {
-    const state = AsyncStorage.getItem('loggedIn', function (err, value) {
-      console.log("test", value)
-      JSON.parse(value) // boolean false
-      setlogin(value)
-    })
-  }, [])
 
   return (
     <NavigationContainer>
       {
-        login ? authStack() :
-          <Stack.Navigator>
-            <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
-            <Stack.Screen name='MyTabs' options={{ headerShown: false }} component={MyTabs} />
-            <Stack.Screen name='TimeSlot' ScreenOptions={{ backgroundColor: '#1a1a1a' }} component={TimeSlots} />
-            <Stack.Screen name='Booking Summury' options={{ backgroundColor: '#1a1a1a' }} component={BSummury} />
-          </Stack.Navigator>
+        loggedIn == false ? authStack() :
+          loggedIn == true ?
+            (
+              <Stack.Navigator>
+                <Stack.Screen name='MyTabs' options={{ headerShown: false }} component={MyTabs} />
+                <Stack.Screen name='TopTab' options={{ headerShown: false }} component={TopTabs} />
+                <Stack.Screen name='TimeSlot' ScreenOptions={{ backgroundColor: '#1a1a1a' }} component={TimeSlots} />
+                <Stack.Screen name='Booking Summury' options={{ backgroundColor: '#1a1a1a' }} component={BSummury} />
+              </Stack.Navigator>
+            ) : null
       }
     </NavigationContainer>
 

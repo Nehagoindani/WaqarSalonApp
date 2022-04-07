@@ -19,6 +19,7 @@ class Signup extends React.Component {
       ConfirmPassword: '',
       isLoading: false
 
+
     }
   }
 
@@ -33,7 +34,6 @@ class Signup extends React.Component {
       user = user.user
       console.log('User account created & signed in!', user);
 
-      3
       let userData = {
         userId: user.uid,
         name: this.state.Name,

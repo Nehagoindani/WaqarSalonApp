@@ -16,4 +16,16 @@ const removeService = (serviceName) => {
     }
 }
 
-export {addService, removeService}
+const login = () => {
+    return {
+        type: 'LOGIN'
+    }
+}
+
+const logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}
+
+export {addService, removeService, login, logout}
