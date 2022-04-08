@@ -16,7 +16,7 @@ import MainPage from './src/screens/Main';
 import LoginScreen from './src/screens/Login';
 import Dashboard from './src/screens/Dashboard';
 import Products from './src/screens/Products';
-import Notifications from './src/screens/Notifications';
+import MyBookings from './src/screens/MyBookings';
 import NailService from './src/screens/NailService';
 import HairService from './src/screens/HairService';
 import MakeupService from './src/screens/MakeupService';
@@ -110,8 +110,8 @@ const MyTabs = () => {
           <Icon name="shopping-bag" color={color} size={26} />
         ),
       }} />
-      <Tab.Screen name="notification" component={Notifications} options={{
-        tabBarLabel: 'Notification',
+      <Tab.Screen name="My Bookings" component={MyBookings} options={{
+        tabBarLabel: 'My Bookings',
         tabBarIcon: ({ color }) => (
           <Icon name="notifications" color={color} size={26} />
         ),

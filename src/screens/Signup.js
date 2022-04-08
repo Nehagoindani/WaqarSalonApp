@@ -4,12 +4,12 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 
-class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.dbRef = firestore().collection('users');
-    this.dbRef1 = firestore().collection('users').get();
-    this.state = {
+function Signup({navigation}){
+
+  
+    dbRef = firestore().collection('users');
+    dbRef1 = firestore().collection('users').get();
+    state = {
 
       uid: '',
       Name: '',
@@ -21,30 +21,30 @@ class Signup extends React.Component {
 
 
     }
-  }
+  
 
   updateInputVal = (val, prop) => {
-    const state = this.state;
+    const state = state;
     state[prop] = val;
-    this.setState(state);
+    setState(state);
   }
   onPressSignUp = async () => {
     try {
-      let user = await auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      let user = await auth().createUserWithEmailAndPassword(email, password)
       user = user.user
       console.log('User account created & signed in!', user);
 
       let userData = {
         userId: user.uid,
-        name: this.state.Name,
-        email: this.state.email,
-        phone: this.state.phone
+        name: Name,
+        email: email,
+        phone: phone
       }
 
       let addUser = firestore().collection('users').doc(user.uid).set(userData)
       console.log("add User >>> ", addUser)
       await user.sendEmailVerification()
-      this.setState({
+      setState({
         isLoading: false,
         uid: '',
         Name: '',
@@ -55,7 +55,7 @@ class Signup extends React.Component {
 
       })
 
-      this.props.navigation.navigate('MyTabs')
+      navigation.navigate('MyTabs')
 
 
     } catch (error) {
@@ -89,8 +89,8 @@ class Signup extends React.Component {
   }
 
 
-  render() {
-    console.log(this.dbRef1, 'signup')
+ 
+    console.log(dbRef1, 'signup')
 
     return (
 
@@ -109,33 +109,33 @@ class Signup extends React.Component {
                 style={styles.inputStyle}
                 placeholder="Name"
                 placeholderTextColor='#404040'
-                value={this.state.Name}
-                onChangeText={(val) => this.updateInputVal(val, 'Name')} />
+                value={state.Name}
+                onChangeText={(val) => updateInputVal(val, 'Name')} />
 
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Email"
                 keyboardType='email-address'
                 placeholderTextColor='#404040'
-                value={this.state.email}
-                onBlur={() => { this.validateEmail }}
-                onChangeText={(val) => this.updateInputVal(val, 'email')} />
+                value={state.email}
+                onBlur={() => { validateEmail }}
+                onChangeText={(val) => updateInputVal(val, 'email')} />
 
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Phone"
                 keyboardType='numeric'
                 placeholderTextColor='#404040'
-                value={this.state.phone}
-                onChangeText={(val) => this.updateInputVal(val, 'phone')}
+                value={state.phone}
+                onChangeText={(val) => updateInputVal(val, 'phone')}
               />
 
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Password"
                 placeholderTextColor='#404040'
-                value={this.state.password}
-                onChangeText={(val) => this.updateInputVal(val, 'password')}
+                value={state.password}
+                onChangeText={(val) => updateInputVal(val, 'password')}
                 maxLength={15}
                 secureTextEntry={true} />
 
@@ -143,8 +143,8 @@ class Signup extends React.Component {
                 style={styles.inputStyle}
                 placeholder="Confirm Password"
                 placeholderTextColor='#404040'
-                value={this.state.ConfirmPassword}
-                onChangeText={(val) => this.updateInputVal(val, 'ConfirmPassword')}
+                value={state.ConfirmPassword}
+                onChangeText={(val) => updateInputVal(val, 'ConfirmPassword')}
                 maxLength={15}
                 secureTextEntry={true} />
               <View>
@@ -154,10 +154,10 @@ class Signup extends React.Component {
                 onPress={() => {
                   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
                   if (reg.test(this.state.email)) {
-                    if (this.state.phone.length == 11 && this.state.phone.startsWith('03')) {
-                      if (this.state.ConfirmPassword == this.state.password) {
+                    if (phone.length == 11 && phone.startsWith('03')) {
+                      if (ConfirmPassword == password) {
                         alert('password match')
-                        this.onPressSignUp()
+                        onPressSignUp()
                       }
                       else {
                         alert('password does not match')
@@ -178,7 +178,7 @@ class Signup extends React.Component {
               </TouchableOpacity>
 
               <View style={styles.btmText}>
-                <TouchableOpacity style={{ color: 'blue' }} onPress={() => this.props.navigation.navigate('Login')}>
+                <TouchableOpacity style={{ color: 'blue' }} onPress={() => navigation.navigate('Login')}>
                   <Text style={{ color: '#1a1a1a', textDecorationLine: 'underline' }}>Already have Account?  Login</Text>
                 </TouchableOpacity>
               </View>
@@ -190,7 +190,7 @@ class Signup extends React.Component {
 
     );
   }
-}
+
 
 
 export default Signup
