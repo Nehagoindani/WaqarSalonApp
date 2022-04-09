@@ -16,6 +16,12 @@ const removeService = (serviceName) => {
     }
 }
 
+const serviceNull = () => {
+    return {
+        type: 'SERVICES_NULL'
+    }
+}
+
 const login = () => {
     return {
         type: 'LOGIN'
@@ -28,4 +34,4 @@ const logout = () => {
     }
 }
 
-export {addService, removeService, login, logout}
+export {addService, removeService, serviceNull, login, logout}

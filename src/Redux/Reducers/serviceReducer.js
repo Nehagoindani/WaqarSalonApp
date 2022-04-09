@@ -18,6 +18,11 @@ const serviceReducer = (state = initialState, action) => {
                 ...state, services: state.services
 
             }
+        case 'SERVICES_NULL':
+            return {
+                ...state, services: []
+
+            }
         case 'LOGIN':
             return {
                 ...state,

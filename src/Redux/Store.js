@@ -7,6 +7,7 @@ import serviceReducer from './Reducers/serviceReducer'
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  blacklist : ['services']
 };
 
 

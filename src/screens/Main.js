@@ -5,22 +5,16 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 
 function MainPage({ navigation }) {
   return (
-    <View style={{ flex: 1, width: Dimensions.get('window').width, height: Dimensions.get('window').height }}>
-
-      <ScrollView
-        verticle={true}
-        showsVerticalScrollIndicator={true}
-        style={styles.scroll}>
-
-        <View >
+    <View style={{ flex: 1 }}>
+        <View style={{ flex: 0.1 }}>
         {/*  <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>*/}
         </View> 
 
-        <View style={{ flex: 0.1 }}>
-          <Image style={styles.imgStyling} source={require("../Images/courses.jpeg")} ></Image>
+        <View style={{ flex: 0.3, paddingHorizontal: 10 }}>
+          <Image style={styles.imgStyling} source={require("../Images/courses.jpeg")} resizeMode='cover' ></Image>
         </View>
 
-        <View style={{ margin: 10 }}>
+        <View style={{ flex: 0.1 }}>
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Top Categories</Text>
         </View>
 
@@ -47,11 +41,11 @@ function MainPage({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{ margin: 10 }}>
+        <View style={{ flex: 0.1 }}>
           <Text style={{ color: '#1a1a1a', fontSize: 20, fontWeight: 'bold' }}>Celebrity Clients by Waqar</Text>
         </View>
 
-        <View style={styles.categryView}>
+        <View style={{flex: 0.2}}>
           <View>
             <Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image>
           </View>
@@ -60,13 +54,10 @@ function MainPage({ navigation }) {
           <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
         </View>
 
-        <View style={{ margin: 10, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ textAlign: 'center', fontSize: 11, color: '#d6994b' }}>House No. A3, Jinnah Avenue, Opposite Total Petrol Pump</Text>
           <Text style={{ textAlign: 'center', fontSize: 11, color: '#d6994b' }}>Model Colony Malir Halt, Karachi.</Text>
         </View>
-
-
-      </ScrollView>
     </View>
 
 
@@ -88,7 +79,7 @@ const styles = StyleSheet.create({
     height: 40
   },
   categryView: {
-    display: 'flex',
+    flex: 0.1,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
@@ -138,9 +129,10 @@ const styles = StyleSheet.create({
     borderColor: '#1a1a1a'
   },
   imgStyling: {
-    height: 180,
-    width: 400,
-    alignItems: 'center',
+    flex: 1,
+    width: '100%',
+    borderRadius: 20
+    // alignItems: 'center',
   },
   imgStyling2: {
     height: 50,

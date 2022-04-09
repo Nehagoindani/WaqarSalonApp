@@ -2,10 +2,14 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { StyleSheet, View, Text, Button, Alert, Modal, Pressable } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { serviceNull } from '../Redux/Actions/serviceAction';
 
 
 
 export default function BSummury({ navigation, route }) {
+
+  const dispatch = useDispatch();
 
   const Service = route.params.serviceName
   const date = route.params.Date
@@ -19,15 +23,15 @@ export default function BSummury({ navigation, route }) {
   const [uid, setUid] = useState('')
 
 
-
+//dispatch servies to null
   useEffect(() => {
     getUser()
   }, [])
 
 
   const getUser = async () => {
-    const authUser = await auth().currentUser;
-    console.log(authUser)
+    const authUser = auth().currentUser;
+    console.log(authUser.uid)
 
     const user = await firestore().collection('users').doc(authUser.uid).get();
     if (user) {
@@ -35,7 +39,7 @@ export default function BSummury({ navigation, route }) {
       setCurrentEmail(user._data.email)
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
-      setUid(user._data.userId)
+      setUid(authUser.uid)
 
 
 
@@ -98,6 +102,8 @@ export default function BSummury({ navigation, route }) {
                       })
                       .then(function () {
                         console.log("Document successfully written!");
+                        dispatch(serviceNull());
+                        navigation.navigate("MyTabs");
                       })
                       .catch(function (error) {
                         console.error("Error writing document: ", error);
