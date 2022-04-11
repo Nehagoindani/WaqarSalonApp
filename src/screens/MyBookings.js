@@ -5,17 +5,15 @@ import firestore from '@react-native-firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { where } from '@firebase/firestore';
 import { useIsFocused } from '@react-navigation/native';
+import Table from 'reactnative-ui-bootstrap'
 
 export default function MyBookings(){
 
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
+  const [info, setInfo] = useState([])
 
-  const [currentEmail, setCurrentEmail] = useState('');
-  const [currentName, setCurrentName] = useState('');
-  const [currentPhone, setCurrentPhone] = useState('');
-  const [uid, setUid] = useState('')
-
+ 
   useEffect(() => {
     getUser()
   }, [isFocused])
@@ -32,6 +30,13 @@ export default function MyBookings(){
         let bookings = []
         querySnapshot.forEach(function (doc) {
           bookings.push(doc.data())
+          var data = {
+            id: doc.id,
+            data: doc.data()
+        }
+
+        setInfo(arr => [...arr, data]);
+
         });
         console.log(bookings)
       })
@@ -42,16 +47,46 @@ export default function MyBookings(){
 
   }
     return (
-      <View style={styles.container}>
-        <Text style = {styles.textStyle}>
-         You don't have any notifications right now
-        </Text>
-       <Text> {currentName} </Text>
-       <Text> {uid} </Text>
-      
+      <div>
+            <div>
+                <h1 style={{color: '#d6994b', textAlign:'center', backgroundColor:'black', padding:10 }}>Bookings</h1>
+            </div>
 
-        
-      </View>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr style={{textAlign: 'center'}} >
+                        <th>Name</th>
+                        <th>Service</th>
+                        <th>TimeSlot</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        info.map((data) => (
+                            <tr style={{ fontsize: 5 }}>
+                                <td style={{ color: '#d6994b', fontsize: 3 }}  >
+                                    {data.data.uName}
+                                </td>
+                                <td className='td' >
+                                    {data.data.services}
+                                </td>
+                                <td style={{ color: '#d6994b', fontsize: 3 }} >
+                                    {data.data.timeSlot}
+                                </td>
+                                <td style={{ color: '#d6994b', fontsize: 3 }} >
+                                    {data.data.date}
+                                </td>
+                                
+                               
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </Table>
+        </div>
     );
   }
 
