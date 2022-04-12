@@ -5,9 +5,9 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 
 function MainPage({ navigation }) {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor:'ovary'  }}>
         <View style={{ flex: 0.1 }}>
-        {/*  <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>*/}
+          <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
         </View> 
 
         <View style={{ flex: 0.3, paddingHorizontal: 10 }}>

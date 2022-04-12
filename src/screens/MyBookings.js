@@ -3,92 +3,88 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import { where } from '@firebase/firestore';
+import { doc, where } from '@firebase/firestore';
 import { useIsFocused } from '@react-navigation/native';
 import Table from 'reactnative-ui-bootstrap'
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
-export default function MyBookings(){
+export default function MyBookings() {
 
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
-  const [info, setInfo] = useState([])
+  const [cart, setCart] = useState([]);
 
- 
   useEffect(() => {
     getUser()
   }, [isFocused])
-
 
   const getUser = async () => {
     const authUser = auth().currentUser;
 
     const user = await firestore().collection('users').doc(authUser.uid).get();
-    
+
     await firestore().collection("bookings").where("uId", "==", authUser.uid)
       .get()
       .then(function (querySnapshot) {
         let bookings = []
         querySnapshot.forEach(function (doc) {
           bookings.push(doc.data())
-          var data = {
-            id: doc.id,
-            data: doc.data()
-        }
-
-        setInfo(arr => [...arr, data]);
-
         });
-        console.log(bookings)
+        setCart(bookings);
       })
+
       .catch(function (error) {
         console.log("Error getting documents: ", error);
 
       });
 
   }
-    return (
-      <div>
-            <div>
-                <h1 style={{color: '#d6994b', textAlign:'center', backgroundColor:'black', padding:10 }}>Bookings</h1>
-            </div>
+  return (
+    <View style={{ flex: 1, padding: 15, backgroundColor: 'white' }}>
 
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr style={{textAlign: 'center'}} >
-                        <th>Name</th>
-                        <th>Service</th>
-                        <th>TimeSlot</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        info.map((data) => (
-                            <tr style={{ fontsize: 5 }}>
-                                <td style={{ color: '#d6994b', fontsize: 3 }}  >
-                                    {data.data.uName}
-                                </td>
-                                <td className='td' >
-                                    {data.data.services}
-                                </td>
-                                <td style={{ color: '#d6994b', fontsize: 3 }} >
-                                    {data.data.timeSlot}
-                                </td>
-                                <td style={{ color: '#d6994b', fontsize: 3 }} >
-                                    {data.data.date}
-                                </td>
-                                
-                               
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </Table>
-        </div>
-    );
-  }
+      <View style={{ flex: 0.5 }}>
+        <View style={{ flex: 0.2, justifyContent: 'center' }}>
+          <Text style={{ color: 'black', fontSize: 18 }}>Upcoming Bookings</Text>
+        </View>
+        <View style={{ flex: 0.8 }}>
+          <ScrollView>
+          {
+            cart.map((item, index) => {
+              return(
+                <View key={index} style={{height: 100, flex: 1, paddingHorizontal: 10, borderRadius: 10, backgroundColor: '#F6F6F6', marginVertical: 10, justifyContent: 'space-evenly'}}> 
+                  <Text style={{fontSize: 16, color: 'black', fontWeight: 'bold', padding:5}}> Date:  {item.date}</Text>
+                  <Text style={{fontSize: 16, color: 'black', fontWeight: 'bold', padding:5}}> TimeSlot:  {item.timeSlot}</Text>
+                  <Text style={{fontSize: 16, color: 'black', fontWeight: 'bold', padding:5}}> Services: </Text>
+                  {item.services.map((item, index) => {
+                    return <Text key={index}>  {item}</Text>
+                  })}
+                </View>
+              )
+            })
+          }
+          </ScrollView>
+          
+        </View>
+
+
+      </View>
+
+
+      <View style={{ flex: 0.5 }}>
+        <View style={{ flex: 0.2 , justifyContent: 'center'}}>
+          <Text  style={{ color: 'black', fontSize: 18 }}> Booking History </Text>
+
+        </View>
+        <View style={{ flex: 0.8 }}>
+
+        </View>
+
+      </View>
+
+
+    </View>
+  );
+}
 
 
 
