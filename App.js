@@ -111,9 +111,9 @@ const MyTabs = () => {
         ),
       }} />
       <Tab.Screen name="My Bookings" component={MyBookings} options={{
-        tabBarLabel: 'My Bookings',
+        tabBarLabel: 'Bookings',
         tabBarIcon: ({ color }) => (
-          <Icon name="notifications" color={color} size={26} />
+          <Icon name="history" color={color} size={26} />
         ),
       }} />
       <Tab.Screen name="Profile" component={UserDetailScreen} options={{

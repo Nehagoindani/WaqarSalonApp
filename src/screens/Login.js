@@ -93,7 +93,6 @@ function LoginScreen({ navigation }) {
             >
               <View>
                 <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'white', fontWeight: 'bold' }}>Login</Text>
-
               </View>
             </TouchableOpacity>
 

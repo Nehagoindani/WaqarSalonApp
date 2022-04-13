@@ -65,25 +65,21 @@ export default function TimeSlots({ navigation, route }) {
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
-
       });
   }
-
-
-
   return (
 
     <View style={styles.view1}>
       <View style={styles.view2}>
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
-          {test}
+          Appointment Booking
         </Text>
 
       </View>
 
       <View style={styles.view3}>
-        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Date</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Date</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           Select your desired date.
         </Text>
         <TouchableOpacity
@@ -107,28 +103,15 @@ export default function TimeSlots({ navigation, route }) {
           }}
         />
 
-        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Time</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Time</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           Select your desired timeslot.
         </Text>
 
         {
-          isLoading ? 
+          isLoading ?     (   <View> <ActivityIndicator/> </View>   ) :
             (
-              <View>
-                <ActivityIndicator />
-
-
-
-              </View>
-            ) :
-            (
-
-
               <View style={styles.view5}>
-
-
-
                 <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
                   <View style={{
                     flex: 0.5, justifyContent: 'center', alignItems: 'center'
@@ -145,9 +128,6 @@ export default function TimeSlots({ navigation, route }) {
                           <Text style={{ color: 'red' }}>12pm - 1pm</Text>
                         )
                     }
-
-
-
                   </View>
 
                 </View>
@@ -214,10 +194,11 @@ export default function TimeSlots({ navigation, route }) {
             )
         }
 
-        <Text style={{ fontWeight: 'bold', fontSize: 25, color: 'black' }}>Special Instructions</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
-          Please enter any special instructions or staff  requests here.
-        </Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Special Instructions</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+          Please enter any special instructions or staff </Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+          requests here. </Text>
         <TextInput style={styles.textin}
           placeholder="Enter Instructions Here"
           onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
@@ -248,7 +229,7 @@ export default function TimeSlots({ navigation, route }) {
 const styles = StyleSheet.create({
   view1: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor:'#fcf7f0'
 
   },
   view3: {

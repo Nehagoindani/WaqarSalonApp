@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Redux/Actions/serviceAction';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 export default function Dashboard({ navigation }) {
@@ -29,10 +30,7 @@ export default function Dashboard({ navigation }) {
       setCurrentEmail(user._data.email)
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
-
-
     }
-
   }
 
   const signOut = () => {
@@ -42,30 +40,48 @@ export default function Dashboard({ navigation }) {
         console.log('User signed out!')
         dispatch(logout())
       })
-
   }
 
-
   return (
-    <View style={styles.container}>
-      <View style={{ flex: 0.2, margin: 10 }}>
-        <Text style={{ fontSize: 30, color: '#d6994b', padding: 10, fontWeight: 'bold' }}>My Profile</Text></View>
+    <View style={styles.view1}>
 
-      <Text style={styles.textStyle}>
-        Name:   {currentName}
-      </Text>
-      <Text style={styles.textStyle}>
-        Email:  {currentEmail}
-      </Text>
-      <Text style={styles.textStyle}>
-        Phone:  {currentPhone}
-      </Text>
+      <View style={styles.view3}>
 
-      <Button
-        color="#d6994b"
-        title="Logout"
-        onPress={signOut}
-      />
+      <View style={{ flex: 0.2 }}>
+        <Icon name='account-box' size={55} color='black'/>
+        </View>
+
+        <View style={{ flex: 0.2 }}>
+          <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold' }}>My Profile</Text>
+        </View>
+
+        <View>
+          <Text style={styles.textin}>Name:</Text>
+          <Text style={styles.textStyle}>
+           {currentName}
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.textin}>Email:</Text>
+          <Text style={styles.textStyle}>
+          {currentEmail}
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.textin}>Phone:</Text>
+          <Text style={styles.textStyle}>
+          {currentPhone}
+          </Text>
+        </View>
+        <View> 
+        <TouchableOpacity style={styles.btn}
+          onPress={signOut}  >
+          <View>
+            <Text style={{ textAlign: 'center', fontSize: 16, padding: 8, color: 'white', fontWeight: 'bold' }}>Logout</Text>
+          </View>
+        </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
@@ -73,22 +89,53 @@ export default function Dashboard({ navigation }) {
 
 
 const styles = StyleSheet.create({
-  container: {
+  view1: {
     flex: 1,
-    display: "flex",
-    borderWidth: 2,
-    borderColor: '#d6994b',
+    backgroundColor: '#fcf7f0',
+    padding:8,
+  },
+  view3: {
+    flex: 0.78,
+    justifyContent: 'space-evenly',
+    padding: 20
+  },
+  view2: {
+    flex: 0.12,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 35,
-    backgroundColor: 'black'
-
   },
   textStyle: {
-    fontSize: 15,
-    marginBottom: 20,
-    color: 'white'
-  }
+    borderWidth: 1.75,
+    borderColor: '#fcf7f0',
+    borderBottomColor: '#d6994b',
+    marginVertical: 5,
+    width: '90%',
+    color: 'black',
+    fontSize:18
+  },
+  textin: {
+    color: '#d6994b',
+    fontSize:15
+  },
+  btn: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    color: 'black',
+    fontWeight: 'bold',
+    shadowOpacity: 0.4,
+    shadowRadius: 4.7,
+    elevation: 8,
+    textAlign: 'center',
+    width: '50%',
+    backgroundColor: '#1a1a1a',
+    height: 40,
+    borderRadius: 20,
+    marginTop: 20
+  },
+
 });
 
 
