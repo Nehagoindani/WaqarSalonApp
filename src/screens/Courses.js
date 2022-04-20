@@ -89,7 +89,7 @@ const CourseService = ({navigation}) => {
       </View>
       <View style={styles.view4}>
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 25 }}>
-          {'COURSES'}
+          COURSES
         </Text>
         <Text style={{ fontSize: 3 }}> </Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 15 }}>

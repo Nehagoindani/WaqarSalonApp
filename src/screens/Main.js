@@ -5,27 +5,29 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 
 function MainPage({ navigation }) {
   return (
-    <View style={{ flex: 1, backgroundColor: 'ivory', paddingLeft: 10, paddingRight: 10, paddingTop:5 }}>
+    <View style={{ flex: 1, backgroundColor: 'ivory', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
 
       <View style={{ flex: 0.1 }}>
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
       </View>
 
-      <View style={{ flex: 0.25, paddingHorizontal: 10, marginBottom:15}}>
+      <View style={{ flex: 0.25, paddingHorizontal: 10, marginBottom: 15 }}>
         <Image style={styles.imgStyling} source={require("../Images/courses.jpeg")} resizeMode='cover' ></Image>
       </View>
 
       <View style={{ flex: 0.25 }}>
         <View style={{ flex: 0.2 }}>
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Top Categories</Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Top Categories</Text>
         </View>
 
         <View style={{ flex: 0.8 }}>
           <View style={styles.categryView}>
             <TouchableOpacity onPress={() => navigation.navigate('TopTab')}  >
-              <Text style={styles.ctext}>Hair</Text></TouchableOpacity>
+              <Text style={styles.ctext}>Hair</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TopTab')} >
-              <Text style={styles.ctext}>Makeup</Text></ TouchableOpacity>
+              <Text style={styles.ctext}>Makeup</Text>
+            </ TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TopTab')}>
               <Text style={styles.ctext}>Bridal</Text>
             </TouchableOpacity>
@@ -49,7 +51,7 @@ function MainPage({ navigation }) {
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Clients by Waqar</Text>
         </View>
 
-        <View style={{ flex: 0.8, justifyContent:'center', flexDirection:'row' }}>
+        <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
           <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
           <View><Image style={styles.specImg} source={require("../Images/waq2.jpeg")}></Image></View>
           <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
@@ -69,7 +71,7 @@ export default MainPage;
 const styles = StyleSheet.create({
 
   scroll: {
-    backgroundColor:'#fcf7f0' // '#faf6e9'
+    backgroundColor: '#fcf7f0' // '#faf6e9'
   },
   searchbar: {
     backgroundColor: 'black',
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 10,
-   
+
   },
   imgStyling: {
     flex: 1,

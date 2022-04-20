@@ -68,9 +68,10 @@ const DATA = [
       {
         name: 'OPI Pedicure',
         price: 'Rs. 2000'
-      }, ] }, ];
+      },]
+  },];
 
-const NailService = ({navigation}) => {
+const NailService = ({ navigation }) => {
   const dispatch = useDispatch();
   const { services } = useSelector(state => state.service)
   const FlatListItemSeparator = () => {
@@ -79,7 +80,7 @@ const NailService = ({navigation}) => {
       <View style={styles.listItemSeparatorStyle} />
     );
   };
-  const Item = ({ name, price}) => (
+  const Item = ({ name, price }) => (
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 20 }}>{name}</Text>
@@ -87,18 +88,17 @@ const NailService = ({navigation}) => {
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-        <TouchableOpacity
+          <TouchableOpacity
             onPress={() => dispatch(removeService(name))}
             disabled={
               services.includes(name) ? false : true
-            }
-         
-         > <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
+            }>
+            <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
-         
-        <TouchableOpacity
+
+          <TouchableOpacity
             onPress={() => dispatch(addService(name))}
             disabled={
               !services.includes(name) ? false : true
@@ -117,7 +117,7 @@ const NailService = ({navigation}) => {
       </View>
       <View style={styles.view4}>
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 25 }}>
-          {'NAIL SERVICES'}
+          NAIL SERVICES
         </Text>
         <Text style={{ fontSize: 3 }}> </Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 15 }}>
@@ -158,7 +158,7 @@ export default NailService;
 const styles = StyleSheet.create({
   view1: {
     flex: 1,
-    backgroundColor:'white'
+    backgroundColor: 'white'
   },
   view2: {
     flex: 0.3,
@@ -169,8 +169,8 @@ const styles = StyleSheet.create({
     flex: 0.1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop:20,
-    paddingBottom:10,
+    paddingTop: 20,
+    paddingBottom: 10,
   },
   view5: {
     flex: 0.08,
