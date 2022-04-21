@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     width: '90%',
     color: 'black',
-    fontSize:18
+    fontSize:18,
   },
   textin: {
-    color: '#d6994b',
+    color: '#d6994b', 
     fontSize:15
   },
   btn: {

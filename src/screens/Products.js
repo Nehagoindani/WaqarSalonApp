@@ -6,6 +6,10 @@ export default function Products(){
     
     return (
       <View style={styles.container}>
+         <Text style = {styles.textStyle2}>
+         Sorry!
+        </Text>
+
         <Text style = {styles.textStyle}>
          There are no products at the moment.
         </Text>
@@ -30,5 +34,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 20,
     color:'black'
+  },
+  textStyle2: {
+    fontSize: 20,
+    fontWeight:'bold',
+    marginBottom: 20,
+    color:'#d6994b'
   }
 });

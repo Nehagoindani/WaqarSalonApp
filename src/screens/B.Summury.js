@@ -23,7 +23,7 @@ export default function BSummury({ navigation, route }) {
   const [uid, setUid] = useState('')
 
 
-//dispatch servies to null
+  //dispatch servies to null
   useEffect(() => {
     getUser()
   }, [])
@@ -40,34 +40,40 @@ export default function BSummury({ navigation, route }) {
       setCurrentName(user._data.name)
       setCurrentPhone(user._data.phone)
       setUid(authUser.uid)
-
-
-
     }
-
   }
 
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Text>welcome</Text>
-      <Text style={styles.textStyle}>
-        Name:   {currentName}
-      </Text>
-      <Text style={styles.textStyle}>
-        Email:  {currentEmail}
-      </Text>
-      <Text style={styles.textStyle}>
-        Phone:  {currentPhone}
-      </Text>
-      <Text style={styles.sumText}>Your Service: {Service} </Text>
 
-      <Text style={styles.sumText}> you have selected your appointment on Date: {Date}</Text>
-      <Text style={styles.sumText}> Time Slot: {Time}</Text>
-      <Text style={styles.sumText}> Special Instructions: {Ins}</Text>
+      <View style={styles.view3}>
 
+        <View style={{ flex: 0.3, }}>
+          <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', marginBottom: 20, marginTop:20 }}>Booking Summary</Text>
+        </View>
 
+        <View style={{ flex: 0.7, justifyContent: 'center' }}>
+
+          <Text style={styles.textin}>User Name</Text>
+          <Text style={styles.textinp}>{currentName}</Text>
+
+          <Text style={styles.textin}>Appointment Date</Text>
+          <Text style={styles.textinp}>{Date}</Text>
+
+          <Text style={styles.textin}>Time Slot</Text>
+          <Text style={styles.textinp}>{Time}</Text>
+
+          <Text style={styles.textin}>Services</Text>
+          <Text style={styles.textinp}>{Service}</Text>
+
+          <Text style={styles.textin}>Special Instructions</Text>
+          <Text style={styles.textinp}>{Ins}</Text>
+
+        </View>
+
+      </View>
 
       <View style={styles.centeredView}>
         <Modal
@@ -77,19 +83,17 @@ export default function BSummury({ navigation, route }) {
           onRequestClose={() => {
             Alert.alert("Modal has been closed.");
             setModalVisible(!modalVisible);
-          }}
-        >
-          <View style={styles.centeredView}>
+          }}   >
+          <View style={styles.centeredView2}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>your appointment is booked you will get confirmation email shortly</Text>
+              <Text style={{ fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16, TextAlign: "center" }}>Appointment Booked!</Text>
+              <Text style={{ color: 'black', marginBottom: 15, textAlign: "center" }}>You will receive a confirmation message shortly.</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
                   {
                     firestore().collection('bookings')
                       .add({
-
-
                         uId: uid,
                         uName: currentName,
                         uEmail: currentEmail,
@@ -112,52 +116,88 @@ export default function BSummury({ navigation, route }) {
                   setModalVisible(!modalVisible)
                 }}
               >
-                <Text style={styles.textStyle}>Ok</Text>
+                <Text style={styles.textStyle}>Okay</Text>
               </Pressable>
             </View>
           </View>
         </Modal>
+
         <Pressable
           style={[styles.button, styles.buttonOpen]}
           onPress={() => setModalVisible(true)}
         >
-          <Text style={styles.textStyle}>Confirm Booking</Text>
+          <Text style={styles.button}>Confirm Booking</Text>
         </Pressable>
       </View>
-
-
 
     </View>
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    display: "flex",
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 35,
-    backgroundColor: 'black'
+    flex: 1, 
+    backgroundColor: '#fcf7f0',
+    justifyContent: 'center'
   },
-  textStyle: {
+  view3: {
+    padding: 20,
+    flex: 0.7,
+  },
+  textin: {
+    color: '#d6994b',
     fontSize: 15,
-    marginBottom: 20,
-    color: 'white'
+    marginBottom: 15
+  },
+  textinp: {
+    color: '#000',
+    fontSize: 17.5,
+    marginBottom: 15,
+    borderWidth: 1.75,
+    borderColor: '#fcf7f0',
+    borderBottomColor: '#d6994b',
+    width: '80%',
+
+  },
+  btn: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    color: 'black',
+    fontWeight: 'bold',
+    shadowOpacity: 0.4,
+    shadowRadius: 4.7,
+    elevation: 8,
+    textAlign: 'center',
+    width: '50%',
+    backgroundColor: '#1a1a1a',
+    height: 40,
+    borderRadius: 20,
+    marginTop: 20
+  },
+  button: {
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: 'bold',
   },
   centeredView: {
+    flex: 0.3,
+    justifyContent: "center",
+    padding:20
+  },
+  centeredView2: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
   },
   modalView: {
     margin: 20,
+    color: '#d6994b',
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 36,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -168,22 +208,25 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
+
   buttonOpen: {
-    backgroundColor: "#d6994b",
+    backgroundColor: "#ffff",
     padding: 15,
-    width: 250
+    color: 'white',
+    width: '50%',
+    backgroundColor: '#1a1a1a',
+    borderRadius: 25,
+    elevation: 8,
   },
   buttonClose: {
-    backgroundColor: "#d6994b",
-
+    borderColor: "#d6994b",
+    color: 'white',
+    borderWidth: 1.75,
+    padding: 5,
+    borderRadius: 6
   },
   textStyle: {
-    color: "white",
+    color: "#d6994b",
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 15
@@ -193,14 +236,13 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   sumText: {
-    fontSize: 15, color: 'white',
+    fontSize: 15, color: 'black',
     margin: 10,
     padding: 10,
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: '#d6994b',
     width: '80%',
     fontSize: 17
-
   }
 });
 

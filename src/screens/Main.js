@@ -5,7 +5,7 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 
 function MainPage({ navigation }) {
   return (
-    <View style={{ flex: 1, backgroundColor: 'ivory', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
+    <View style={{ flex: 1, backgroundColor: '#fcf7f0', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}> 
 
       <View style={{ flex: 0.1 }}>
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
@@ -17,7 +17,7 @@ function MainPage({ navigation }) {
 
       <View style={{ flex: 0.25 }}>
         <View style={{ flex: 0.2 }}>
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Top Categories</Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Top Categories</Text>
         </View>
 
         <View style={{ flex: 0.8 }}>
@@ -48,7 +48,7 @@ function MainPage({ navigation }) {
 
       <View style={{ flex: 0.3 }}>
         <View style={{ flex: 0.2 }}>
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}> Clients by Waqar</Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Clients by Waqar</Text>
         </View>
 
         <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   categryView: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+   
   },
   ctext: {
     shadowColor: "#000",
@@ -92,9 +93,12 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4
     },
-    color: 'white',
     fontWeight: 'bold',
-    backgroundColor: '#d6994b',
+    borderColor: '#d6994b',       //'#1a1a1a'
+    borderWidth: 1,
+    borderRadius: 10,
+    color: '#000',
+    backgroundColor: '#fcf7f0',   //'#fcf7f0' '#d6994b'
     shadowOpacity: 0.4,
     shadowRadius: 4.7,
     elevation: 8,
@@ -104,9 +108,8 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf:'center',
     flexDirection: 'row',
-    borderColor: '#1a1a1a',
-    borderWidth: 0.25
   },
   disPanel: {
     margin: 15,

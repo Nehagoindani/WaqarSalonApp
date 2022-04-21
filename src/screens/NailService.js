@@ -83,8 +83,8 @@ const NailService = ({ navigation }) => {
   const Item = ({ name, price }) => (
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
-        <Text style={{ color: 'black', fontSize: 20 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 18 }}>{price}</Text>
+        <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -134,7 +134,7 @@ const NailService = ({ navigation }) => {
           renderItem={({ item }) => <Item name={item.name} price={item.price} />}
           renderSectionHeader={({ section: { title } }) => (
             <View style={{ borderColor: '#d6994b', borderWidth: 2, padding: 10, }}>
-              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 21 }}>{title}</Text>
+              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>{title}</Text>
             </View>
           )}
           ItemSeparatorComponent={FlatListItemSeparator}
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#d6994b'
   },
   view3: {
-    flex: 0.6,
+    flex: 0.52,
     padding: 8,
   },
   img1: {

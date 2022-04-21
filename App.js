@@ -113,13 +113,13 @@ const MyTabs = () => {
       <Tab.Screen name="My Bookings" component={MyBookings} options={{
         tabBarLabel: 'Bookings',
         tabBarIcon: ({ color }) => (
-          <Icon name="history" color={color} size={26} />
+          <Icon name="date-range" color={color} size={26} />
         ),
       }} />
       <Tab.Screen name="Profile" component={UserDetailScreen} options={{
         tabBarLabel: 'Profile',
         tabBarIcon: ({ color }) => (
-          <Icon name="account-circle" color={color} size={26} />
+          <Icon name="account-box" color={color} size={26} />
         ),
       }} />
 

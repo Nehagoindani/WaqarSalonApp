@@ -97,51 +97,51 @@ const DATA = [
     data: [
       {
         name: 'Base Colour Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 7000+ Silky: Rs. 5000+'
+        price: 'Loreal/Schwarzkopf: Rs. 7000+\nSilky: Rs. 5000+'
       },
       {
-        name: 'Full Colur Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        name: 'Full Colour Dye',
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Colour Correction',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Glossing',
-        price: 'Loreal/Schwarzkopf: Rs. 5000+ Silky: Rs. 4000+'
+        price: 'Loreal/Schwarzkopf: Rs. 5000+\nSilky: Rs. 4000+'
       },
       {
         name: 'Roots Touchup',
-        price: 'Loreal/Schwarzkopf: Rs. 3000+ Silky: Rs. 2000+'
+        price: 'Loreal/Schwarzkopf: Rs. 3000+\nSilky: Rs. 2000+'
       },
       {
         name: 'Roots Correction',
-        price: 'Loreal/Schwarzkopf: Rs. 3000+ Silky: Rs. 2000+'
+        price: 'Loreal/Schwarzkopf: Rs. 3000+\nSilky: Rs. 2000+'
       },
       {
         name: 'Highlights',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Lowlights',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Ombre',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Balayage',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Sombre',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+ Silky: Rs. 8000+'
+        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
       },
       {
         name: 'Dip Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 8000+ Silky: Rs. 6000+'
+        price: 'Loreal/Schwarzkopf: Rs. 8000+\nSilky: Rs. 6000+'
       },
     ]
   },
@@ -172,8 +172,8 @@ const HairService = ({ navigation }) => {
 
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
-        <Text style={{ color: 'black', fontSize: 20 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+        <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 15 }}>{price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -216,7 +216,7 @@ const HairService = ({ navigation }) => {
           HAIR SERVICES
         </Text>
         <Text style={{ fontSize: 3 }}> </Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 16 }}>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 15 }}>
           Choose the services that you want to book below.
         </Text>
       </View>
@@ -230,7 +230,7 @@ const HairService = ({ navigation }) => {
           renderItem={({ item }) => <Item name={item.name} price={item.price} />}
           renderSectionHeader={({ section: { title } }) => (
             <View style={{ borderColor: '#d6994b', borderWidth: 2, padding: 10, }}>
-              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 21 }}>{title}</Text>
+              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>{title}</Text>
             </View>
           )}
           ItemSeparatorComponent={FlatListItemSeparator}

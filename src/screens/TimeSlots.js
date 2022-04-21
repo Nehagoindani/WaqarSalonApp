@@ -41,13 +41,13 @@ export default function TimeSlots({ navigation, route }) {
       .get()
       .then(function (querySnapshot) {
         let bookings = []
-      let  fs = 0, ss = 0, ts = 0, ffs = 0
+        let fs = 0, ss = 0, ts = 0, ffs = 0
         querySnapshot.forEach(function (doc) {
           bookings.push(doc.data())
         });
         console.log(bookings)
 
-        fs= bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
+        fs = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
         setFirstslot(fs)
         ss = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
         setSecondslot(ss);
@@ -56,10 +56,10 @@ export default function TimeSlots({ navigation, route }) {
         ffs = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
         setFourthslot(ffs)
         setIsloading(false)
-      /*  console.log(firstSlot)
-        console.log(secondSlot)
-        console.log(thirdSlot)
-        console.log(fourthSlot)*/
+        /*  console.log(firstSlot)
+          console.log(secondSlot)
+          console.log(thirdSlot)
+          console.log(fourthSlot)*/
 
 
       })
@@ -80,8 +80,7 @@ export default function TimeSlots({ navigation, route }) {
       <View style={styles.view3}>
         <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Date</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          Select your desired date.
-        </Text>
+          Select your desired date. </Text>
         <TouchableOpacity
           onPress={() => setOpen(true)}>
           <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text>
@@ -100,16 +99,14 @@ export default function TimeSlots({ navigation, route }) {
           }}
           onCancel={() => {
             setOpen(false)
-          }}
-        />
+          }} />
 
         <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Time</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          Select your desired timeslot.
-        </Text>
+          Select your desired timeslot.   </Text>
 
         {
-          isLoading ?     (   <View> <ActivityIndicator/> </View>   ) :
+          isLoading ? (<View> <ActivityIndicator /> </View>) :
             (
               <View style={styles.view5}>
                 <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
@@ -120,7 +117,6 @@ export default function TimeSlots({ navigation, route }) {
                       firstSlot < 2 ?
                         (
                           <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
-
                             <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -138,8 +134,7 @@ export default function TimeSlots({ navigation, route }) {
                     {
                       secondSlot < 2 ?
                         (
-                          <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  >
-
+                          <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  > 
                             <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -157,8 +152,7 @@ export default function TimeSlots({ navigation, route }) {
                     {
                       thirdSlot < 2 ?
                         (
-                          <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >
-
+                          <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >  
                             <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black' }}>2pm - 3pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -167,9 +161,7 @@ export default function TimeSlots({ navigation, route }) {
                         )
                     }
                   </View>
-
-
-                </View>
+                  </View>
                 <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
                   <View style={{
                     flex: 0.5, justifyContent: 'center', alignItems: 'center'
@@ -178,7 +170,6 @@ export default function TimeSlots({ navigation, route }) {
                       fourthSlot < 2 ?
                         (
                           <TouchableOpacity onPress={() => setTime('3pm - 4pm')}  >
-
                             <Text style={{ color: time === '3pm - 4pm' ? '#d6994b' : 'black' }}>3pm - 4pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -197,7 +188,7 @@ export default function TimeSlots({ navigation, route }) {
         <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Special Instructions</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           Please enter any special instructions or staff </Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           requests here. </Text>
         <TextInput style={styles.textin}
           placeholder="Enter Instructions Here"
@@ -219,7 +210,7 @@ export default function TimeSlots({ navigation, route }) {
                 })
             }}
         >
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', backgroundColor: '#d6994b' }}>Book Appointment</Text>
+          <Text style={{ color: 'black', fontSize: 22, fontWeight: 'bold', backgroundColor: '#d6994b' }}>Book Appointment</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -229,7 +220,7 @@ export default function TimeSlots({ navigation, route }) {
 const styles = StyleSheet.create({
   view1: {
     flex: 1,
-    backgroundColor:'#fcf7f0'
+    backgroundColor: '#fcf7f0'
 
   },
   view3: {
@@ -247,7 +238,7 @@ const styles = StyleSheet.create({
   view2: {
     flex: 0.12,
     justifyContent: 'center',
-    alignItems: 'center',
+    marginLeft:25
   },
   view4: {
     flex: 0.1,

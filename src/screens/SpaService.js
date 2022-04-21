@@ -29,7 +29,7 @@ const DATA = [
         price: 'Rs. 1500'
       },
       {
-        name: 'Boody Scrub & Oil Massage (60min)',
+        name: 'Body Scrub & Oil Massage (60min)',
         price: 'Rs. 4000'
       },
       {
@@ -56,8 +56,8 @@ const SpaService = ({navigation}) => {
   const Item = ({ name, price}) => (
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
-        <Text style={{ color: 'black', fontSize: 20 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 18 }}>{price}</Text>
+        <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -110,7 +110,7 @@ const SpaService = ({navigation}) => {
           renderItem={({ item }) => <Item name={item.name} price={item.price} />}
           renderSectionHeader={({ section: { title } }) => (
             <View style={{ borderColor: '#d6994b', borderWidth: 2, padding: 10, }}>
-              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 21 }}>{title}</Text>
+              <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 18 }}>{title}</Text>
             </View>
           )}
           ItemSeparatorComponent={FlatListItemSeparator}
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     paddingBottom:10,
   },
   view3: {
-    flex: 0.6,
+    flex: 0.52,
     padding: 8,
   },
   img1: {
