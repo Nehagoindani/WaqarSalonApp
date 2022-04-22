@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../Redux/Actions/serviceAction';
+import { login, serviceNull } from '../Redux/Actions/serviceAction';
 
 
 function LoginScreen({ navigation }) {
@@ -13,6 +13,9 @@ function LoginScreen({ navigation }) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorEmail, setErrorEmail] = useState(false)
+  const [errorPassword, setErrorPassword] = useState(false)
+  const [isEmail, setIsEmail] = useState()
 
 
   const userLogin = async () => {
@@ -34,6 +37,16 @@ function LoginScreen({ navigation }) {
 
   }
 
+  validateEmail = () => {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (emailRegex.test(email)) {
+      return true;
+    } else {
+      return false
+    }
+  }
+
+
   return (
     <ImageBackground style={styles.bgimg}
       source={require("../Images/back2.jpeg")}
@@ -54,15 +67,49 @@ function LoginScreen({ navigation }) {
             <TextInput style={styles.textin}
               placeholder="Email"
               placeholderTextColor='#404040'
-              onChangeText={(email) => setEmail(email)} ></TextInput>
+              onChangeText={(email) => setEmail(email)}
+              onBlur={() => {
+                if (email.length > 0) {
+                  setErrorEmail(false)
+                  setIsEmail(validateEmail());
+                }
+                else {
+                  setErrorEmail(true)
+                }
+              }
+              }
+
+            >
+
+            </TextInput>
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
+
+              }
+
+            </View>
+
 
             <TextInput style={styles.textin}
               placeholder="Password"
-              placeholderTextColor='#404040'
+              placeholderTextColor='black'
               onChangeText={(password) => setPassword(password)}
               maxLength={15}
               secureTextEntry={true}
+              onBlur={(value) => {
+                if (password.length == 0) {
+                  setErrorPassword(true)
+                }
+              }}
             ></TextInput>
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorPassword ? <Text style={{ fontSize: 10, color: 'red' }} > Please enter Password </Text> : null
+              }
+
+            </View>
+
 
             <View style={{ width: '80%', alignItems: 'flex-end' }}>
               <TouchableOpacity
@@ -151,6 +198,7 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     padding: 6,
     width: '80%',
+    color: 'black'
 
   },
   text: {

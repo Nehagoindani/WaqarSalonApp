@@ -59,13 +59,15 @@ function SplashScreen({ navigation }) {
 const Top = createMaterialTopTabNavigator();
 
 
+
 function TopTabs() {
+  const [swipeEnabled, setSwipeEnabled] = useState(true);
   return (
 
 
     <Top.Navigator
       initialRouteName="Hair"
-      swipeEnabled={true}
+      swipeEnabled={swipeEnabled}
       screenOptions={{
         tabBarActiveTintColor: '#d6994b',
         tabBarScrollEnabled: true,

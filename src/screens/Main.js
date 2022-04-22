@@ -22,7 +22,7 @@ function MainPage({ navigation }) {
 
         <View style={{ flex: 0.8 }}>
           <View style={styles.categryView}>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')}  >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Hair'})}  >
               <Text style={styles.ctext}>Hair</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TopTab')} >
@@ -36,10 +36,10 @@ function MainPage({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('TopTab')} >
               <Text style={styles.ctext}>Spa</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', {screen: 'Nails'})}>
               <Text style={styles.ctext}>Nails</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', {screen: 'Çourse'})}>
               <Text style={styles.ctext}>Courses</Text>
             </TouchableOpacity>
           </View>
