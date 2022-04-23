@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, serviceNull } from '../Redux/Actions/serviceAction';
 
 
+
 function LoginScreen({ navigation }) {
 
   const dispatch = useDispatch();
@@ -19,19 +20,20 @@ function LoginScreen({ navigation }) {
 
 
   const userLogin = async () => {
-    auth()
+   const user = auth()
       .signInWithEmailAndPassword(email, password)
       .then(async () => {
         dispatch(login());
         console.log('user logged in successfully');
 
       })
-    if (email == '' || password == '') {
-      console.log('please enter email/password');
-      alert('please enter email/password')
+    if (email != user ) {
+      console.log('please enter valid email/password');
+      alert('email/password is not valid')
     }
-    else if (email == 'auth/invalid-email') {
-      alert('please enter valid email')
+    else  {
+      return true
+     
     }
 
 
@@ -63,34 +65,43 @@ function LoginScreen({ navigation }) {
 
             <Text style={styles.text}>Login</Text>
 
+            <View style={{ flexDirection: 'row', borderBottomWidth: 1.75, borderBottomColor: '#d6994b',width: '90%' }}>
 
-            <TextInput style={styles.textin}
-              placeholder="Email"
-              placeholderTextColor='#404040'
-              onChangeText={(email) => setEmail(email)}
-              onBlur={() => {
-                if (email.length > 0) {
-                  setErrorEmail(false)
-                  setIsEmail(validateEmail());
+              <View style={{ marginTop: 10, padding: 5 }}>
+                <Icon name='email-outline' size={20} color='black' />
+                </View>
+
+              <TextInput style={styles.textin}
+                placeholder="Email"
+                placeholderTextColor='#404040'
+                onChangeText={(email) => setEmail(email)}
+                onBlur={() => {
+                  if (email.length > 0) {
+                    setErrorEmail(false)
+                    setIsEmail(validateEmail());
+                  }
+                  else {
+                    setErrorEmail(true)
+                  }
                 }
-                else {
-                  setErrorEmail(true)
-                }
-              }
-              }
+                }>
 
-            >
+              </TextInput>
+            </View>
 
-            </TextInput>
+
             <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
 
               }
-
             </View>
 
+            <View style={{  flexDirection: 'row', borderBottomWidth: 1.75, borderBottomColor: '#d6994b',width: '90%'  }}>
 
+            <View style={{ marginTop: 10, padding: 5 }}>
+              <Icon name='lock-outline' size={20} color='black' />
+            </View>
             <TextInput style={styles.textin}
               placeholder="Password"
               placeholderTextColor='black'
@@ -103,6 +114,7 @@ function LoginScreen({ navigation }) {
                 }
               }}
             ></TextInput>
+            </View>
             <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorPassword ? <Text style={{ fontSize: 10, color: 'red' }} > Please enter Password </Text> : null
@@ -123,21 +135,7 @@ function LoginScreen({ navigation }) {
 
             </View>
             <TouchableOpacity style={styles.btn}
-              onPress={() => {
-                if (email && password) {
-                  userLogin();
-                }
-                else if (email == null) {
-                  alert('please enter mail')
-                }
-                else if (password == null) {
-                  alert('please enter password')
-                }
-                else {
-                  alert('fields can not be empty')
-                }
-              }}
-            >
+              onPress={()=>userLogin()} >
               <View>
                 <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'white', fontWeight: 'bold' }}>Login</Text>
               </View>
@@ -145,7 +143,7 @@ function LoginScreen({ navigation }) {
 
             <View style={styles.btmText}>
               <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                <Text style={{ color: '#1a1a1a', textDecorationLine: 'underline' }}>Don't have an account?  Sign Up</Text>
+                <Text style={{ color: '#1a1a1a', textDecorationLine: 'none' }}>Don't have an account?  Sign Up</Text>
               </TouchableOpacity>
             </View>
 
@@ -192,14 +190,11 @@ const styles = StyleSheet.create({
 
   },
   textin: {
-    borderWidth: 1.75,
-    borderColor: 'white',
-    borderBottomColor: '#d6994b',
+    flex: 1,
     marginVertical: 6,
     padding: 6,
-    width: '80%',
-    color: 'black'
-
+    
+  
   },
   text: {
     fontSize: 35,

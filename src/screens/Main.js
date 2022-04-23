@@ -25,15 +25,15 @@ function MainPage({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Hair'})}  >
               <Text style={styles.ctext}>Hair</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')} >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Makeup'})} >
               <Text style={styles.ctext}>Makeup</Text>
             </ TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Bridal'})}>
               <Text style={styles.ctext}>Bridal</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.categryView}>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab')} >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Spa'})} >
               <Text style={styles.ctext}>Spa</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('TopTab', {screen: 'Nails'})}>

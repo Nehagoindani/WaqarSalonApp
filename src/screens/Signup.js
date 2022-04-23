@@ -19,6 +19,14 @@ function Signup({ navigation }) {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [ConfirmPassword, setConfirmPassword] = useState('')
+  const [errorName, setErrorName] =useState(false)
+  const [errorEmail, setErrorEmail] =useState(false)
+  const [errorphone, setErrorPhone] =useState(false)
+  const [errorPassword, setErrorPassword] =useState(false)
+  const [errorConfirmPassword, setErrorConfirmPassword] =useState(false)
+  const [isEmail, setIsEmail] = useState()
+ 
+
  
 
 
@@ -39,9 +47,7 @@ function Signup({ navigation }) {
       let addUser = firestore().collection('users').doc(user.uid).set(userData)
       console.log("add User >>> ", addUser)
       await user.sendEmailVerification()
-     
       dispatch(login());
-
 
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -108,7 +114,20 @@ function Signup({ navigation }) {
               placeholder="Name"
               placeholderTextColor='#404040'
               value={Name}
-              onChangeText={onChangeName} />
+              onChangeText={onChangeName}
+              onBlur={()=>{
+                if(Name.length == 0 ){
+                  setErrorName(true)
+                }
+              }}
+              
+              />
+               <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorName ? <Text style={{ fontSize: 10, color: 'red' }} > Please enter name </Text> : null
+              }
+
+            </View>
 
             <TextInput
               style={styles.inputStyle}
@@ -116,8 +135,24 @@ function Signup({ navigation }) {
               keyboardType='email-address'
               placeholderTextColor='#404040'
               value={email}
-              onBlur={() => { validateEmail }}
+              onBlur={() => {
+                if (email.length > 0) {
+                  setErrorEmail(false)
+                  setIsEmail(validateEmail());
+                }
+                else {
+                  setErrorEmail(true)
+                }
+              }
+              }
               onChangeText={onChangeEmail} />
+              
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
+
+              }
+            </View>
                
 
             <TextInput
@@ -136,7 +171,20 @@ function Signup({ navigation }) {
               value={password}
               onChangeText={onChangePassword}
               maxLength={15}
-              secureTextEntry={true} />
+              secureTextEntry={true}
+              onBlur={()=>{
+                if(password.length == 0 ){
+                  setErrorName(true)
+                }
+              }}
+              
+              />
+              <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > password cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
+
+              }
+            </View>
 
             <TextInput
               style={styles.inputStyle}
