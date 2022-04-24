@@ -9,9 +9,32 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import auth from '@react-native-firebase/auth'
+
+
+
 
 function ResetScreen({ navigation }) {
-  var [firstname, setFirstName] = useState('');
+const [email, setEmail] = useState('')
+
+
+
+const forgotPassword = (email) => {
+
+ 
+ auth.sendPasswordResetEmail(email)
+      .then(() => {
+          alert("reset email sent to " + email);
+          console.log("reset email sent to " +email);
+      })
+      .catch(function (e) {
+          console.log(e);
+      });
+};
+
+
+  
+    
   
 
   return (
@@ -33,23 +56,15 @@ function ResetScreen({ navigation }) {
               placeholder="Email address"
               placeholderTextColor="black"
               keyboardType='email-address'
-              onChangeText={(val) => setFirstName(val)}></TextInput>
+              value={email}
+              onChangeText={(email) => setEmail(email)}></TextInput>
           </View>
 
           <View style={{marginTop:30}}>
-            <TouchableOpacity style={{ color: 'orange' }}>
-              <View
-                style={{
-                  marginTop:20,
-                  width:200,
-                  borderRadius:20,
-                 alignSelf:'center'
-                 
-                }}>
-                <Button
-                title='Reset'
-                color='black'
-                ></Button>
+          <TouchableOpacity style={styles.btn}
+              onPress={()=>forgotPassword()} >
+              <View>
+                <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'black', fontWeight: 'bold' }}>Reset</Text>
               </View>
             </TouchableOpacity>
           </View>

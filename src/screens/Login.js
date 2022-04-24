@@ -125,7 +125,7 @@ function LoginScreen({ navigation }) {
 
             <View style={{ width: '80%', alignItems: 'flex-end' }}>
               <TouchableOpacity
-                onPress={() => navigation.navigate("Reset")}
+                onPress={() => navigation.navigate("forgotPass")}
               >
                 <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Forgot Password?
 

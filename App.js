@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Signup from './src/screens/Signup';
 import MainPage from './src/screens/Main';
 import LoginScreen from './src/screens/Login';
+import ResetScreen from './src/screens/Resetpass';
 import Dashboard from './src/screens/Dashboard';
 import Products from './src/screens/Products';
 import MyBookings from './src/screens/MyBookings';
@@ -141,6 +142,7 @@ function authStack() {
     <Stack.Navigator>
       <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
       <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
+      <Stack.Screen name='forgotPass' options={{ headerShown: false }} component={ResetScreen} />
 
     </Stack.Navigator>
   )
