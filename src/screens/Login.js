@@ -127,9 +127,7 @@ function LoginScreen({ navigation }) {
               <TouchableOpacity
                 onPress={() => navigation.navigate("forgotPass")}
               >
-                <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Forgot Password?
-
-                </Text>
+                <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Forgot Password? </Text>
 
               </TouchableOpacity>
 

@@ -2,7 +2,6 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../Redux/Actions/serviceAction';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -75,7 +74,7 @@ export default function Dashboard({ navigation }) {
         </View>
         <View> 
         <TouchableOpacity style={styles.btn}
-          onPress={signOut}  >
+          onPress={signOut} >
           <View>
             <Text style={{ textAlign: 'center', fontSize: 16, padding: 8, color: 'white', fontWeight: 'bold' }}>Logout</Text>
           </View>

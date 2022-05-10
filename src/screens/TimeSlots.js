@@ -81,9 +81,9 @@ export default function TimeSlots({ navigation, route }) {
         <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Date</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           Select your desired date. </Text>
-        <TouchableOpacity
+        <TouchableOpacity style={{height:100}}
           onPress={() => setOpen(true)}>
-          <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text>
+         <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text> 
         </TouchableOpacity>
 
         <DatePicker
@@ -91,11 +91,10 @@ export default function TimeSlots({ navigation, route }) {
           open={open}
           date={date}
           mode={"date"}
-          onConfirm={(date) => {
+          onConfirm={(datee) => {
             setOpen(false)
-            setDate(date)
-            console.log(date)
-            getBooking(date)
+            setDate(datee) 
+            getBooking(datee)
           }}
           onCancel={() => {
             setOpen(false)
@@ -103,7 +102,7 @@ export default function TimeSlots({ navigation, route }) {
 
         <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Time</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          Select your desired timeslot.   </Text>
+          Select your desired timeslot.</Text>
 
         {
           isLoading ? (<View> <ActivityIndicator /> </View>) :
@@ -134,7 +133,7 @@ export default function TimeSlots({ navigation, route }) {
                     {
                       secondSlot < 2 ?
                         (
-                          <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  > 
+                          <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  >
                             <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -152,7 +151,7 @@ export default function TimeSlots({ navigation, route }) {
                     {
                       thirdSlot < 2 ?
                         (
-                          <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >  
+                          <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >
                             <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black' }}>2pm - 3pm</Text>
                           </TouchableOpacity>
                         ) :
@@ -161,7 +160,7 @@ export default function TimeSlots({ navigation, route }) {
                         )
                     }
                   </View>
-                  </View>
+                </View>
                 <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
                   <View style={{
                     flex: 0.5, justifyContent: 'center', alignItems: 'center'
@@ -238,7 +237,7 @@ const styles = StyleSheet.create({
   view2: {
     flex: 0.12,
     justifyContent: 'center',
-    marginLeft:25
+    marginLeft: 25
   },
   view4: {
     flex: 0.1,

@@ -21,15 +21,11 @@ function Signup({ navigation }) {
   const [ConfirmPassword, setConfirmPassword] = useState('')
   const [errorName, setErrorName] =useState(false)
   const [errorEmail, setErrorEmail] =useState(false)
-  const [errorphone, setErrorPhone] =useState(false)
+  const [errorPhone, setErrorPhone] =useState(false)
   const [errorPassword, setErrorPassword] =useState(false)
   const [errorConfirmPassword, setErrorConfirmPassword] =useState(false)
   const [isEmail, setIsEmail] = useState()
- 
-
- 
-
-
+  const [isPhone, setIsPhone] = useState()
  
   onPressSignUp = async () => {
     try {
@@ -63,11 +59,13 @@ function Signup({ navigation }) {
 
   }
   validatephone = (phone) => {
-    const emailRegex = /^(\+92|0|92)[0-9]{10}$/;
-    if (emailRegex.test(phone) === false) {
-      alert('error')
-      console.log('error')
-
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(phone)) {
+      if (phone.length == 11 && phone.startsWith('03')){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
   validateEmail = (email) => {
@@ -161,8 +159,24 @@ function Signup({ navigation }) {
               keyboardType='numeric'
               placeholderTextColor='#404040'
               value={phone}
-              onChangeText={onChangePhone}
-            />
+              onBlur={() => {
+                if (phone.length > 0) {
+                  setErrorPhone(false)
+                  setIsPhone(validatephone());
+                }
+                else {
+                  setErrorPhone(true)
+                }
+              }
+              }
+              onChangeText={onChangePhone} />
+              
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorPhone ? <Text style={{ fontSize: 10, color: 'red' }} > Field cannot be empty </Text> : isPhone === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid phone number</Text> : null
+
+              }
+            </View>
 
             <TextInput
               style={styles.inputStyle}
@@ -174,14 +188,14 @@ function Signup({ navigation }) {
               secureTextEntry={true}
               onBlur={()=>{
                 if(password.length == 0 ){
-                  setErrorName(true)
+                  setErrorPassword(true)
                 }
               }}
               
               />
               <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
-                errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > password cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
+                errorPassword ? <Text style={{ fontSize: 10, color: 'red' }} > Field cannot be empty </Text> : null
 
               }
             </View>
@@ -193,32 +207,24 @@ function Signup({ navigation }) {
               value={ConfirmPassword}
               onChangeText={onChangeConfirmPassword}
               maxLength={15}
-              secureTextEntry={true} />
-            <View>
+              secureTextEntry={true}
+              onBlur={()=>{
+                if(ConfirmPassword == password ){
+                  setErrorConfirmPassword(false)
+                }
+              }}
+              
+              />
+           <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+              {
+                errorConfirmPassword ? <Text style={{ fontSize: 10, color: 'red' }} > password does not match </Text> : null
+
+              }
             </View>
 
+
             <TouchableOpacity style={styles.btn}
-              onPress={() => {
-                let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-                if (reg.test(email)) {
-                  if (phone.length == 11 && phone.startsWith('03')) {
-                    if (ConfirmPassword == password) {
-                      alert('password match')
-                      onPressSignUp()
-                    }
-                    else {
-                      alert('password does not match')
-                    }
-                  } else {
-                    alert('Phone number must be 11 digits.')
-                  }
-                } else {
-                  alert('Please Enter Valid Email.')
-                }
-
-
-              }}
-            >
+              onPress={() => {onPressSignUp()}} >
               <View>
                 <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'white', fontWeight: 'bold' }}>Sign Up</Text>
               </View>
