@@ -19,14 +19,14 @@ function Signup({ navigation }) {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [ConfirmPassword, setConfirmPassword] = useState('')
-  const [errorName, setErrorName] =useState(false)
-  const [errorEmail, setErrorEmail] =useState(false)
-  const [errorPhone, setErrorPhone] =useState(false)
-  const [errorPassword, setErrorPassword] =useState(false)
-  const [errorConfirmPassword, setErrorConfirmPassword] =useState(false)
+  const [errorName, setErrorName] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
+  const [errorPhone, setErrorPhone] = useState(false)
+  const [errorPassword, setErrorPassword] = useState(false)
+  const [errorConfirmPassword, setErrorConfirmPassword] = useState(false)
   const [isEmail, setIsEmail] = useState()
   const [isPhone, setIsPhone] = useState()
- 
+
   onPressSignUp = async () => {
     try {
       let user = await auth().createUserWithEmailAndPassword(email, password)
@@ -61,7 +61,7 @@ function Signup({ navigation }) {
   validatephone = (phone) => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(phone)) {
-      if (phone.length == 11 && phone.startsWith('03')){
+      if (phone.length == 11 && phone.startsWith('03')) {
         return true;
       } else {
         return false;
@@ -113,14 +113,14 @@ function Signup({ navigation }) {
               placeholderTextColor='#404040'
               value={Name}
               onChangeText={onChangeName}
-              onBlur={()=>{
-                if(Name.length == 0 ){
+              onBlur={() => {
+                if (Name.length == 0) {
                   setErrorName(true)
                 }
               }}
-              
-              />
-               <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+
+            />
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorName ? <Text style={{ fontSize: 10, color: 'red' }} > Please enter name </Text> : null
               }
@@ -133,10 +133,10 @@ function Signup({ navigation }) {
               keyboardType='email-address'
               placeholderTextColor='#404040'
               value={email}
-              onBlur={() => {
+              onBlur={async () => {
                 if (email.length > 0) {
-                  setErrorEmail(false)
-                  setIsEmail(validateEmail());
+                  await setErrorEmail(false)
+                  await setIsEmail(validateEmail());
                 }
                 else {
                   setErrorEmail(true)
@@ -144,14 +144,16 @@ function Signup({ navigation }) {
               }
               }
               onChangeText={onChangeEmail} />
-              
+
             <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
-                errorEmail ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid email</Text> : null
-
+                errorEmail === true ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : null
+              }
+              {
+                isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : null
               }
             </View>
-               
+
 
             <TextInput
               style={styles.inputStyle}
@@ -170,7 +172,7 @@ function Signup({ navigation }) {
               }
               }
               onChangeText={onChangePhone} />
-              
+
             <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorPhone ? <Text style={{ fontSize: 10, color: 'red' }} > Field cannot be empty </Text> : isPhone === false ? <Text style={{ fontSize: 10, color: 'red' }} >Please enter valid phone number</Text> : null
@@ -186,14 +188,14 @@ function Signup({ navigation }) {
               onChangeText={onChangePassword}
               maxLength={15}
               secureTextEntry={true}
-              onBlur={()=>{
-                if(password.length == 0 ){
+              onBlur={() => {
+                if (password.length == 0) {
                   setErrorPassword(true)
                 }
               }}
-              
-              />
-              <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+
+            />
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorPassword ? <Text style={{ fontSize: 10, color: 'red' }} > Field cannot be empty </Text> : null
 
@@ -208,14 +210,14 @@ function Signup({ navigation }) {
               onChangeText={onChangeConfirmPassword}
               maxLength={15}
               secureTextEntry={true}
-              onBlur={()=>{
-                if(ConfirmPassword == password ){
-                  setErrorConfirmPassword(false)
+              onBlur={() => {
+                if (ConfirmPassword !== password) {
+                  setErrorConfirmPassword(true)
                 }
               }}
-              
-              />
-           <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
+
+            />
+            <View style={{ height: 12, alignItems: 'flex-end', justifyContent: 'center', width: '80%' }}>
               {
                 errorConfirmPassword ? <Text style={{ fontSize: 10, color: 'red' }} > password does not match </Text> : null
 
@@ -224,7 +226,7 @@ function Signup({ navigation }) {
 
 
             <TouchableOpacity style={styles.btn}
-              onPress={() => {onPressSignUp()}} >
+              onPress={() => { onPressSignUp() }} >
               <View>
                 <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'white', fontWeight: 'bold' }}>Sign Up</Text>
               </View>

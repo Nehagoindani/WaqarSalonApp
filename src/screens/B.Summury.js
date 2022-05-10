@@ -60,7 +60,7 @@ export default function BSummury({ navigation, route }) {
           <Text style={styles.textinp}>{currentName}</Text>
 
           <Text style={styles.textin}>Appointment Date</Text>
-          <Text style={styles.textinp}>{Date}</Text>
+          <Text style={styles.textinp}>{date}</Text>
 
           <Text style={styles.textin}>Time Slot</Text>
           <Text style={styles.textinp}>{Time}</Text>
