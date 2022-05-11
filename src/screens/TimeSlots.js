@@ -29,15 +29,12 @@ export default function TimeSlots({ navigation, route }) {
   const [fourthSlot, setFourthslot] = useState(0)
   const [isLoading, setIsloading] = useState(false)
 
-  useEffect(() => {
-    //getBooking()
-  })
 
   const getBooking = async (date) => {
-    setIsloading(true)
+  //  setIsloading(true)
     let check = moment(date).format('DD-M-YYYY')
     console.log(check)
-    await firestore().collection("bookings").where("Date", "==", check)
+    await firestore().collection("bookings").where("date", "==", check)
       .get()
       .then(function (querySnapshot) {
         let bookings = []
@@ -47,21 +44,15 @@ export default function TimeSlots({ navigation, route }) {
         });
         console.log(bookings)
 
-        fs = bookings.filter(booking => booking.TimeSlot == '12pm - 1pm').length;
+        fs = bookings.filter(booking => booking.timeSlot == '12pm - 1pm').length;
         setFirstslot(fs)
-        ss = bookings.filter(booking => booking.TimeSlot == '1pm - 2pm').length;
+        ss = bookings.filter(booking => booking.timeSlot == '1pm - 2pm').length;
         setSecondslot(ss);
-        ts = bookings.filter(booking => booking.TimeSlot == '2pm - 3pm').length;
+        ts = bookings.filter(booking => booking.timeSlot == '2pm - 3pm').length;
         setThirdslot(ts)
-        ffs = bookings.filter(booking => booking.TimeSlot == '3pm - 4pm').length;
+        ffs = bookings.filter(booking => booking.timeSlot == '3pm - 4pm').length;
         setFourthslot(ffs)
         setIsloading(false)
-        /*  console.log(firstSlot)
-          console.log(secondSlot)
-          console.log(thirdSlot)
-          console.log(fourthSlot)*/
-
-
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);

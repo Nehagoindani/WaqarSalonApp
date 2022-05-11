@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import { addService, removeService } from '../Redux/Actions/serviceAction';

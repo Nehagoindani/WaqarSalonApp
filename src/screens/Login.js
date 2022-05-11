@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, ScrollView, Image, StyleSheet, TextInput, Text, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native'
+import { View, Button, ScrollView, Image, StyleSheet, TextInput, Text, TouchableOpacity, ImageBackground, ActivityIndicator, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,16 +27,11 @@ function LoginScreen({ navigation }) {
         console.log('user logged in successfully');
 
       })
-    if (email != user ) {
-      console.log('please enter valid email/password');
-      alert('email/password is not valid')
-    }
-    else  {
-      return true
-     
-    }
-
-
+      .catch((err)=>{
+        console.log(err.code)
+        Alert.alert(err.message)
+      })
+  
   }
 
   validateEmail = () => {

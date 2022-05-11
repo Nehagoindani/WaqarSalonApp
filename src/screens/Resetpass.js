@@ -14,11 +14,11 @@ import auth from '@react-native-firebase/auth'
 function ResetScreen({ navigation }) {
   const [email, setEmail] = useState('')
 
-const forgotPassword=()=>{ 
+  const forgotPassword = () => {
     auth().sendPasswordResetEmail(email)
       .then(() => {
-        alert("reset email sent to "+email);
-        console.log("reset email sent to ",email);
+        alert("reset email sent to " + email);
+        console.log("reset email sent to ", email);
       })
       .catch(function (e) {
         console.log(e);
@@ -26,95 +26,89 @@ const forgotPassword=()=>{
   };
 
   return (
-    <ScrollView style={styles.scroll}>
-      <View style={styles.container}>
-        <View style={{ flex: 0.9 }}>
-          <Text style={styles.text}>Reset Password </Text>
+
+    <View style={styles.container}>
+      <View style={{ flex: 0.2, justifyContent: 'center' }}>
+        <Text style={styles.text}>Reset Password</Text>
+      </View>
+
+      <View style={{ flex: 0.8 }}>
+        <View style={{ marginTop: 20 }}>
+          <TextInput
+            style={styles.textinp}
+            placeholder="Enter your Email Address"
+            placeholderTextColor="#1a1a1a"
+            keyboardType='email-address'
+            value={email}
+            onChangeText={(email) => setEmail(email)}></TextInput>
         </View>
-        <View style={styles.box}>
 
-          <View style={{ flex: 0.3, margin: 20, alignSelf: 'center' }}>
-            <Image style={{ width: 150, height: 100, margin: 10 }}
-              source={require("../Images/forgot.png")} ></Image>
-          </View>
+        <View>
+          <TouchableOpacity style={styles.btn}
+            onPress={() => { forgotPassword() }} >
+            <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'white', fontWeight: 'bold' }}>Reset</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ width: '80%', alignItems: 'flex-end', margin:50, marginTop: 30 }}>
 
-          <View style={{ marginTop: 20 }}>
-            <TextInput
-              style={styles.textin}
-              placeholder="Email address"
-              placeholderTextColor="black"
-              keyboardType='email-address'
-              value={email}
-              onChangeText={(email) => setEmail(email)}></TextInput>
-          </View>
-
-          <View style={{ marginTop: 30 }}>
-            <TouchableOpacity style={styles.btn}
-              onPress={() =>{forgotPassword()} } >
-              <View>
-                <Text style={{ textAlign: 'center', fontSize: 16, padding: 10, color: 'black', fontWeight: 'bold' }}>Reset</Text>
-              </View>
-              <View style={{ width: '80%', alignItems: 'flex-end', margin:12 }}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Login")}
-              >
-                <Text style={{ color: '#1a1a1a', margin: 10, fontSize: 14, }}>Back to SignIn?
-
-                </Text>
-
-              </TouchableOpacity>
-
-            </View>
-            </TouchableOpacity>
-          </View>
-
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")} >
+            <Text style={styles.textin}> Back to Login?</Text>
+          </TouchableOpacity>
 
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 export default ResetScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  scroll: {
-    backgroundColor: 'black',
-  },
-  text: {
 
-    padding: 10,
-    marginTop: 60,
+  text: {
+    marginTop: 20,
     fontSize: 30,
     fontWeight: 'bold',
-    color: 'white',
-    fontFamily: 'sans-serif',
+    color: 'black'
   },
-  box: {
-    flex: 5,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    marginTop: 50,
-    backgroundColor: 'white',
-    width: '80%',
-    height: 400,
+  container: {
+    flex: 1,
+    backgroundColor: '#fcf7f0',
+    justifyContent: 'center',
+    padding: 20
   },
-  textin: {
 
-    marginBottom: 10,
-    marginTop: 20,
-    margin: 5,
-    padding: 10,
-    paddingLeft: 5,
-    width: 250,
-    borderBottomColor: '#d6994b',
-    borderBottomWidth: 3,
+  textin: {
+    color: '#d6994b',
+    fontSize: 16,
+    marginTop: 20
   },
+  textinp: {
+    fontSize: 16,
+    marginBottom: 15,
+    borderWidth: 1.75,
+    borderColor: '#fcf7f0',
+    borderBottomColor: '#d6994b',
+    width: '96%',
+
+  },
+  btn: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    color: 'black',
+    fontWeight: 'bold',
+    shadowOpacity: 0.4,
+    shadowRadius: 4.7,
+    elevation: 8,
+    textAlign: 'center',
+    width: '50%',
+    backgroundColor: '#1a1a1a',
+    height: 40,
+    borderRadius: 20,
+    marginTop: 40
+  },
+
 });

@@ -86,7 +86,7 @@ export default function BSummury({ navigation, route }) {
           }}   >
           <View style={styles.centeredView2}>
             <View style={styles.modalView}>
-              <Text style={{ fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16, TextAlign: "center" }}>Appointment Booked!</Text>
+              <Text style={{ TextAlign: 'center', fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16,  }}>Appointment Booked!</Text>
               <Text style={{ color: 'black', marginBottom: 15, textAlign: "center" }}>You will receive a confirmation message shortly.</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -236,7 +236,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   sumText: {
-    fontSize: 15, color: 'black',
+    fontSize: 15, 
+    color: 'black',
     margin: 10,
     padding: 10,
     borderWidth: 2,

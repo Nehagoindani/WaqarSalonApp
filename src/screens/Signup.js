@@ -58,17 +58,17 @@ function Signup({ navigation }) {
     }
 
   }
-  validatephone = (phone) => {
+  validatephone = () => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(phone)) {
+   // if (reg.test(phone)) {
       if (phone.length == 11 && phone.startsWith('03')) {
         return true;
       } else {
         return false;
       }
-    }
+   // }
   }
-  validateEmail = (email) => {
+  validateEmail = () => {
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (emailRegex.test(email)) {
       return true;
@@ -134,12 +134,14 @@ function Signup({ navigation }) {
               placeholderTextColor='#404040'
               value={email}
               onBlur={async () => {
-                if (email.length > 0) {
-                  await setErrorEmail(false)
-                  await setIsEmail(validateEmail());
+                if (email.length === 0) {
+                  setErrorEmail(true)
+                  setIsEmail()
+                
                 }
                 else {
-                  setErrorEmail(true)
+                  setErrorEmail(false)
+                  setIsEmail(validateEmail());
                 }
               }
               }
@@ -150,7 +152,7 @@ function Signup({ navigation }) {
                 errorEmail === true ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : null
               }
               {
-                isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} > Email cannot be empty </Text> : null
+                isEmail === false ? <Text style={{ fontSize: 10, color: 'red' }} > please enter valid Email </Text> : null
               }
             </View>
 
