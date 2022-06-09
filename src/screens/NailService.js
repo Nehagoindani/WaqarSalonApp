@@ -10,31 +10,31 @@ const DATA = [
     data: [
       {
         name: 'Manicure',
-        price: 'Rs. 800'
+        price: '800'
       },
       {
         name: 'Whitening Manicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Paraffin Manicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Herbal Manicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Spa Manicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Paraffin Whitening Manicure',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'OPI Manicure',
-        price: 'Rs. 1800'
+        price: '1800'
       }
     ]
   },
@@ -43,31 +43,31 @@ const DATA = [
     data: [
       {
         name: 'Pedicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Whitening Pedicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Paraffin Pedicure',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'Herbal Pedicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Spa Pedicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Paraffin Whitening Pedicure',
-        price: 'Rs. 1800'
+        price: '1800'
       },
       {
         name: 'OPI Pedicure',
-        price: 'Rs. 2000'
+        price: '2000'
       },]
   },];
 
@@ -84,27 +84,30 @@ const NailService = ({ navigation }) => {
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>Rs. {price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
           <TouchableOpacity
             onPress={() => dispatch(removeService(name))}
             disabled={
-              services.includes(name) ? false : true
+              services.some(item => item.name === name) ? false : true
             }>
-            <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
+            <Icon name='minus-circle-outline' size={20} color={services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
 
           <TouchableOpacity
-            onPress={() => dispatch(addService(name))}
+            onPress={() => dispatch(addService({
+              name: name,
+              price: price
+            }))}
             disabled={
-              !services.includes(name) ? false : true
+              !services.some(item => item.name === name) ? false : true
             }
           >
-            <Icon name='plus-circle-outline' size={20} color={!services.includes(name) ? '#d6994b' : 'grey'} />
+            <Icon name='plus-circle-outline' size={20} color={!services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
       </View>

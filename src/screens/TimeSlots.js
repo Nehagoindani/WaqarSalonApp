@@ -12,6 +12,7 @@ import firestore from '@react-native-firebase/firestore';
 export default function TimeSlots({ navigation, route }) {
 
   const { services } = useSelector(state => state.service)
+  
 
   const DATA = []
   const [date, setDate] = useState(new Date())

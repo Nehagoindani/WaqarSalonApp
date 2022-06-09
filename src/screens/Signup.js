@@ -26,6 +26,7 @@ function Signup({ navigation }) {
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false)
   const [isEmail, setIsEmail] = useState()
   const [isPhone, setIsPhone] = useState()
+  console.disableYellowBox = true;
 
   onPressSignUp = async () => {
     try {

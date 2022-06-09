@@ -12,6 +12,7 @@ export default function BSummury({ navigation, route }) {
   const dispatch = useDispatch();
 
   const Service = route.params.serviceName
+  const price = route.params.price
   const date = route.params.Date
   const Ins = route.params.Instructions
   const Time = route.params.Time
@@ -51,7 +52,7 @@ export default function BSummury({ navigation, route }) {
       <View style={styles.view3}>
 
         <View style={{ flex: 0.3, }}>
-          <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', marginBottom: 20, marginTop:20 }}>Booking Summary</Text>
+          <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', marginBottom: 20, marginTop: 20 }}>Booking Summary</Text>
         </View>
 
         <View style={{ flex: 0.7, justifyContent: 'center' }}>
@@ -66,8 +67,11 @@ export default function BSummury({ navigation, route }) {
           <Text style={styles.textinp}>{Time}</Text>
 
           <Text style={styles.textin}>Services</Text>
-          <Text style={styles.textinp}>{Service}</Text>
-
+          {
+            Service.map((item, index) => (
+              <Text key={index} style={styles.textinp}>{item.name}</Text>
+            ))
+          }
           <Text style={styles.textin}>Special Instructions</Text>
           <Text style={styles.textinp}>{Ins}</Text>
 
@@ -86,7 +90,7 @@ export default function BSummury({ navigation, route }) {
           }}   >
           <View style={styles.centeredView2}>
             <View style={styles.modalView}>
-              <Text style={{ TextAlign: 'center', fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16,  }}>Appointment Booked!</Text>
+              <Text style={{ TextAlign: 'center', fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16, }}>Appointment Booked!</Text>
               <Text style={{ color: 'black', marginBottom: 15, textAlign: "center" }}>You will receive a confirmation message shortly.</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -102,7 +106,9 @@ export default function BSummury({ navigation, route }) {
                         date: date,
                         timeSlot: Time,
                         instruction: Ins,
-                        status: 'Pending'
+                        status: 'Pending',
+                        arrived: false
+
                       })
                       .then(function () {
                         console.log("Document successfully written!");
@@ -136,7 +142,7 @@ export default function BSummury({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
     backgroundColor: '#fcf7f0',
     justifyContent: 'center'
   },
@@ -185,7 +191,7 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 0.3,
     justifyContent: "center",
-    padding:20
+    padding: 20
   },
   centeredView2: {
     flex: 1,
@@ -236,7 +242,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   sumText: {
-    fontSize: 15, 
+    fontSize: 15,
     color: 'black',
     margin: 10,
     padding: 10,

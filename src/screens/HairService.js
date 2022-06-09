@@ -162,13 +162,14 @@ const HairService = ({ navigation }) => {
   };
 
   const check = (name) => {
-    if (services.includes(name)) return true
+    if (services.some(item => item.name === name)) return true
     else return false
 
   }
 
 
   const Item = ({ name, price }) => (
+    
 
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
@@ -180,23 +181,26 @@ const HairService = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => dispatch(removeService(name))}
             disabled={
-              services.includes(name) ? false : true
+              services.some(item => item.name === name) ? false : true
             }
          
          >
           
-            <Icon name='minus-circle-outline' size={20} color={services.includes(name) ? '#d6994b' : 'grey'} />
+            <Icon name='minus-circle-outline' size={20} color={services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
 
           <TouchableOpacity
-            onPress={() => dispatch(addService(name))}
+            onPress={() => dispatch(addService({
+              name: name,
+              price: price
+            }))}
             disabled={
-              !services.includes(name) ? false : true
+              !services.some(item => item.name === name) ? false : true
             }
           >
-            <Icon name='plus-circle-outline' size={20} color={!services.includes(name) ? '#d6994b' : 'grey'} />
+            <Icon name='plus-circle-outline' size={20} color={!services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
 
         </View>

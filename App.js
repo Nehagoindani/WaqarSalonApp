@@ -63,11 +63,13 @@ const Top = createMaterialTopTabNavigator();
 
 function TopTabs() {
   const [swipeEnabled, setSwipeEnabled] = useState(true);
+  console.disableYellowBox = true;
   return (
   
     <Top.Navigator
       initialRouteName="Hair"
       swipeEnabled={swipeEnabled}
+     
       screenOptions={{
        
         tabBarActiveTintColor: '#d6994b',
@@ -138,6 +140,7 @@ const Stack = createNativeStackNavigator();
 //const AuthStack = createNativeStackNavigator();
 
 function authStack() {
+ 
   return (
     <Stack.Navigator>
       <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />

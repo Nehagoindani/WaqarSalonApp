@@ -10,7 +10,11 @@ const serviceReducer = (state = initialState, action) => {
 
         case 'REMOVE':
             var remove = action.payload.serviceName;
-            var index = state.services.indexOf(remove)
+            var index = state.services.findIndex(object => {
+                return object.name === remove;
+            });
+            // var index = state.services.indexOf(remove)
+            // console.log(index)
             if (index > -1) {
                 state.services.splice(index, 1)
             }
