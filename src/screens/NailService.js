@@ -146,11 +146,11 @@ const NailService = ({ navigation }) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
+        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
         </TouchableOpacity>
       </View>
     </View>

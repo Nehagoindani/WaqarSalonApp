@@ -12,7 +12,7 @@ import firestore from '@react-native-firebase/firestore';
 export default function TimeSlots({ navigation, route }) {
 
   const { services } = useSelector(state => state.service)
-  
+
 
   const DATA = []
   const [date, setDate] = useState(new Date())
@@ -32,7 +32,7 @@ export default function TimeSlots({ navigation, route }) {
 
 
   const getBooking = async (date) => {
-  //  setIsloading(true)
+    //  setIsloading(true)
     let check = moment(date).format('DD-M-YYYY')
     console.log(check)
     await firestore().collection("bookings").where("date", "==", check)
@@ -66,33 +66,34 @@ export default function TimeSlots({ navigation, route }) {
         <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 26 }}>
           Appointment Booking
         </Text>
-
       </View>
 
       <View style={styles.view3}>
-        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Date</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          Select your desired date. </Text>
-        <TouchableOpacity style={{height:100}}
-          onPress={() => setOpen(true)}>
-         <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text> 
-        </TouchableOpacity>
 
-        <DatePicker
-          modal
-          open={open}
-          date={date}
-          mode={"date"}
-          onConfirm={(datee) => {
-            setOpen(false)
-            setDate(datee) 
-            getBooking(datee)
-          }}
-          onCancel={() => {
-            setOpen(false)
-          }} />
+        <View style={{flex:0.25}}>
+          <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Date</Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+            Select your desired date. </Text>
+          <TouchableOpacity style={{ height:50 }}
+            onPress={() => setOpen(true)}>
+            <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text>
+          </TouchableOpacity>
+          <DatePicker
+            modal
+            open={open}
+            date={date}
+            mode={"date"}
+            onConfirm={(datee) => {
+              setOpen(false)
+              setDate(datee)
+              getBooking(datee)
+            }}
+            onCancel={() => {
+              setOpen(false)
+            }} />
+        </View>
 
-        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Time</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Time</Text>
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
           Select your desired timeslot.</Text>
 
@@ -100,91 +101,75 @@ export default function TimeSlots({ navigation, route }) {
           isLoading ? (<View> <ActivityIndicator /> </View>) :
             (
               <View style={styles.view5}>
-                <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
-                  <View style={{
-                    flex: 0.5, justifyContent: 'center', alignItems: 'center'
-                  }}>
-                    {
-                      firstSlot < 2 ?
-                        (
-                          <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
-                            <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black' }}>12pm - 1pm</Text>
-                          </TouchableOpacity>
-                        ) :
-                        (
-                          <Text style={{ color: 'red' }}>12pm - 1pm</Text>
-                        )
-                    }
-                  </View>
-
-                </View>
-                <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
-                  <View style={{
-                    flex: 0.5, justifyContent: 'center', alignItems: 'center'
-                  }}>
-                    {
-                      secondSlot < 2 ?
-                        (
-                          <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  >
-                            <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black' }}>1pm - 2pm</Text>
-                          </TouchableOpacity>
-                        ) :
-                        (
-                          <Text style={{ color: 'red' }}>1pm - 2pm</Text>
-                        )
-                    }
-                  </View>
-
-                </View>
-                <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
-                  <View style={{
-                    flex: 0.5, justifyContent: 'center', alignItems: 'center'
-                  }}>
-                    {
-                      thirdSlot < 2 ?
-                        (
-                          <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >
-                            <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black' }}>2pm - 3pm</Text>
-                          </TouchableOpacity>
-                        ) :
-                        (
-                          <Text style={{ color: 'red' }}>2pm - 3pm</Text>
-                        )
-                    }
-                  </View>
-                </View>
-                <View style={{ flex: 0.25, flexDirection: 'row', marginVertical: 2 }}>
-                  <View style={{
-                    flex: 0.5, justifyContent: 'center', alignItems: 'center'
-                  }}>
-                    {
-                      fourthSlot < 2 ?
-                        (
-                          <TouchableOpacity onPress={() => setTime('3pm - 4pm')}  >
-                            <Text style={{ color: time === '3pm - 4pm' ? '#d6994b' : 'black' }}>3pm - 4pm</Text>
-                          </TouchableOpacity>
-                        ) :
-                        (
-                          <Text style={{ color: 'red' }}>3pm - 4pm</Text>
-                        )
-                    }
-                  </View>
-
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fcf7f0', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                  {
+                    firstSlot < 2 ?
+                      (
+                        <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
+                          <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>12pm - 1pm</Text>
+                        </TouchableOpacity>
+                      ) :
+                      (
+                        <Text style={{ color: 'red' }}>12pm - 1pm</Text>
+                      )
+                  }
                 </View>
 
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#faedd9', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                  {
+                    secondSlot < 2 ?
+                      (
+                        <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  >
+                          <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>1pm - 2pm</Text>
+                        </TouchableOpacity>
+                      ) :
+                      (
+                        <Text style={{ color: 'red' }}>1pm - 2pm</Text>
+                      )
+                  }
+                </View>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fcf7f0', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                  {
+                    thirdSlot < 2 ?
+                      (
+                        <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >
+                          <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>2pm - 3pm</Text>
+                        </TouchableOpacity>
+                      ) :
+                      (
+                        <Text style={{ color: 'red' }}>2pm - 3pm</Text>
+                      )
+                  }
+                </View>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#faedd9', width:'88%', borderColor:'#d6994b', borderWidth:1 }}>
+                  {
+                    fourthSlot < 2 ?
+                      (
+                        <TouchableOpacity onPress={() => setTime('3pm - 4pm')}  >
+                          <Text style={{ color: time === '3pm - 4pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>3pm - 4pm</Text>
+                        </TouchableOpacity>
+                      ) :
+                      (
+                        <Text style={{ color: 'red' }}>3pm - 4pm</Text>
+                      )
+                  }
+                </View>
               </View>
             )
         }
+        <View style={{flex:0.33}}>
+          <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Special Instructions</Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+            Please enter any special instructions or staff </Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+            requests here. </Text>
+          <TextInput style={styles.textin}
+            placeholder="Enter Instructions Here"
+            onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
+        </View>
 
-        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>Special Instructions</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          Please enter any special instructions or staff </Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-          requests here. </Text>
-        <TextInput style={styles.textin}
-          placeholder="Enter Instructions Here"
-          onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
       </View>
+
       <View style={styles.view4}>
         <TouchableOpacity style={{ backgroundColor: '#d6994b' }}
           onPress={
@@ -211,37 +196,34 @@ export default function TimeSlots({ navigation, route }) {
 const styles = StyleSheet.create({
   view1: {
     flex: 1,
-    backgroundColor: '#fcf7f0'
+    backgroundColor: '#fcf7f0' //'#fcf7f0'   '#fff7eb'
 
   },
   view3: {
     flex: 0.78,
     paddingLeft: 25,
-    paddingBottom: 10,
-    justifyContent: 'space-evenly',
-    marginBottom: 5
-
+    justifyContent: 'space-around',
   },
   view5: {
-    flex: 1,
-    //flexDirection: 'row'
+    flex: 0.5,
+    marginBottom:20
   },
   view2: {
-    flex: 0.12,
+    flex: 0.1,
     justifyContent: 'center',
-    marginLeft: 25
+    marginLeft: 25,
   },
   view4: {
     flex: 0.1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d6994b'
+    backgroundColor: '#d6994b',
   },
   textin: {
     borderWidth: 2,
     padding: 8,
     width: '88%',
-    fontSize: 14,
+    fontSize: 16,
     color: 'black'
   },
 })

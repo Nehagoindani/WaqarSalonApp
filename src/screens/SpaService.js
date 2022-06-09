@@ -10,35 +10,35 @@ const DATA = [
     data: [
       {
         name: 'Head Massage & Shoulder Massage (30min)',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Foot Massage (30min)',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Body Massage (40min)',
-        price: 'Rs. 3000'
+        price: '3000'
       },
       {
         name: 'Thai Massage (40min)',
-        price: 'Rs. 2500'
+        price: '2500'
       },
       {
         name: 'Deep tissue Back Massage (25min)',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'Body Scrub & Oil Massage (60min)',
-        price: 'Rs. 4000'
+        price: '4000'
       },
       {
         name: 'Body Treatment (60min)',
-        price: 'Rs. 5000'
+        price: '5000'
       },
       {
         name: 'Body Scrub (35min)',
-        price: 'Rs. 2000'
+        price: '2000'
       }
     ]
   },
@@ -57,7 +57,7 @@ const SpaService = ({navigation}) => {
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>Rs. {price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -122,7 +122,7 @@ const SpaService = ({navigation}) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >

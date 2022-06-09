@@ -10,11 +10,11 @@ const DATA = [
     data: [
       {
         name: 'Party Makeup with Waqar',
-        price: 'Rs. 8000'
+        price: '8000'
       },
       {
         name: 'Party Makeup with Stylist',
-        price: 'Rs. 6000'
+        price: '6000'
       }
      /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
     ] },
@@ -23,11 +23,11 @@ const DATA = [
         data: [
           {
             name: 'Engagement Makeup with Waqar',
-            price: 'Rs. 15,000'
+            price: '15000'
           },
           {
             name: 'Engagement Makeup with Stylist',
-            price: 'Rs. 10,000'
+            price: '10000'
           }
          /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
         ] },
@@ -36,11 +36,11 @@ const DATA = [
             data: [
               {
                 name: 'Nikkah Makeup with Waqar',
-                price: 'Rs. 20,000'
+                price: '20000'
               },
               {
                 name: 'Nikkah Makeup with Stylist',
-                price: 'Rs. 15,000'
+                price: '15000'
               }
              /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
             ] },
@@ -49,11 +49,11 @@ const DATA = [
                 data: [
                   {
                     name: 'Mehendi/Mayoun with Waqar',
-                    price: 'Rs. 10,000'
+                    price: '10000'
                   },
                   {
                     name: 'Mehendi/Mayoun Makeup with Stylist',
-                    price: 'Rs. 8000'
+                    price: '8000'
                   }
                  /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
                 ] },
@@ -62,11 +62,11 @@ const DATA = [
                     data: [
                       {
                         name: ' Makeup with Waqar',
-                        price: 'Rs. 35,000'
+                        price: '35000'
                       },
                       {
                         name: 'Party Makeup with Stylist',
-                        price: 'Rs. 25,000'
+                        price: '25000'
                       }
                      /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
                     ] },
@@ -87,7 +87,7 @@ const Item = ({ name, price }) => (
   <View style={styles.item}>
     <View style={{ flex: 0.7 }}>
       <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-      <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+      <Text style={{ color: '#d6994b', fontSize: 16 }}>Rs. {price}</Text>
     </View>
     <View style={{ flex: 0.3, flexDirection: 'row' }}>
       <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -154,7 +154,7 @@ const Item = ({ name, price }) => (
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >

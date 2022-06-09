@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, SectionList, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addService , removeService } from '../Redux/Actions/serviceAction';
+import { addService, removeService } from '../Redux/Actions/serviceAction';
 
 
 
@@ -13,28 +13,28 @@ const DATA = [
     data: [
       {
         name: 'Hair Cut by Waqar',
-        price: 'Rs. 3500+'
+        price: '3500'
       },
       {
         name: 'Hair Cut by Senior Stylist',
-        price: 'Rs. 2500+'
+        price: '2500'
       },
       {
         name: 'Hair Cut by Junior Stylist',
-        price: 'Rs. 2000+'
+        price: '2000'
       },
       {
         name: 'Bangs',
-        price: 'Rs. 800'
+        price: '800'
       },
       {
         name: 'Trimming',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */
       {
         name: 'Baby Cut',
-        price: 'Rs. 1500'
+        price: '1500'
       },
     ]
   },
@@ -43,11 +43,11 @@ const DATA = [
     data: [
       {
         name: 'Normal Shampoo',
-        price: 'Rs. 500'
+        price: '500'
       },
       {
         name: 'Branded Shampoo',
-        price: 'Rs. 800'
+        price: '800'
       },]
   },
   {
@@ -55,19 +55,19 @@ const DATA = [
     data: [
       {
         name: 'Blow Dry',
-        price: 'Rs. 1000+'
+        price: '1000'
       },
       {
         name: 'Ironing',
-        price: 'Rs. 1000+'
+        price: '1000'
       },
       {
         name: 'Hair Do',
-        price: 'Rs. 1000+'
+        price: '1000'
       },
       {
         name: 'Baby Hair Do',
-        price: 'Rs. 800+'
+        price: '800'
       },
     ]
   },
@@ -76,77 +76,191 @@ const DATA = [
     data: [
       {
         name: 'Rebonding',
-        price: 'Rs. 10,000+'
+        price: '10000'
       },
       {
         name: 'Extenso',
-        price: 'Rs. 15,000+'
+        price: '15000'
       },
       {
         name: 'Keratin Treatment',
-        price: 'Rs. 12,000+'
+        price: '12000'
       },
       {
         name: 'Perming',
-        price: 'Rs. 10,000+'
+        price: '10000'
       },
     ]
   },
   {
-    title: "HAIR COLOURING",
+    title: "HAIR COLOURING\n(Loreal/Schwarzkopf)",
     data: [
       {
         name: 'Base Colour Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 7000+\nSilky: Rs. 5000+'
+        price: '7000'
       },
       {
         name: 'Full Colour Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Colour Correction',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Glossing',
-        price: 'Loreal/Schwarzkopf: Rs. 5000+\nSilky: Rs. 4000+'
+        price: '5000'
       },
       {
         name: 'Roots Touchup',
-        price: 'Loreal/Schwarzkopf: Rs. 3000+\nSilky: Rs. 2000+'
+        price: '3000'
       },
       {
         name: 'Roots Correction',
-        price: 'Loreal/Schwarzkopf: Rs. 3000+\nSilky: Rs. 2000+'
+        price: '3000'
       },
       {
         name: 'Highlights',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Lowlights',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Ombre',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Balayage',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Sombre',
-        price: 'Loreal/Schwarzkopf: Rs. 10,000+\nSilky: Rs. 8000+'
+        price: '10000'
       },
       {
         name: 'Dip Dye',
-        price: 'Loreal/Schwarzkopf: Rs. 8000+\nSilky: Rs. 6000+'
+        price: '8000'
       },
     ]
   },
-
-
+  {
+    title: "HAIR COLOURING (Silky)",
+    data: [
+      {
+        name: 'Base Colour Dye',
+        price: '5000'
+      },
+      {
+        name: 'Full Colour Dye',
+        price: '8000'
+      },
+      {
+        name: 'Colour Correction',
+        price: '8000'
+      },
+      {
+        name: 'Glossing',
+        price: '4000'
+      },
+      {
+        name: 'Roots Touchup',
+        price: '2000'
+      },
+      {
+        name: 'Roots Correction',
+        price: '2000'
+      },
+      {
+        name: 'Highlights',
+        price: '8000'
+      },
+      {
+        name: 'Lowlights',
+        price: '8000'
+      },
+      {
+        name: 'Ombre',
+        price: '8000'
+      },
+      {
+        name: 'Balayage',
+        price: '8000'
+      },
+      {
+        name: 'Sombre',
+        price: '8000'
+      },
+      {
+        name: 'Dip Dye',
+        price: '6000'
+      },
+    ]
+  },
+  {
+    title: "HAIR TREATMENT",
+    data: [
+      {
+        name: 'Herbal Treatment',
+        price: '1200'
+      },
+      {
+        name: 'Protein Treatment',
+        price: '2000'
+      },
+      {
+        name: 'High Frequency Protein Treatment',
+        price: '2500'
+      },
+      {
+        name: 'Hair Loss Treatment',
+        price: '3000'
+      },
+      {
+        name: 'Anti Dandruff Treatment',
+        price: '3000'
+      },
+      {
+        name: 'Hair Fall Treatment',
+        price: '3000'
+      },
+    ]
+  },
+  {
+    title: "LOREAL TREATMENT",
+    data: [
+      {
+        name: 'Smart Bond Treatment',
+        price: '4500'
+      },
+      {
+        name: 'Power Mix Treatment',
+        price: '4500'
+      },
+      {
+        name: 'Reconstruct Treatment',
+        price: '4500'
+      },
+      {
+        name: 'Recreate Treatment',
+        price: '4500'
+      }
+    ]
+  },
+  {
+    title: "SCHWARZKOPF TREATMENT",
+    data: [
+      {
+        name: 'Fiber Plex Treatment',
+        price: '4500'
+      },
+      {
+        name: 'Repair Treatment',
+        price: '4500'
+      }, 
+    ]
+  },
 ];
 const HairService = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -169,12 +283,12 @@ const HairService = ({ navigation }) => {
 
 
   const Item = ({ name, price }) => (
-    
+
 
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 15 }}>{price}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 15 }}>Rs. {price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -183,9 +297,9 @@ const HairService = ({ navigation }) => {
             disabled={
               services.some(item => item.name === name) ? false : true
             }
-         
-         >
-          
+
+          >
+
             <Icon name='minus-circle-outline' size={20} color={services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
@@ -223,6 +337,10 @@ const HairService = ({ navigation }) => {
         <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 15 }}>
           Choose the services that you want to book below.
         </Text>
+        <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 12 }}>
+          *Charges may vary according to thickness & length of hair*</Text> 
+          <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 13 }}>
+            </Text>
       </View>
       <View style={styles.view3}>
 
@@ -243,7 +361,7 @@ const HairService = ({ navigation }) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >
@@ -266,14 +384,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   view4: {
-    flex: 0.1,
+    flex: 0.13,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
-    paddingBottom: 10,
+    paddingTop: 25,
   },
   view3: {
-    flex: 0.52,
+    flex: 0.5,
     padding: 8,
   },
   view5: {

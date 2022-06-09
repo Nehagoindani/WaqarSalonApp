@@ -9,101 +9,101 @@ const DATA = [
     data: [
       {
         name: 'Whitening Facial',
-        price: 'Rs. 2500'
+        price: '2500'
       },
       {
         name: 'Full Arm Wax',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Full Leg Wax',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'Under Arm Wax',
-        price: 'Rs. 500'
+        price: '500'
       },
       {
         name: 'Herbal Manicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Herbal Pedicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Face Wax/Face Threading',
-        price: 'Rs. 1000'
+        price: '1000'
       }
     ]
   },
   {
-    title: "GOLDEN PACKAGE  Rs. 10,000",
+    title: "GOLDEN PACKAGE Rs. 10,000",
     data: [
       {
         name: 'JANSSEN Whitening Facial',
-        price: 'Rs. 4000'
+        price: '4000'
       },
       {
         name: 'Full Arm Wax',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Full Leg Wax',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'Under Arm Wax',
-        price: 'Rs. 500'
+        price: '500'
       },
       {
         name: 'Whitening Manicure',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Whitening Pedicure',
-        price: 'Rs. 1200'
+        price: '1200'
       },
       {
         name: 'Protein Hair Treatment',
-        price: 'Rs. 2000'
+        price: '2000'
       },
       {
         name: 'Face Wax/Face Threading',
-        price: 'Rs. 1000'
+        price: '1000'
       }
     ]
   },
   {
-    title: "DIAMOND PACKAGE  Rs. 20,000",
+    title: "DIAMOND PACKAGE Rs. 20,000",
     data: [
       {
         name: 'JANSSEN Whitening Supreme Facial',
-        price: 'Rs. 4500'
+        price: '4500'
       },
       {
         name: 'Body Wax',
-        price: 'Rs. 4500'
+        price: '4500'
       },
       {
         name: 'Paraffin Whitening Manicure',
-        price: 'Rs. 1500'
+        price: '1500'
       },
       {
         name: 'Paraffin Whitening Pedicure',
-        price: 'Rs. 1800'
+        price: '1800'
       },
       {
         name: 'Loreal Power Mix Treatment',
-        price: 'Rs. 4500'
+        price: '4500'
       },
       {
         name: 'Face Wax',
-        price: 'Rs. 1000'
+        price: '1000'
       },
       {
         name: 'Body Massage + Body Treatment',
-        price: 'Rs. 5000'
+        price: '5000'
       }
     ]
   }, ];
@@ -121,7 +121,7 @@ const BridalService = ({navigation}) => {
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>Rs. {price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -186,7 +186,7 @@ const BridalService = ({navigation}) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >

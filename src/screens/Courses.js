@@ -10,23 +10,23 @@ const DATA = [
     data: [
       {
         name: 'Self-Grooming Course\n(1 Week)',
-        price: 'Rs. 35,000'
+        price: '35000'
       },
       {
         name: 'Basic Makeup Course \n(1 Month)',
-        price: 'Rs. 70,000'
+        price: '70000'
       },
       {
         name: 'Advance Makeup Course \n(1 Month)',
-        price: 'Rs. 100,000'
+        price: '100000'
       },
       {
         name: 'Skin Care Course\n(1 Week)',
-        price: 'Rs. 30,000'
+        price: '30000'
       },
       {
         name: 'Services Course \n(1 Month)',
-        price: 'Rs. 50,000'
+        price: '50000'
       },
     ]
   },
@@ -35,7 +35,7 @@ const DATA = [
     data: [
       {
         name: 'Makeup and Hairstyle Classes by Waqar (15 Days)',
-        price: 'Rs. 100,000'
+        price: '100000'
       },
     ]
   }, ];
@@ -53,7 +53,7 @@ const CourseService = ({navigation}) => {
     <View style={styles.item}>
       <View style={{ flex: 0.7 }}>
         <Text style={{ color: 'black', fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: '#d6994b', fontSize: 16 }}>{price}</Text>
+        <Text style={{ color: '#d6994b', fontSize: 16 }}>Rs. {price}</Text>
       </View>
       <View style={{ flex: 0.3, flexDirection: 'row' }}>
         <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -118,7 +118,7 @@ const CourseService = ({navigation}) => {
       <View style={styles.view5}>
         <TouchableOpacity
           onPress={() => {
-            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('please select atleast one service'))
+            services.length > 0 ? (navigation.navigate('TimeSlot')) : (Alert.alert('Please Select Atleast One Service'))
 
           }}
         >
