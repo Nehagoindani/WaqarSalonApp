@@ -5,15 +5,21 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 
 function MainPage({ navigation }) {
   return (
-    <View style={{ flex: 1, backgroundColor: '#fcf7f0', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}> 
+    <View style={{ flex: 1, backgroundColor: '#fcf7f0', paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
 
       <View style={{ flex: 0.1 }}>
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
       </View>
 
-      <View style={{ flex: 0.25, paddingHorizontal: 10, marginBottom: 15 }}>
-        <Image style={styles.imgStyling} source={require("../Images/courses.jpeg")} resizeMode='cover' ></Image>
+
+      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row'}}>
+        <ScrollView horizontal={true} style={{ flex: 1 }}>
+          <View><Image style={styles.specImg1} source={require("../Images/salon3.jpg")}></Image></View>
+          <View><Image style={styles.specImg1} source={require("../Images/salon2.jpg")}></Image></View>
+          <View><Image style={styles.specImg1} source={require("../Images/salon1.jpg")}></Image></View>
+        </ScrollView>
       </View>
+
 
       <View style={{ flex: 0.25 }}>
         <View style={{ flex: 0.2 }}>
@@ -22,24 +28,24 @@ function MainPage({ navigation }) {
 
         <View style={{ flex: 0.8 }}>
           <View style={styles.categryView}>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Hair'})}  >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Hair' })}  >
               <Text style={styles.ctext}>Hair</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Makeup'})} >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Makeup' })} >
               <Text style={styles.ctext}>Makeup</Text>
             </ TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Bridal'})}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Bridal' })}>
               <Text style={styles.ctext}>Bridal</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.categryView}>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Spa'})} >
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Spa' })} >
               <Text style={styles.ctext}>Spa</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', {screen: 'Nails'})}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Nails' })}>
               <Text style={styles.ctext}>Nails</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('TopTab', {screen: 'Çourse'})}>
+            <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Çourse' })}>
               <Text style={styles.ctext}>Courses</Text>
             </TouchableOpacity>
           </View>
@@ -50,16 +56,16 @@ function MainPage({ navigation }) {
         <View style={{ flex: 0.2 }}>
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Our Clients</Text>
         </View>
-        
-        <ScrollView horizontal = {true} style={{flex:1}}>  
-        <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
-          <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
-        </View>
+
+        <ScrollView horizontal={true} style={{ flex: 1 }}>
+          <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
+            <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
+          </View>
         </ScrollView>
       </View>
 
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
   categryView: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-   
+
   },
   ctext: {
     shadowColor: "#000",
@@ -113,7 +119,7 @@ const styles = StyleSheet.create({
     padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf:'center',
+    alignSelf: 'center',
     flexDirection: 'row',
   },
   disPanel: {
@@ -136,12 +142,17 @@ const styles = StyleSheet.create({
   specImg: {
     width: 100,
     height: 150,
-    borderWidth: 1,
     margin: 5,
     padding: 5,
     borderRadius: 10,
-
-  },
+ },
+ specImg1: {
+  width: 330,
+  height: 151,
+  margin: 5,
+  padding: 5,
+  borderRadius: 10,
+},
   imgStyling: {
     flex: 1,
     width: '100%',
