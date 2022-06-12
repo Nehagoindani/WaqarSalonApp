@@ -71,10 +71,10 @@ export default function TimeSlots({ navigation, route }) {
       <View style={styles.view3}>
 
         <View style={{flex:0.25}}>
-          <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Date</Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 19, color: 'black', paddingTop:3, }}>Date</Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 12, paddingTop:5, paddingBottom:5 }}>
             Select your desired date. </Text>
-          <TouchableOpacity style={{ height:50 }}
+          <TouchableOpacity style={{ height:60 }}
             onPress={() => setOpen(true)}>
             <Text style={styles.textin}>{moment(date).format('Do MMMM YYYY')}</Text>
           </TouchableOpacity>
@@ -93,20 +93,20 @@ export default function TimeSlots({ navigation, route }) {
             }} />
         </View>
 
-        <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Time</Text>
-        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
+        <Text style={{ fontWeight: 'bold', fontSize: 19, color: 'black' , paddingTop:5,}}>Time</Text>
+        <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 12, paddingTop:5, paddingBottom:5}}>
           Select your desired timeslot.</Text>
 
         {
           isLoading ? (<View> <ActivityIndicator /> </View>) :
             (
               <View style={styles.view5}>
-                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fcf7f0', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', width:'88%', borderColor:'#a6a5a4', borderRadius:4, borderBottomWidth:0.75}}>
                   {
                     firstSlot < 2 ?
                       (
                         <TouchableOpacity onPress={() => setTime('12pm - 1pm')}  >
-                          <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>12pm - 1pm</Text>
+                          <Text style={{ color: time === '12pm - 1pm' ? '#d6994b' : 'black', fontSize: 15, paddingLeft:20 }}>12pm - 1pm</Text>
                         </TouchableOpacity>
                       ) :
                       (
@@ -115,12 +115,12 @@ export default function TimeSlots({ navigation, route }) {
                   }
                 </View>
 
-                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#faedd9', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', width:'88%', borderColor:'#a6a5a4', borderRadius:4, borderBottomWidth:0.75}}>
                   {
                     secondSlot < 2 ?
                       (
                         <TouchableOpacity onPress={() => setTime('1pm - 2pm')}  >
-                          <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>1pm - 2pm</Text>
+                          <Text style={{ color: time === '1pm - 2pm' ? '#d6994b' : 'black', fontSize: 15, paddingLeft:20 }}>1pm - 2pm</Text>
                         </TouchableOpacity>
                       ) :
                       (
@@ -128,12 +128,12 @@ export default function TimeSlots({ navigation, route }) {
                       )
                   }
                 </View>
-                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#fcf7f0', width:'88%', borderColor:'#d6994b', borderWidth:1, borderBottomWidth:0}}>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', width:'88%', borderColor:'#a6a5a4', borderRadius:4,  borderBottomWidth:0.75}}>
                   {
                     thirdSlot < 2 ?
                       (
                         <TouchableOpacity onPress={() => setTime('2pm - 3pm')}  >
-                          <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>2pm - 3pm</Text>
+                          <Text style={{ color: time === '2pm - 3pm' ? '#d6994b' : 'black', fontSize: 15, paddingLeft:20 }}>2pm - 3pm</Text>
                         </TouchableOpacity>
                       ) :
                       (
@@ -141,12 +141,12 @@ export default function TimeSlots({ navigation, route }) {
                       )
                   }
                 </View>
-                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', backgroundColor: '#faedd9', width:'88%', borderColor:'#d6994b', borderWidth:1 }}>
+                <View style={{ flex: 0.25, flexDirection: 'row', alignItems: 'center', width:'88%', borderColor:'#a6a5a4', borderRadius:4, borderBottomWidth:0.75 }}>
                   {
                     fourthSlot < 2 ?
                       (
                         <TouchableOpacity onPress={() => setTime('3pm - 4pm')}  >
-                          <Text style={{ color: time === '3pm - 4pm' ? '#d6994b' : 'black', fontSize: 16, paddingLeft:20 }}>3pm - 4pm</Text>
+                          <Text style={{ color: time === '3pm - 4pm' ? '#d6994b' : 'black', fontSize: 15, paddingLeft:20 }}>3pm - 4pm</Text>
                         </TouchableOpacity>
                       ) :
                       (
@@ -158,14 +158,11 @@ export default function TimeSlots({ navigation, route }) {
             )
         }
         <View style={{flex:0.33}}>
-          <Text style={{ fontWeight: 'bold', fontSize: 22, color: 'black' }}>Special Instructions</Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-            Please enter any special instructions or staff </Text>
-          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 14 }}>
-            requests here. </Text>
-          <TextInput style={styles.textin}
-            placeholder="Enter Instructions Here"
-            onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
+          <Text style={{ fontWeight: 'bold', fontSize:19, color: 'black' }}>Special Instructions</Text>
+          <Text style={{ color: '#d6994b', fontStyle: 'italic', fontSize: 12, paddingTop:5, paddingBottom:5}}>
+            Please enter any instructions or staff requests here</Text>
+          <TextInput style={styles.textin} placeholder="Enter Instructions Here"
+           onChangeText={(userInput) => setUserInput(userInput)} ></TextInput>
         </View>
 
       </View>
@@ -196,7 +193,7 @@ export default function TimeSlots({ navigation, route }) {
 const styles = StyleSheet.create({
   view1: {
     flex: 1,
-    backgroundColor: '#fcf7f0' //'#fcf7f0'   '#fff7eb'
+    backgroundColor: '#fcf7f0' //'#fcf7f0' #f5f2ed  '#fff7eb'  '#faedd9
 
   },
   view3: {
@@ -206,7 +203,7 @@ const styles = StyleSheet.create({
   },
   view5: {
     flex: 0.5,
-    marginBottom:20
+    marginBottom:20, fontSize:14
   },
   view2: {
     flex: 0.1,
@@ -220,10 +217,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#d6994b',
   },
   textin: {
-    borderWidth: 2,
+    borderWidth: 0.75,
     padding: 8,
     width: '88%',
-    fontSize: 16,
-    color: 'black'
+    fontSize: 14,
+    color: 'black',
+    borderColor:'#a6a5a4', borderRadius:4
   },
 })

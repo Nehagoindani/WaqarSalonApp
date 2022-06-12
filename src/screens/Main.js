@@ -48,10 +48,10 @@ function MainPage({ navigation }) {
 
       <View style={{ flex: 0.3 }}>
         <View style={{ flex: 0.2 }}>
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Clients by Waqar</Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Our Clients</Text>
         </View>
         
-        <ScrollView horizontal = {true} >
+        <ScrollView horizontal = {true} style={{flex:1}}>  
         <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
           <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
           <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     opacity: 0.2,
     margin: 10,
     padding: 20,
-    borderWidth: 3,
-    borderColor: 'brown',
+    borderWidth: 1,
+    borderColor: 'black',
     height: 40
   },
   categryView: {
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     },
     fontWeight: 'bold',
     borderColor: '#d6994b',       //'#1a1a1a'
-    borderWidth: 2.2,
-    borderRadius: 10,
+    borderWidth: 1.25,
+    borderRadius: 8,
     color: '#000',
     backgroundColor: '#fcf7f0',   //'#fcf7f0' '#d6994b'
     shadowOpacity: 0.4,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   imgStyling: {
     flex: 1,
     width: '100%',
-    borderRadius: 14,
+    borderRadius: 10,
   },
   imgStyling2: {
     height: 50,
