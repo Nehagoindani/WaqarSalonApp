@@ -43,6 +43,7 @@ export default function Products() {
                   <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Price:  {item.price}</Text>
                   <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Quantity:  {item.count} </Text>
                   <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Description:  {item.description} </Text>
+                  <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Image:  {item.image} </Text>
                 </View>
               )
             })

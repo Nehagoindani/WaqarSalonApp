@@ -50,12 +50,17 @@ function MainPage({ navigation }) {
         <View style={{ flex: 0.2 }}>
           <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>  Clients by Waqar</Text>
         </View>
-
+        
+        <ScrollView horizontal = {true} >
         <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
+          <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
+          <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
+          <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
+          <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
           <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
-          <View><Image style={styles.specImg} source={require("../Images/waq2.jpeg")}></Image></View>
           <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
         </View>
+        </ScrollView>
       </View>
 
       <View style={{ flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
