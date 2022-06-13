@@ -1,5 +1,8 @@
 import React from 'react'
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import AutoScrolling from "react-native-auto-scrolling";
+import Swiper from 'react-native-swiper';
+
 
 
 
@@ -12,12 +15,19 @@ function MainPage({ navigation }) {
       </View>
 
 
-      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row'}}>
-        <ScrollView horizontal={true} style={{ flex: 1 }}>
-          <View><Image style={styles.specImg1} source={require("../Images/salon3.jpg")}></Image></View>
-          <View><Image style={styles.specImg1} source={require("../Images/salon2.jpg")}></Image></View>
-          <View><Image style={styles.specImg1} source={require("../Images/salon1.jpg")}></Image></View>
-        </ScrollView>
+      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
+        <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon3.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
+          </View>
+        </Swiper>
+
       </View>
 
 
@@ -145,14 +155,14 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     borderRadius: 10,
- },
- specImg1: {
-  width: 330,
-  height: 151,
-  margin: 5,
-  padding: 5,
-  borderRadius: 10,
-},
+  },
+  specImg1: {
+    width: 330,
+    height: 151,
+    margin: 5,
+    padding: 5,
+    borderRadius: 10,
+  },
   imgStyling: {
     flex: 1,
     width: '100%',
@@ -178,6 +188,11 @@ const styles = StyleSheet.create({
   MapView: {
     flex: 0.5,
     margin: 10,
-  }
+  },
+  scrolling1: {
+    width: 400,
+    padding: 10,
+    marginBottom: 10,
+  },
 
 })
