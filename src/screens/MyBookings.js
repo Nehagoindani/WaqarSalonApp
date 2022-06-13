@@ -61,7 +61,7 @@ export default function MyBookings() {
                     <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Services:  </Text>
                     {item.services.map((item, index) => {
                       return <Text key={index}
-                      style={{ fontSize: 13.5, color: '#d6994b', fontWeight: 'bold', padding: 5 }}> ● {item}</Text>
+                      style={{ fontSize: 13.5, color: '#d6994b', fontWeight: 'bold', padding: 5 }}> ● {item.name}</Text>
                     })}
                   </View>
                 )

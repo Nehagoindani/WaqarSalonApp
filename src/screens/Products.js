@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
@@ -39,11 +38,15 @@ export default function Products() {
             info.map((item, index) => {
               return (
                 <View key={index} style={styles.bkstyle}>
-                  <Text style={{ fontSize: 15, color: '#d6994b', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Product Name:  {item.pName}</Text>
-                  <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Price:  {item.price}</Text>
-                  <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Quantity:  {item.count} </Text>
-                  <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Description:  {item.description} </Text>
-                  <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', padding: 5, paddingLeft: 0 }}> Image:  {item.image} </Text>
+                  <View style={{ flex: 0.5 }}>
+                    <Text style={{ fontSize: 15, color: '#d6994b', fontWeight: 'bold', lineHeight: 20 }}>{item.pName}</Text>
+                    <Text style={{ fontSize: 15, color: 'black', marginTop: 3, fontWeight: 'bold'}}>Rs. {item.price}</Text>
+                    <Text style={{ fontSize: 12, color: 'grey', marginTop: 5}}>{item.description}</Text>
+                  </View>
+                  <View style={{ flex: 0.5 }}>
+                    <Image source={{ uri: item.image }} resizeMode={'center'} style={{ flex: 1 }} />
+                    {/* <Text>{item.image}</Text> */}
+                  </View>
                 </View>
               )
             })
@@ -74,11 +77,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginVertical: 10,
-    justifyContent: 'space-evenly',
+    // justifyContent: 'space-evenly',
     borderWidth: 0.75,
     borderColor: '#fcf7f0',
     borderBottomColor: '#cccccc',
     marginVertical: 3,
+    flexDirection: 'row'
 
   }
 });

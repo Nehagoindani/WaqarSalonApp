@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import AutoScrolling from 'react-native-auto-scrolling';
-import { ImageCarousel } from "image-auto-scroll";
+import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import AutoScrolling from "react-native-auto-scrolling";
+import Swiper from 'react-native-swiper';
 
 function MainPage({ navigation }) {
   return (
@@ -11,14 +11,22 @@ function MainPage({ navigation }) {
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
       </View>
 
+
       <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
-        <ScrollView horizontal={true} style={{ flex: 1 }}>
-          <View><Image style={styles.specImg1} source={require("../Images/salon5.jpeg")}></Image></View>
-          <View><Image style={styles.specImg1} source={require("../Images/salon3.jpg")}></Image></View>
-          <View><Image style={styles.specImg1} source={require("../Images/salon2.jpg")}></Image></View>
-          <View><Image style={styles.specImg1} source={require("../Images/salon1.jpg")}></Image></View>
-        </ScrollView>
+        <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon3.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
+          </View>
+        </Swiper>
+
       </View>
+
 
       <View style={{ flex: 0.25 }}>
         <View style={{ flex: 0.2 }}>
@@ -59,12 +67,11 @@ function MainPage({ navigation }) {
         <ScrollView horizontal={true} style={{ flex: 1 }}>
           <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
             <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
-            <View><Image style={styles.specImg} source={require("../Images/waq2.jpeg")}></Image></View>
             <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
-            <View><Image style={styles.specImg} source={require("../Images/wq6.jpeg")}></Image></View>
-            <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
-            <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
             <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
+            <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
           </View>
         </ScrollView>
       </View>
@@ -96,17 +103,7 @@ const styles = StyleSheet.create({
   categryView: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-  },
-  scrolling1: {
-    width: 400,
-    padding: 10,
-    marginBottom: 10,
-  },
-  scrolling2: {
-    backgroundColor: "red",
-    width: 400,
-    padding: 10,
-    marginBottom: 10,
+
   },
   ctext: {
     shadowColor: "#000",
@@ -188,6 +185,11 @@ const styles = StyleSheet.create({
   MapView: {
     flex: 0.5,
     margin: 10,
-  }
+  },
+  scrolling1: {
+    width: 400,
+    padding: 10,
+    marginBottom: 10,
+  },
 
 })
