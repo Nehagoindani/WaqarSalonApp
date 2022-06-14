@@ -2,12 +2,9 @@ import React from 'react'
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import AutoScrolling from "react-native-auto-scrolling";
 import Swiper from 'react-native-swiper';
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 21f0ab092e72f7e7f3e55201c42b253dc0a152fb
 
 function MainPage({ navigation }) {
   return (
@@ -99,11 +96,13 @@ function MainPage({ navigation }) {
         <Text style={{ textAlign: 'center', fontSize: 11, color: '#d6994b' }}>Model Colony Malir Halt, Karachi.</Text>
       </View>
     </View>
-
-
   );
 }
+
+
 export default MainPage;
+
+
 const styles = StyleSheet.create({
 
   scroll: {
