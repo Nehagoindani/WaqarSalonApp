@@ -30,7 +30,7 @@ export default function TimeSlots({ navigation, route }) {
   const [fourthSlot, setFourthslot] = useState(0)
   const [isLoading, setIsloading] = useState(false)
 
-
+  
   const getBooking = async (date) => {
     //  setIsloading(true)
     let check = moment(date).format('DD-M-YYYY')
