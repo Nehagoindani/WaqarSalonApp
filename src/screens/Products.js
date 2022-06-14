@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Button, Image } from 'react-native';
 import firestore from '@react-native-firebase/firestore';

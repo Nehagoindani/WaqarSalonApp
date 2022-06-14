@@ -2,9 +2,12 @@ import React from 'react'
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import AutoScrolling from "react-native-auto-scrolling";
 import Swiper from 'react-native-swiper';
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 21f0ab092e72f7e7f3e55201c42b253dc0a152fb
 
 function MainPage({ navigation }) {
   return (
@@ -14,6 +17,18 @@ function MainPage({ navigation }) {
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
       </View>
 
+      <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
+        <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon3.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
+          </View>
+          <View>
+            <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
+          </View>
+        </Swiper>
 
       <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
         <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
