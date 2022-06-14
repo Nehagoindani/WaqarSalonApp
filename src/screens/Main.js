@@ -11,7 +11,6 @@ function MainPage({ navigation }) {
         <Image style={styles.imgStyling2} source={require("../Images/3waq.png")}></Image>
       </View>
 
-
       <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
         <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
           <View>
