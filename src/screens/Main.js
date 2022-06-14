@@ -27,7 +27,8 @@ function MainPage({ navigation }) {
             <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
           </View>
         </Swiper>
-
+        </View>
+{/* 
         <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
           <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
             <View>
@@ -41,7 +42,7 @@ function MainPage({ navigation }) {
             </View>
           </Swiper>
 
-        </View>
+        </View> */}
 
 
         <View style={{ flex: 0.25 }}>
@@ -97,8 +98,6 @@ function MainPage({ navigation }) {
           <Text style={{ textAlign: 'center', fontSize: 11, color: '#d6994b' }}>Model Colony Malir Halt, Karachi.</Text>
         </View>
       </View>
-    </View>
-
   );
 }
 
