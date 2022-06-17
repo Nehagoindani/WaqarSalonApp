@@ -61,11 +61,11 @@ const DATA = [
                     title: "BRIDAL MAKEUP",
                     data: [
                       {
-                        name: ' Makeup with Waqar',
+                        name: 'Bridal Makeup with Waqar',
                         price: '35000'
                       },
                       {
-                        name: 'Party Makeup with Stylist',
+                        name: 'Bridal Makeup with Stylist',
                         price: '25000'
                       }
                      /* <Text> '(Charges may vary according to Thickness and Length of Hair)' </Text>, */

@@ -3,9 +3,6 @@ import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Dimensions
 import AutoScrolling from "react-native-auto-scrolling";
 import Swiper from 'react-native-swiper';
 
-
-
-
 function MainPage({ navigation }) {
   return (
 
@@ -21,29 +18,13 @@ function MainPage({ navigation }) {
             <Image style={styles.specImg1} source={require("../Images/salon3.jpg")} />
           </View>
           <View>
-            <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
+            <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
           </View>
           <View>
-            <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
+            <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
           </View>
         </Swiper>
         </View>
-{/* 
-        <View style={{ flex: 0.25, justifyContent: 'center', flexDirection: 'row' }}>
-          <Swiper autoplay autoplayTimeout={4} showsPagination={false} scrollEnabled={false}>
-            <View>
-              <Image style={styles.specImg1} source={require("../Images/salon3.jpg")} />
-            </View>
-            <View>
-              <Image style={styles.specImg1} source={require("../Images/salon2.jpg")} />
-            </View>
-            <View>
-              <Image style={styles.specImg1} source={require("../Images/salon1.jpg")} />
-            </View>
-          </Swiper>
-
-        </View> */}
-
 
         <View style={{ flex: 0.25 }}>
           <View style={{ flex: 0.2 }}>
@@ -84,11 +65,13 @@ function MainPage({ navigation }) {
           <ScrollView horizontal={true} style={{ flex: 1 }}>
             <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
               <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
+              <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
+              <View><Image style={styles.specImg} source={require("../Images/wq6.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
-              <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
+              
             </View>
           </ScrollView>
         </View>
@@ -166,18 +149,18 @@ const styles = StyleSheet.create({
     height: 60,
   },
   specImg: {
-    width: 100,
+    width: 103,
     height: 150,
     margin: 5,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 8,
   },
   specImg1: {
     width: 330,
     height: 151,
     margin: 5,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 8,
   },
   imgStyling: {
     flex: 1,

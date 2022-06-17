@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { StyleSheet, View, Text, Button, Alert, Modal, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Button, Alert, Modal, Pressable, ScrollView } from 'react-native';
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
 import { useDispatch } from 'react-redux';
@@ -48,94 +48,94 @@ export default function BSummury({ navigation, route }) {
 
   return (
     <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.view3}>
 
-      <View style={styles.view3}>
-
-        <View style={{ flex: 0.3, }}>
-          <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', marginBottom: 20, marginTop: 20 }}>Booking Summary</Text>
-        </View>
-
-        <View style={{ flex: 0.7, justifyContent: 'center' }}>
-
-          <Text style={styles.textin}>User Name</Text>
-          <Text style={styles.textinp}>{currentName}</Text>
-
-          <Text style={styles.textin}>Appointment Date</Text>
-          <Text style={styles.textinp}>{date}</Text>
-
-          <Text style={styles.textin}>Time Slot</Text>
-          <Text style={styles.textinp}>{Time}</Text>
-
-          <Text style={styles.textin}>Services</Text>
-          {
-            Service.map((item, index) => (
-              <Text key={index} style={styles.textinp}>{item.name}</Text>
-            ))
-          }
-          <Text style={styles.textin}>Special Instructions</Text>
-          <Text style={styles.textinp}>{Ins}</Text>
-
-        </View>
-
-      </View>
-
-      <View style={styles.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
-          }}   >
-          <View style={styles.centeredView2}>
-            <View style={styles.modalView}>
-              <Text style={{ TextAlign: 'center', fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16, }}>Appointment Booked!</Text>
-              <Text style={{ color: 'black', marginBottom: 15, textAlign: "center" }}>You will receive a confirmation message shortly.</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => {
-                  {
-                    firestore().collection('bookings')
-                      .add({
-                        uId: uid,
-                        uName: currentName,
-                        uEmail: currentEmail,
-                        uPhone: currentPhone.substring(1),
-                        services: Service,
-                        date: date,
-                        timeSlot: Time,
-                        instruction: Ins,
-                        status: 'Pending',
-                        arrived: false
-
-                      })
-                      .then(function () {
-                        console.log("Document successfully written!");
-                        dispatch(serviceNull());
-                        navigation.navigate("MyTabs");
-                      })
-                      .catch(function (error) {
-                        console.error("Error writing document: ", error);
-                      });
-                  }
-                  setModalVisible(!modalVisible)
-                }}
-              >
-                <Text style={styles.textStyle}>Okay</Text>
-              </Pressable>
-            </View>
+          <View style={{ flex: 0.3, }}>
+            <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', marginBottom: 20, marginTop: 20 }}>Booking Summary</Text>
           </View>
-        </Modal>
 
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => setModalVisible(true)}
-        >
-          <Text style={styles.button}>Confirm Booking</Text>
-        </Pressable>
-      </View>
+          <View style={{ flex: 0.7, justifyContent: 'center' }}>
 
+            <Text style={styles.textin}>User Name</Text>
+            <Text style={styles.textinp}>{currentName}</Text>
+
+            <Text style={styles.textin}>Appointment Date</Text>
+            <Text style={styles.textinp}>{date}</Text>
+
+            <Text style={styles.textin}>Time Slot</Text>
+            <Text style={styles.textinp}>{Time}</Text>
+
+            <Text style={styles.textin}>Services</Text>
+            {
+              Service.map((item, index) => (
+                <Text key={index} style={styles.textinp}>{item.name}</Text>
+              ))
+            }
+            <Text style={styles.textin}>Special Instructions</Text>
+            <Text style={styles.textinp}>{Ins}</Text>
+
+          </View>
+
+        </View>
+
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setModalVisible(!modalVisible);
+            }}   >
+            <View style={styles.centeredView2}>
+              <View style={styles.modalView}>
+                <Text style={{ TextAlign: 'center', fontWeight: 'bold', color: '#d6994b', marginBottom: 5, fontSize: 16, }}>Appointment Booked!</Text>
+                <Text style={{ color: 'black', marginBottom: 15, textAlign: "center" }}>You will receive a confirmation message shortly.</Text>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => {
+                    {
+                      firestore().collection('bookings')
+                        .add({
+                          uId: uid,
+                          uName: currentName,
+                          uEmail: currentEmail,
+                          uPhone: currentPhone.substring(1),
+                          services: Service,
+                          date: date,
+                          timeSlot: Time,
+                          instruction: Ins,
+                          status: 'Pending',
+                          arrived: false
+
+                        })
+                        .then(function () {
+                          console.log("Document successfully written!");
+                          dispatch(serviceNull());
+                          navigation.navigate("MyTabs");
+                        })
+                        .catch(function (error) {
+                          console.error("Error writing document: ", error);
+                        });
+                    }
+                    setModalVisible(!modalVisible)
+                  }}
+                >
+                  <Text style={styles.textStyle}>Okay</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
+
+          <Pressable
+            style={[styles.button, styles.buttonOpen]}
+            onPress={() => setModalVisible(true)}
+          >
+            <Text style={styles.button}>Confirm Booking</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
     </View>
   );
 }
