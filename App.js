@@ -31,31 +31,8 @@ import CourseService from './src/screens/Courses';
 import AdminLoginScreen from './src/screens/AdminLogin';
 import AdminScreen from './src/screens/AdminScreen';
 import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import SplashScreen from './src/screens/SplashScreen';
 
-function SplashScreen({ navigation }) {
-  useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('Home')
-    }, 5000);
-
-  }, []);
-  return (
-    <View style={styles.MainContainer}>
-
-      <View>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Image style={{ alignSelf: 'center', alignItems: 'center', justifyContent: 'center', width: 200, height: 70 }}
-            source={require('./src/Images/waqarlogo.png')}>
-          </Image>
-        </TouchableOpacity>
-
-      </View>
-
-
-    </View>
-
-  )
-}
 
 const Top = createMaterialTopTabNavigator();
 
@@ -142,12 +119,17 @@ const Stack = createNativeStackNavigator();
 function authStack() {
 
   return (
+
+
     <Stack.Navigator>
+      <Stack.Screen name='Splash' options={{ headerShown: false }} component={SplashScreen} />
+
       <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
       <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
       <Stack.Screen name='forgotPass' options={{ headerShown: false }} component={ResetScreen} />
 
     </Stack.Navigator>
+
   )
 }
 
