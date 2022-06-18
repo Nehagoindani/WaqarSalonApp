@@ -73,8 +73,6 @@ export default function MyBookings() {
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, Image, ScrollView} from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -65,13 +65,13 @@ function TopTabs() {
   const [swipeEnabled, setSwipeEnabled] = useState(true);
   console.disableYellowBox = true;
   return (
-  
+
     <Top.Navigator
       initialRouteName="Hair"
       swipeEnabled={swipeEnabled}
-     
+
       screenOptions={{
-       
+
         tabBarActiveTintColor: '#d6994b',
         tabBarScrollEnabled: true,
         tabBarLabelStyle: { fontSize: 15, },
@@ -140,7 +140,7 @@ const Stack = createNativeStackNavigator();
 //const AuthStack = createNativeStackNavigator();
 
 function authStack() {
- 
+
   return (
     <Stack.Navigator>
       <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
@@ -153,7 +153,7 @@ function authStack() {
 
 const App = () => {
 
-  const {loggedIn} = useSelector(state => state.service) 
+  const { loggedIn } = useSelector(state => state.service)
 
 
   return (

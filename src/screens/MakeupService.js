@@ -158,7 +158,7 @@ const Item = ({ name, price }) => (
 
           }}
         >
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Book Appointment</Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold'}}>Book Appointment</Text>
         </TouchableOpacity>
       </View>
     </View>

@@ -23,7 +23,7 @@ export default function Products() {
 
   }
   return (
-    <View style={{ flex: 1, padding: 20, backgroundColor: '#fcf7f0' }}>
+    <View style={{ flex: 1, padding: 20, backgroundColor: 'white' }}>
 
       <View style={{ flex: 0.1, paddingTop: 20 }}>
         <Icon name='date-range' size={55} color='black' />
@@ -40,8 +40,8 @@ export default function Products() {
                 <View key={index} style={styles.bkstyle}>
                   <View style={{ flex: 0.5 }}>
                     <Text style={{ fontSize: 15, color: '#d6994b', fontWeight: 'bold', lineHeight: 20 }}>{item.pName}</Text>
-                    <Text style={{ fontSize: 15, color: 'black', marginTop: 3, fontWeight: 'bold'}}>Rs. {item.price}</Text>
-                    <Text style={{ fontSize: 12, color: 'grey', marginTop: 5}}>{item.description}</Text>
+                    <Text style={{ fontSize: 15, color: 'black', marginTop: 3, fontWeight: 'bold' }}>Rs. {item.price}</Text>
+                    <Text style={{ fontSize: 12, color: 'grey', marginTop: 5 }}>{item.description}</Text>
                   </View>
                   <View style={{ flex: 0.5 }}>
                     <Image source={{ uri: item.image }} resizeMode={'center'} style={{ flex: 1 }} />
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 33,
-    backgroundColor: '#fcf7f0'
+    backgroundColor: 'white'
   },
   textStyle: {
     fontSize: 15,

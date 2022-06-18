@@ -10,7 +10,6 @@ const persistConfig = {
   blacklist : ['services']
 };
 
-
 const rootReducer = combineReducers({
   service: persistReducer(persistConfig, serviceReducer),
 });
