@@ -152,7 +152,8 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    top: 80
+    top: 80,
+    justifyContent:'center'
   },
   bgimg: {
     flex: 1,

@@ -249,12 +249,11 @@ function Signup({ navigation }) {
   );
 }
 
-
-
 export default Signup
 const styles = StyleSheet.create({
   cont: {
-    top: 80
+    top: 80,
+    justifyContent:'center'
 
   },
   bgimg: {
@@ -268,7 +267,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    width: 330,
+    width: 310,
+    height: 620,
     borderRadius: 12,
     shadowColor: "#000",
     shadowOffset: {
