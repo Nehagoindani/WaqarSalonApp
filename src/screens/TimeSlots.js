@@ -110,7 +110,7 @@ export default function TimeSlots({ navigation, route }) {
                           </TouchableOpacity>
                         ) :
                         (
-                          <Text style={{ color: 'red' }}>12pm - 1pm</Text>
+                          <Text style={{ color: 'red' , paddingLeft: 20}}>12pm - 1pm</Text>
                         )
                     }
                   </View>
@@ -124,7 +124,7 @@ export default function TimeSlots({ navigation, route }) {
                           </TouchableOpacity>
                         ) :
                         (
-                          <Text style={{ color: 'red' }}>1pm - 2pm</Text>
+                          <Text style={{ color: 'red', paddingLeft: 20 }}>1pm - 2pm</Text>
                         )
                     }
                   </View>
@@ -137,7 +137,7 @@ export default function TimeSlots({ navigation, route }) {
                           </TouchableOpacity>
                         ) :
                         (
-                          <Text style={{ color: 'red' }}>2pm - 3pm</Text>
+                          <Text style={{ color: 'red', paddingLeft: 20 }}>2pm - 3pm</Text>
                         )
                     }
                   </View>
@@ -150,7 +150,7 @@ export default function TimeSlots({ navigation, route }) {
                           </TouchableOpacity>
                         ) :
                         (
-                          <Text style={{ color: 'red' }}>3pm - 4pm</Text>
+                          <Text style={{ color: 'red' , paddingLeft: 20 }}>3pm - 4pm</Text>
                         )
                     }
                   </View>

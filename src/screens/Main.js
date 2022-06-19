@@ -50,7 +50,7 @@ function MainPage({ navigation }) {
               <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Nails' })}>
                 <Text style={styles.ctext}>Nails</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Çourse' })}>
+              <TouchableOpacity onPress={() => navigation.navigate('TopTab', { screen: 'Course' })}>
                 <Text style={styles.ctext}>Courses</Text>
               </TouchableOpacity>
             </View>
@@ -65,12 +65,10 @@ function MainPage({ navigation }) {
           <ScrollView horizontal={true} style={{ flex: 1 }}>
             <View style={{ flex: 0.8, justifyContent: 'center', flexDirection: 'row' }}>
               <View><Image style={styles.specImg} source={require("../Images/wc1.jpeg")}></Image></View>
-              <View><Image style={styles.specImg} source={require("../Images/waq3.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq3.jpeg")}></Image></View>
+              <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq6.jpeg")}></Image></View>
               <View><Image style={styles.specImg} source={require("../Images/wq1.jpeg")}></Image></View>
-              <View><Image style={styles.specImg} source={require("../Images/wq2.jpeg")}></Image></View>
-              <View><Image style={styles.specImg} source={require("../Images/waq.jpg")}></Image></View>
               
             </View>
           </ScrollView>

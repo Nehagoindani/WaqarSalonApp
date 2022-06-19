@@ -123,7 +123,6 @@ function authStack() {
 
     <Stack.Navigator>
       <Stack.Screen name='Splash' options={{ headerShown: false }} component={SplashScreen} />
-
       <Stack.Screen name='Login' options={{ headerShown: false }} component={LoginScreen} />
       <Stack.Screen name='SignUp' options={{ headerShown: false }} component={Signup} />
       <Stack.Screen name='forgotPass' options={{ headerShown: false }} component={ResetScreen} />

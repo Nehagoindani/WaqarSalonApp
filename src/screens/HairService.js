@@ -258,7 +258,7 @@ const DATA = [
       {
         name: 'Repair Treatment',
         price: '4500'
-      }, 
+      },
     ]
   },
 ];
@@ -296,10 +296,7 @@ const HairService = ({ navigation }) => {
             onPress={() => dispatch(removeService(name))}
             disabled={
               services.some(item => item.name === name) ? false : true
-            }
-
-          >
-
+            }  >
             <Icon name='minus-circle-outline' size={20} color={services.some(item => item.name === name) ? '#d6994b' : 'grey'} />
           </TouchableOpacity>
         </View>
@@ -338,9 +335,9 @@ const HairService = ({ navigation }) => {
           Choose the services that you want to book below.
         </Text>
         <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 12 }}>
-          *Charges may vary according to thickness & length of hair*</Text> 
-          <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 13 }}>
-            </Text>
+          *Charges may vary according to thickness & length of hair*</Text>
+        <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 13 }}>
+        </Text>
       </View>
       <View style={styles.view3}>
 
