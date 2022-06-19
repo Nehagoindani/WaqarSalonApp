@@ -26,7 +26,7 @@ export default function Products() {
     <View style={{ flex: 1, padding: 20, backgroundColor: 'white' }}>
 
       <View style={{ flex: 0.1, paddingTop: 20 }}>
-        <Icon name='date-range' size={55} color='black' />
+        <Icon name="shopping-bag" size={55} color='black' />
       </View>
       <View style={{ flex: 0.1 }}>
         <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold' }}>Products</Text>
