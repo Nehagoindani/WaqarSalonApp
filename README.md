@@ -37,6 +37,8 @@ Clone down this repository. You will need `node.js` and `git` installed globally
 
 Open the project folder and Navigate to `/src SRC contains # folders Screens Images and Redux  `. <br/>
 /screens/ contains all the screens used and you can edit your information accordingly.
+
+
 Project Structure
 
 
@@ -56,8 +58,5 @@ Project Structure
         
     
 
-### Show your support
-
-Give a ⭐ if you like this website!
 
 
