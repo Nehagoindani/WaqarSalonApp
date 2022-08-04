@@ -1,6 +1,6 @@
 ## Built With
 
-My personal portfolio <a href="http://soumya-jit.tech/" target="_blank">soumyajit.tech</a> which features some of my github projects as well as my resume and technical skills.<br/>
+Waqar's salon app is a customized salon management system. The scope of our project is to provide an all in one platform for clients for online appoinment booking 
 
 This project was built using these technologies.
 
@@ -15,9 +15,9 @@ This project was built using these technologies.
 
 ## Features
 
-**📖 Multi-Page Layout**
+**📖 Multi-Page Screens Navigation**
 
-**🎨 Styled with React-Bootstrap and Css with easy to customize colors**
+**🎨 Styled with Stylesheet and inline Styling CSS 
 
 **📱 Fully Responsive**
 
@@ -35,8 +35,23 @@ Clone down this repository. You will need `node.js` and `git` installed globally
 
 ## Usage Instructions
 
-Open the project folder and Navigate to `/src/screens/`. <br/>
-You will find all the screens used and you can edit your information accordingly.
+Open the project folder and Navigate to `/src SRC contains # folders Screens Images and Redux  `. <br/>
+/screens/ contains all the screens used and you can edit your information accordingly.
+Project Structure
+    /android                             -React native android source code
+    WaqarSalonApp/src/screens/           -All Screens
+    WaqarSalonApp/src/Images/            -All Images
+    WaqarSalonApp/src/Redux/             -Acions Reducer and Store
+    WaqarSalonApp/src/Redux/Actions/     -Action File
+    WaqarSalonApp/src/Redux/Reducers/    -Reducer File
+    WaqarSalonApp/src/Redux/Store.js     -Store File
+    WaqarSalonApp/App.js                 -Main Navigation
+    
+    /app                                  - React native specific code
+        /base_components                  - reusable react native components
+        /components                       - react native components
+        
+    
 
 ### Show your support
 
